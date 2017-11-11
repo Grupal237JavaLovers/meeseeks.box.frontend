@@ -4,13 +4,23 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { LayoutModule } from './layout/layout.module';
+import { MbHomepageComponent } from './home/homepage.component';
+import { MbProfileComponent } from './user/profile/profile.component';
+import { SharedModule } from './shared/shared.module';
+import { MbRegisterComponent } from './user/register/register.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MbHomepageComponent,
+    MbProfileComponent,
+    MbRegisterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    LayoutModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

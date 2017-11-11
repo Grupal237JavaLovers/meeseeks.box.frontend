@@ -1,0 +1,9 @@
+@import "../../shared/variables";
+:host {
+  height: 50px;
+  background-color: $primary-colour;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
