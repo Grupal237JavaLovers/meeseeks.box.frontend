@@ -1,5 +1,10 @@
-<mb-header></mb-header>
-<div class="main">
-  <router-outlet></router-outlet>
-</div>
-<mb-footer></mb-footer>
+<nb-layout>
+  <nb-layout-header>
+    <mb-header></mb-header>
+  </nb-layout-header>
+
+  <nb-layout-column>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>
+

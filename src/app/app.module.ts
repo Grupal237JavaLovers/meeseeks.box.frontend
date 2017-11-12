@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { NbThemeModule } from '@nebular/theme';
 
 import { AppComponent } from './app.component';
 
@@ -22,7 +23,8 @@ import { MbLoginComponent } from './user/login/login.component';
   imports: [
     BrowserModule,
     LayoutModule,
-    SharedModule
+    SharedModule,
+    NbThemeModule.forRoot({ name: 'default' })
   ],
   providers: [],
   bootstrap: [AppComponent]

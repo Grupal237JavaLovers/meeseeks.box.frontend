@@ -8,13 +8,16 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { MbLayoutComponent } from './layout.componet';
 import { SharedModule } from '../shared/shared.module';
 
+import { NbLayoutModule } from '@nebular/theme';
+
 
 @NgModule({
   imports: [
     CommonModule,
     LayoutRoutingModule,
     RouterModule.forRoot([]),
-    SharedModule
+    SharedModule,
+    NbLayoutModule,
   ],
   declarations: [
     MbHeaderComponent,
