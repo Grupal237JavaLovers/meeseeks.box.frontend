@@ -1,16 +1,14 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'mb-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./login.component.css']
 })
-export class MbLoginComponent implements OnInit {
+export class MbLoginComponent {
 
-  constructor() { }
-
-  ngOnInit() {
+  model: any = {};
+  onSubmit() {
+    console.log(this.model);
   }
-
 }

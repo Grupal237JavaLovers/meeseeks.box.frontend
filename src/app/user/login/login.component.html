@@ -1,3 +1,22 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <h2>LogIn</h2>
+  <form name="Lform" (ngSubmit)="onSubmit()" #loginForm="ngForm" class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="UserName" type="text" class="form-control"
+             required
+             [(ngModel)]="model.userName" name="userName"
+             #userName="ngModel">
+      <mat-error *ngIf="userName.valid || userName.pristine">Username is <strong>required</strong></mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput type="password" placeholder="Password" class="form-control"
+             required
+             [(ngModel)]="model.password" name="password"
+             #password="ngModel">
+      <mat-error *ngIf="password.hasError('required')">Password is required</mat-error>
+    </mat-form-field>
+
+    <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Log In</button>
+  </form>
+</div>
