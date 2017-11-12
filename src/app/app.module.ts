@@ -9,13 +9,15 @@ import { MbHomepageComponent } from './home/homepage.component';
 import { MbProfileComponent } from './user/profile/profile.component';
 import { SharedModule } from './shared/shared.module';
 import { MbRegisterComponent } from './user/register/register.component';
+import { MbLoginComponent } from './user/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MbHomepageComponent,
     MbProfileComponent,
-    MbRegisterComponent
+    MbRegisterComponent,
+    MbLoginComponent
   ],
   imports: [
     BrowserModule,
