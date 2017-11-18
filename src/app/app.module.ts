@@ -1,28 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { MbHomepageComponent } from './home/homepage.component';
 
 import { LayoutModule } from './layout/layout.module';
-import { MbHomepageComponent } from './home/homepage.component';
-import { MbProfileComponent } from './user/profile/profile.component';
 import { SharedModule } from './shared/shared.module';
-import { MbRegisterComponent } from './user/register/register.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     MbHomepageComponent,
-    MbProfileComponent,
-    MbRegisterComponent
   ],
   imports: [
     BrowserModule,
     LayoutModule,
-    SharedModule
+    SharedModule,
+    UserModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}
