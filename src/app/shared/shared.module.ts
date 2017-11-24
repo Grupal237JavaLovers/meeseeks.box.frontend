@@ -1,8 +1,12 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatFormFieldModule, MatInputModule, MatToolbarModule } from '@angular/material';
+import {
+  MatCardModule, MatButtonModule, MatGridListModule,
+  MatIconModule, MatFormFieldModule, MatInputModule, MatToolbarModule
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 
 const sharedModules = [
   MatToolbarModule,
@@ -13,6 +17,10 @@ const sharedModules = [
   FormsModule,
   ReactiveFormsModule,
   HttpClientModule,
+  MatGridListModule,
+  MatCardModule,
+  CommonModule,
+  MatIconModule
 ];
 const sharedComponents = [];
 @NgModule({
