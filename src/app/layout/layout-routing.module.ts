@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MbHomepageComponent } from '../home/homepage.component';
 import { MbProfileComponent } from '../user/profile/profile.component';
-import { MbRegisterComponent } from '../user/register/register.component';
+import { MbRegisterProviderComponent } from '../user/registerProvider/registerProvider.component';
 
 const LAYOUT_ROUTES: Routes = [
   {
@@ -15,7 +15,7 @@ const LAYOUT_ROUTES: Routes = [
   },
   {
     path: 'register',
-    component: MbRegisterComponent
+    component: MbRegisterProviderComponent,
   },
   {
     path: '',

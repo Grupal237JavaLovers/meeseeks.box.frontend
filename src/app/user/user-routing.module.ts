@@ -1,12 +1,32 @@
-import { Routes } from '@angular/router';
-import { MbProfileComponent } from './profile/profile.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { MbProfileComponent } from '../user/profile/profile.component';
+import { MbRegisterProviderComponent } from './registerProvider/registerProvider.component';
 /**
  * Created by csebestin on 11/10/2017.
  */
 
 const USER_ROUTES: Routes = [
   {
-    path: 'user/profile',
-    component: MbProfileComponent
-  }
-]
+    path: 'user',
+    component: MbProfileComponent,
+    children: [
+      {
+        path: 'register',
+        component: MbRegisterProviderComponent,
+      },
+      {
+        path: '',
+        component: MbProfileComponent,
+      },
+    ],
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(USER_ROUTES)],
+  providers: [],
+  exports: [RouterModule],
+})
+export class UserRoutingModule {
+}

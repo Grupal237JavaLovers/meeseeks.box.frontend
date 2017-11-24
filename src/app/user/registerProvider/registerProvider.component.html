@@ -1,0 +1,48 @@
+<h2>Register</h2>
+<form [formGroup]="userRegisterForm" novalidate class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="User name" type="text" formControlName="userName">
+    <mat-error>{{errors.userName}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Real name" type="text" formControlName="realName">
+    <mat-error>{{errors.realName}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" type="text" formControlName="email">
+    <mat-error>{{errors.email}}</mat-error>
+  </mat-form-field>
+
+  <div formGroupName="passwordGroup">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Password" type="password" formControlName="password">
+      <mat-error>{{errors.password}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Confirm password" type="password" formControlName="confirmPassword"
+             [errorStateMatcher]="confirmValidParentMatcher">
+      <mat-error>{{errors.confirmPassword}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Profile image url" type="text" formControlName="profileImage">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Video url" type="text" formControlName="video">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Description" type="text" formControlName="description">
+  </mat-form-field>
+
+  <button mat-raised-button  color="primary" [disabled]="userRegisterForm.invalid" (click)="register()">Register</button>
+
+</form>
+
+
+
