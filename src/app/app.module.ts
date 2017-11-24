@@ -7,12 +7,27 @@ import { MbHomepageComponent } from './home/homepage.component';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
-import {LandingPageComponent} from './landing-page/landing-page.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import {RouterModule, Routes} from '@angular/router';
+import {MbLayoutComponent} from './layout/layout.componet';
+import {MbProfileComponent} from './user/profile/profile.component';
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: LandingPageComponent,
+  },
+  {
+    path: 'home',
+    component: MbLayoutComponent,
+  },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     MbHomepageComponent,
+    MbProfileComponent,
     LandingPageComponent
   ],
   imports: [
@@ -20,6 +35,7 @@ import {LandingPageComponent} from './landing-page/landing-page.component';
     LayoutModule,
     SharedModule,
     UserModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent],
