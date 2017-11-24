@@ -7,11 +7,13 @@ import { MbHomepageComponent } from './home/homepage.component';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
+import {LandingPageComponent} from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MbHomepageComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
