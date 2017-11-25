@@ -17,14 +17,19 @@ const appRoutes: Routes = [
     children: [
       {
         path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
         component: MbHomepageComponent,
       },
       {
-        path: 'home/profile',
+        path: 'profile',
         component: MbProfileComponent,
       },
       {
-        path: 'home/register',
+        path: 'register',
         component: MbRegisterProviderComponent,
       },
     ]

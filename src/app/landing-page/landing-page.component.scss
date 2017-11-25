@@ -6,7 +6,6 @@ body{
 
 //container
 .#{$namespace}container{
-  height:100%;
 }
 
 //text
@@ -19,7 +18,7 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 45vw;
+  max-width: 20%;
   margin-bottom: 8rem;
   padding: 0 14%;
 }
@@ -98,6 +97,7 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  text-decoration: none;
   background-color: #4166ee;
 }
 .#{$namespace}consumer__wrapper {
@@ -131,13 +131,13 @@ body{
   width: 50%;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  text-decoration: none;
   background-color: #111;
 }
 
 .#{$namespace}provider__wrapper {
-  padding-right: 28%;
-  width: 90%;
+  padding-left: 28%;
+  width: 50%;
 }
 
 //logo
@@ -146,7 +146,7 @@ body{
   align-items: flex-end;
   height: 40vh;
   margin-bottom: 2rem;
-  padding: 0 13%;
+  padding: 0 14%;
 }
 
 .#{$namespace}header__metanav{
@@ -188,6 +188,7 @@ body{
 }
 
 .#{$namespace}navbtn__login {
+  text-decoration: none;
 }
 
 //modal
