@@ -26,12 +26,10 @@ export class MbLoginComponent {
   }
 
   login(): void {
-    // API call to register your provider
-    // this.userService.register();
+    // API call to login your provider
     const user: any = {};
     user.password = this.userLoginForm.get('password').value;
     user.username = this.userLoginForm.get('userName').value;
-    // console.log(provider);
     this.userService.login(user);
   }
 }

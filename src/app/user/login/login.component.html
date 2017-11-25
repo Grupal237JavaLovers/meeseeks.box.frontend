@@ -1,11 +1,11 @@
 <h2>Log In</h2>
-<form [formGroup]="userLoginForm" novalidate class="example-form">
-  <mat-form-field class="example-full-width">
+<form [formGroup]="userLoginForm" novalidate class="form">
+  <mat-form-field class="full-width">
     <input matInput placeholder="User name" type="text" formControlName="userName">
     <mat-error>{{errors.userName}}</mat-error>
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="full-width">
     <input matInput placeholder="Password" type="password" formControlName="password">
     <mat-error>{{errors.password}}</mat-error>
   </mat-form-field>
