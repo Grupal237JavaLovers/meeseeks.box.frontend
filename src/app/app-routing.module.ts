@@ -5,6 +5,7 @@ import {LandingPageComponent} from './landing-page/landing-page.component';
 import {MbProfileComponent} from './user/profile/profile.component';
 import {MbRegisterProviderComponent} from './user/registerProvider/registerProvider.component';
 import {MbHomepageComponent} from './home/homepage.component';
+import {MbLoginComponent} from './user/login/login.component';
 
 const appRoutes: Routes = [
   {
@@ -31,6 +32,10 @@ const appRoutes: Routes = [
       {
         path: 'register',
         component: MbRegisterProviderComponent,
+      },
+      {
+        path: 'login',
+        component: MbLoginComponent,
       },
     ]
   },
