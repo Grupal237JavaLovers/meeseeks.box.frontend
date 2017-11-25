@@ -8,34 +8,22 @@ import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import {RouterModule, Routes} from '@angular/router';
-import {MbLayoutComponent} from './layout/layout.componet';
-import {MbProfileComponent} from './user/profile/profile.component';
-
-const appRoutes: Routes = [
-  {
-    path: '',
-    component: LandingPageComponent,
-  },
-  {
-    path: 'home',
-    component: MbLayoutComponent,
-  },
-];
+import {RouterModule} from '@angular/router';
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     MbHomepageComponent,
-    MbProfileComponent,
     LandingPageComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     LayoutModule,
     SharedModule,
     UserModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent],

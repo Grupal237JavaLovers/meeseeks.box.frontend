@@ -17,11 +17,11 @@ const LAYOUT_ROUTES: Routes = [
     path: 'register',
     component: MbRegisterProviderComponent,
   },
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full',
-  },
+  // {
+  //   path: '',
+  //   redirectTo: '/home',
+  //   pathMatch: 'full',
+  // },
 ];
 
 @NgModule({

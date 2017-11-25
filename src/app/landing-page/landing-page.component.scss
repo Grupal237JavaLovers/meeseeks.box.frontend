@@ -149,14 +149,25 @@ body{
   padding: 0 13%;
 }
 
-.#{$namespace}header__metanav {
+.#{$namespace}header__metanav{
   width: 40%;
+
+}
+
+.#{$namespace}header__metanav__wrapper {
+  display:flex;
+  justify-content: space-between;
+}
+
+.#{$namespace}metanav__item{
+  width: 28%;
 }
 
 .#{$namespace}header__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width:100%;
 }
 
 .#{$namespace}header__logo {
