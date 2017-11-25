@@ -10,6 +10,7 @@ import { UserModule } from './user/user.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import {RouterModule} from '@angular/router';
 import {AppRoutingModule} from './app-routing.module';
+import { JobModule } from './job1/job.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {AppRoutingModule} from './app-routing.module';
     LayoutModule,
     SharedModule,
     UserModule,
+    JobModule,
     RouterModule.forRoot([]),
   ],
   providers: [],

@@ -6,6 +6,7 @@ import {MbProfileComponent} from './user/profile/profile.component';
 import {MbRegisterProviderComponent} from './user/registerProvider/registerProvider.component';
 import {MbHomepageComponent} from './home/homepage.component';
 import {MbLoginComponent} from './user/login/login.component';
+import {MbJobsGridComponent} from './job1/jobs-grid/jobs-grid.component';
 
 const appRoutes: Routes = [
   {
@@ -36,6 +37,10 @@ const appRoutes: Routes = [
       {
         path: 'login',
         component: MbLoginComponent,
+      },
+      {
+        path: 'job',
+        component: MbJobsGridComponent,
       },
     ]
   },
