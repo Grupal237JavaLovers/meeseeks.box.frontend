@@ -10,11 +10,11 @@ const LAYOUT_ROUTES: Routes = [
     component: MbHomepageComponent,
   },
   {
-    path: 'profile',
+    path: 'home/profile',
     component: MbProfileComponent,
   },
   {
-    path: 'register',
+    path: 'home/register',
     component: MbRegisterProviderComponent,
   },
   // {
