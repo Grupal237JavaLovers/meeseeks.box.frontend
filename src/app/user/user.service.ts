@@ -25,4 +25,20 @@ export class UserService {
       },
     );
   }
+
+  login(user: any) {
+    return this.http.post('http://localhost:8080/user/login', user, {
+      responseType: 'text',
+    }).subscribe(
+      res => {
+        console.log(res);
+        // this.router.navigateByUrl('/logIn');
+      },
+      err => {
+        console.log(err);
+        this.router.navigateByUrl('/login');
+      },
+    );
+  }
+
 }
