@@ -1,6 +1,28 @@
 .grid-list {
+
   .mat-card {
     margin: 16px 0;
+  }
+
+  .mat-figure {
+
+  }
+
+  .job-card {
+    background: linear-gradient(to right, #0575E6, #00F260) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    box-shadow: 7px 17px 4px -3px rgba(0,0,0,0.66);
+  }
+
+  .mat-grid-tile-header {
+    background: none !important;
+  }
+
+  .mat-grid-tile-footer {
+    background: none !important;
+  }
+
+  .job-icon {
+    font-size: 24px;
   }
 
   p {
@@ -11,4 +33,5 @@
 
 :host {
   align-items:center;
+  width: 100%;
 }

@@ -2,13 +2,13 @@
   <mat-card>
     <mat-card-title>Jobs</mat-card-title>
     <mat-card-content>
-      <mat-grid-list cols="4" rowHeight="200px" gutterSize="10px">
-        <mat-grid-tile *ngFor="let job of jobs" style="background:lightgreen; color: #fff">
+      <mat-grid-list cols="4" rowHeight="200px" gutterSize="20px">
+        <mat-grid-tile class="job-card" *ngFor="let job of jobs" style="background:lightgreen; color: #fff">
           {{job.name}}
           <mat-grid-tile-header style="background:lightgreen">
             <h3 mat-line>{{job.expiration | date}}</h3>
             <span mat-line>{{job.location}}</span>
-            <mat-icon>business_center</mat-icon>
+            <mat-icon class="job-icon">business_center</mat-icon>
 
           </mat-grid-tile-header>
 
