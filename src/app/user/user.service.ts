@@ -32,11 +32,11 @@ export class UserService {
     }).subscribe(
       res => {
         console.log(res);
-        // this.router.navigateByUrl('/logIn');
+        // this.router.navigateByUrl('/home/login');
       },
       err => {
         console.log(err);
-        this.router.navigateByUrl('/login');
+        this.router.navigateByUrl('/home/login');
       },
     );
   }
