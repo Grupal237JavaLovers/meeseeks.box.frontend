@@ -1,0 +1,59 @@
+$namespace:'msbx-';
+
+.mat-button{
+  outline: none;
+}
+
+.#{$namespace}profile{
+
+  &__container {
+    width: 100vw;
+    display:flex;
+    justify-content: space-between;
+    flex-direction:row;
+  }
+
+  &__main-wrapper{
+    padding: 20px 5%;
+    width: 45vw;
+
+  }
+
+  &__user-head{
+    align-self:flex-start;
+    padding-bottom: 10px;
+
+    &--card{
+      display:flex;
+      flex-direction: column;
+      align-items:center;
+      width: 25vw;
+      height: 25vh;
+    }
+  }
+
+  &__user-details{
+    align-self:flex-end;
+    width: 50vw;
+  }
+
+  &__user-actions{
+    display:flex;
+    flex-direction: column;
+    width:25vw;
+    padding: 0 5%;
+
+    &:first-child{
+      padding: 10px 0;
+    }
+
+    &:last-child{
+      padding: 10px 0;
+    }
+  }
+
+  &__user-details{
+    align-self:flex-start;
+    padding: 20px 5%;
+  }
+}
