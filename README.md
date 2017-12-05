@@ -1,4 +1,5 @@
 # Meeseeks.Box.Frontend
+http://meeseeksbox.s3-website.eu-central-1.amazonaws.com
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
