@@ -32,4 +32,8 @@ export class MbLoginComponent {
     user.username = this.userLoginForm.get('userName').value;
     this.userService.login(user);
   }
+
+  logout(): void {
+    this.userService.logout();
+  }
 }

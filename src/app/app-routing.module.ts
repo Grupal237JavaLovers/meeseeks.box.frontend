@@ -7,6 +7,7 @@ import {MbRegisterProviderComponent} from './user/registerProvider/registerProvi
 import {MbHomepageComponent} from './home/homepage.component';
 import {MbLoginComponent} from './user/login/login.component';
 import {MbJobsGridComponent} from './job1/jobs-grid/jobs-grid.component';
+import {AuthGuard} from './authentification/auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
       {
         path: 'profile',
         component: MbProfileComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'register',
