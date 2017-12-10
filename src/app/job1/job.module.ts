@@ -5,16 +5,19 @@
 import { NgModule } from '@angular/core';
 import { MbJobsGridComponent } from './jobs-grid/jobs-grid.component';
 import { SharedModule } from '../shared/shared.module';
+import { MbCreateJobComponent } from './create-job/createJob.component';
+import { JobService } from './job.service';
 
 @NgModule({
   imports: [
     SharedModule
   ],
   declarations: [
-    MbJobsGridComponent
+    MbJobsGridComponent,
+    MbCreateJobComponent
   ],
   exports: [],
-  providers: [],
+  providers: [ JobService ],
 })
 export class JobModule {
 }
