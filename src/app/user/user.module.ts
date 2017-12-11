@@ -7,7 +7,7 @@ import { MbRegisterConsumerComponent } from './registerConsumer/register-consume
 import { MbRegisterComponent } from './register/register.component';
 @NgModule({
   imports: [
-    SharedModule,
+    SharedModule
   ],
   declarations: [
     MbRegisterProviderComponent,

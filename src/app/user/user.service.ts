@@ -15,9 +15,11 @@ export class UserService {
   constructor(private http: HttpClient,
               private router: Router) {
     // set token if saved in local storage
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.token = currentUser.token;
-    this.user = currentUser.user;
+    if (localStorage.getItem('currentUser')) {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      this.token = currentUser.token;
+      this.user = currentUser.user;
+    }
   }
 
   registerProvider(provider: any) {
