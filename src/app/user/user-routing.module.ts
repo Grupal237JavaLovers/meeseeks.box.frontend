@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MbProfileComponent } from '../user/profile/profile.component';
-import { MbRegisterProviderComponent } from './registerProvider/registerProvider.component';
+import { MbRegisterProviderComponent } from './registerProvider/register-provider.component';
 import { MbLoginComponent } from './login/login.component';
 /**
  * Created by csebestin on 11/10/2017.

@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {MbLayoutComponent} from './layout/layout.componet';
-import {LandingPageComponent} from './landing-page/landing-page.component';
-import {MbProfileComponent} from './user/profile/profile.component';
-import {MbRegisterProviderComponent} from './user/registerProvider/registerProvider.component';
-import {MbHomepageComponent} from './home/homepage.component';
-import {MbLoginComponent} from './user/login/login.component';
-import {MbJobsGridComponent} from './job1/jobs-grid/jobs-grid.component';
-import {AuthGuard} from './authentification/auth.guard';
+import { MbLayoutComponent } from './layout/layout.componet';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { MbProfileComponent } from './user/profile/profile.component';
+import { MbRegisterProviderComponent } from './user/registerProvider/register-provider.component';
+import { MbHomepageComponent } from './home/homepage.component';
+import { MbLoginComponent } from './user/login/login.component';
+import { MbJobsGridComponent } from './job1/jobs-grid/jobs-grid.component';
+import { AuthGuard } from './authentification/auth.guard';
+import { MbRegisterConsumerComponent } from './user/registerConsumer/register-consumer.component';
 
 const appRoutes: Routes = [
   {
@@ -21,7 +22,7 @@ const appRoutes: Routes = [
       {
         path: '',
         redirectTo: 'dashboard',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'dashboard',
@@ -33,8 +34,12 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'register',
+        path: 'registerProvider',
         component: MbRegisterProviderComponent,
+      },
+      {
+        path: 'registerConsumer',
+        component: MbRegisterConsumerComponent,
       },
       {
         path: 'login',
@@ -44,7 +49,7 @@ const appRoutes: Routes = [
         path: 'job',
         component: MbJobsGridComponent,
       },
-    ]
+    ],
   },
 ];
 

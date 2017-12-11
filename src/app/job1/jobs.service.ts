@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
  */
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApplicationSettings } from '../shared/applicationSettings';
 
 @Injectable()
 export class JobsService {
@@ -12,7 +13,7 @@ export class JobsService {
   }
 
   getJobs(user: any) {
-    return this.http.post('http://meeseeksbox-staging.eu-central-1.elasticbeanstalk.com/request/latest/job', user, {
+    return this.http.post(`${ApplicationSettings.BASE_URL}/request/latest/job`, user, {
       responseType: 'text',
     }).subscribe(
       res => {

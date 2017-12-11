@@ -1,9 +1,9 @@
 /**
  * Created by csebestin on 10/23/2017.
  */
-import {Component} from '@angular/core';
-import {UserService} from '../user/user.service';
-import {User} from '../model/user';
+import { Component } from '@angular/core';
+import { UserService } from '../user/user.service';
+import { User } from '../model/user';
 
 @Component({
   selector: 'mb-homepage',
@@ -12,7 +12,8 @@ import {User} from '../model/user';
 })
 export class MbHomepageComponent {
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) {
+  }
 
   getUser(): User {
     return this.userService.getUser();

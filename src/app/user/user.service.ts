@@ -1,10 +1,11 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 /**
  * Created by csebestin on 11/18/2017.
  */
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import {User} from '../model/user';
+import { User } from '../model/user';
+import { ApplicationSettings } from '../shared/applicationSettings';
 
 @Injectable()
 export class UserService {
@@ -18,8 +19,23 @@ export class UserService {
     this.token = currentUser && currentUser.token;
   }
 
-  register(provider: any) {
-    return this.http.post('http://meeseeksbox-staging.eu-central-1.elasticbeanstalk.com/provider/register', provider, {
+  registerProvider(provider: any) {
+    return this.http.post(`${ApplicationSettings.BASE_URL}/provider/register`, provider, {
+      responseType: 'text',
+    }).subscribe(
+      res => {
+        console.log(res);
+        // this.router.navigateByUrl('/logIn');
+      },
+      err => {
+        console.log(err);
+        this.router.navigateByUrl('/register');
+      },
+    );
+  }
+
+  registerConsumer(provider: any) {
+    return this.http.post(`${ApplicationSettings.BASE_URL}/consumer/register`, provider, {
       responseType: 'text',
     }).subscribe(
       res => {
@@ -34,14 +50,14 @@ export class UserService {
   }
 
   login(user: any) {
-    return this.http.post('http://meeseeksbox-staging.eu-central-1.elasticbeanstalk.com/login', user, {
+    return this.http.post(`${ApplicationSettings.BASE_URL}/login`, user, {
       responseType: 'text',
     }).subscribe(
       res => {
         const data = JSON.parse(res);
         if (data.token) {
           this.token = data.token;
-          localStorage.setItem('currentUser', JSON.stringify({ user: this.user, token: this.token }));
+          localStorage.setItem('currentUser', JSON.stringify({user: this.user, token: this.token}));
         }
         this.getCurrentUser();
       },
@@ -60,7 +76,7 @@ export class UserService {
 
   getCurrentUser() {
     return this.http.get<User>('http://meeseeksbox-staging.eu-central-1.elasticbeanstalk.com/user/current', {
-      headers: this.getHeaders()
+      headers: this.getHeaders(),
     }).subscribe(
       data => {
         this.fromJsonToUser(data);

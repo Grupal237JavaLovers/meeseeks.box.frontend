@@ -1,4 +1,3 @@
-<h2>Register</h2>
 <form [formGroup]="userRegisterForm" novalidate class="example-form">
   <mat-form-field class="example-full-width">
     <input matInput placeholder="User name" type="text" formControlName="userName">
@@ -32,11 +31,11 @@
     <input matInput placeholder="Profile image url" type="text" formControlName="profileImage">
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field *ngIf="this.type == 'provider'" class="example-full-width">
     <input matInput placeholder="Video url" type="text" formControlName="video">
   </mat-form-field>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field *ngIf="this.type == 'provider'" class="example-full-width">
     <input matInput placeholder="Description" type="text" formControlName="description">
   </mat-form-field>
 
