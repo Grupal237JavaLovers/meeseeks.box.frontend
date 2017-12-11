@@ -16,7 +16,8 @@ export class UserService {
               private router: Router) {
     // set token if saved in local storage
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.token = currentUser && currentUser.token;
+    this.token = currentUser.token;
+    this.user = currentUser.user;
   }
 
   registerProvider(provider: any) {
@@ -57,9 +58,8 @@ export class UserService {
         const data = JSON.parse(res);
         if (data.token) {
           this.token = data.token;
-          localStorage.setItem('currentUser', JSON.stringify({user: this.user, token: this.token}));
+          this.getCurrentUser();
         }
-        this.getCurrentUser();
       },
       err => {
         console.log(err);
@@ -80,7 +80,7 @@ export class UserService {
     }).subscribe(
       data => {
         this.fromJsonToUser(data);
-        console.log(this.user);
+        localStorage.setItem('currentUser', JSON.stringify({user: this.user, token: this.token}));
       },
       err => {
         console.log(err);
