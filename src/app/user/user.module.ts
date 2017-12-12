@@ -5,6 +5,7 @@ import { MbRegisterProviderComponent } from './registerProvider/register-provide
 import { MbLoginComponent } from './login/login.component';
 import { MbRegisterConsumerComponent } from './registerConsumer/register-consumer.component';
 import { MbRegisterComponent } from './register/register.component';
+import { MbLogoutComponent } from './logout/logout.component';
 @NgModule({
   imports: [
     SharedModule
@@ -15,6 +16,7 @@ import { MbRegisterComponent } from './register/register.component';
     MbLoginComponent,
     MbRegisterConsumerComponent,
     MbRegisterComponent,
+    MbLogoutComponent,
   ],
   exports: [],
   providers: [],
