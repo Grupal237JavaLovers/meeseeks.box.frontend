@@ -8,9 +8,9 @@ import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { JobModule } from './job1/job.module';
+import { WildcardRoutingModule } from './not-found/not-found.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { JobModule } from './job1/job.module';
     SharedModule,
     UserModule,
     JobModule,
-    RouterModule.forRoot([]),
+
+    WildcardRoutingModule // Last position always, do not change
   ],
   providers: [],
   bootstrap: [AppComponent],

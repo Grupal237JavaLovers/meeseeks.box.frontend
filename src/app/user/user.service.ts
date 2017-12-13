@@ -15,9 +15,11 @@ export class UserService {
   constructor(private http: HttpClient,
               private router: Router) {
     // set token if saved in local storage
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.token = currentUser.token;
-    this.user = currentUser.user;
+    if (localStorage.getItem('currentUser')) {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      this.token = currentUser.token;
+      this.user = currentUser.user;
+    }
   }
 
   registerProvider(provider: any) {
@@ -26,11 +28,11 @@ export class UserService {
     }).subscribe(
       res => {
         console.log(res);
-        // this.router.navigateByUrl('/logIn');
+        this.router.navigateByUrl('/app/user/login');
       },
       err => {
         console.log(err);
-        this.router.navigateByUrl('/register');
+        this.router.navigateByUrl('/app/user/registerProvider');
       },
     );
   }
@@ -41,11 +43,11 @@ export class UserService {
     }).subscribe(
       res => {
         console.log(res);
-        // this.router.navigateByUrl('/logIn');
+        this.router.navigateByUrl('/app/user/login');
       },
       err => {
         console.log(err);
-        this.router.navigateByUrl('/register');
+        this.router.navigateByUrl('/app/user/registerConsumer');
       },
     );
   }
@@ -63,7 +65,7 @@ export class UserService {
       },
       err => {
         console.log(err);
-        this.router.navigateByUrl('/login');
+        this.router.navigateByUrl('/app/user/login');
       },
     );
   }
@@ -81,10 +83,11 @@ export class UserService {
       data => {
         this.fromJsonToUser(data);
         localStorage.setItem('currentUser', JSON.stringify({user: this.user, token: this.token}));
+        this.router.navigateByUrl('/auth/dashboard');
       },
       err => {
         console.log(err);
-        this.router.navigateByUrl('/login');
+        this.router.navigateByUrl('/app/user/login');
       },
     );
   }

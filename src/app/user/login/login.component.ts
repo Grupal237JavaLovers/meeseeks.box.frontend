@@ -27,13 +27,10 @@ export class MbLoginComponent {
 
   login(): void {
     // API call to login your provider
+    console.log('ai apasat butonul');
     const user: any = {};
     user.password = this.userLoginForm.get('password').value;
     user.username = this.userLoginForm.get('userName').value;
     this.userService.login(user);
-  }
-
-  logout(): void {
-    this.userService.logout();
   }
 }

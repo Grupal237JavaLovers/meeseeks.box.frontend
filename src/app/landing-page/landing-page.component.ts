@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mb-landing-page',
@@ -8,7 +9,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {
+    if (localStorage.getItem('currentUser')) {
+      // logged in so return true
+      console.log('user connected', localStorage.getItem('currentUser'));
+      this.router.navigate(['auth/dashboard']);
+    }
+  }
 
   ngOnInit() {
   }
