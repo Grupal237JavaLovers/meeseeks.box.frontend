@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - "6.9"
+cache:
+  directories:
+    - "node_modules"
+branches:
+  only:
+  - master
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  region: "eu-central-1"
+  bucket: "meeseeksbox"
+  skip_cleanup: true
+  local_dir: dist
+  on:
+    branch: master
+script:
+  - "pip install --user awscli"
+before_deploy:
+  - "~/.local/bin/aws s3 rm s3://meeseeksbox --region=eu-central-1 --recursive"
+  - "ng build --prod"
+notifications:
+  email: false
