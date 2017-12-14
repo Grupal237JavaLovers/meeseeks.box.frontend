@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { ApplicationSettings } from '../shared/applicationSettings';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
@@ -22,52 +23,40 @@ export class UserService {
     }
   }
 
-  registerProvider(provider: any) {
-    return this.http.post(`${ApplicationSettings.BASE_URL}/provider/register`, provider, {
-      responseType: 'text',
-    }).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigateByUrl('/app/user/login');
-      },
-      err => {
-        console.log(err);
-        this.router.navigateByUrl('/app/user/registerProvider');
-      },
-    );
-  }
-
-  registerConsumer(provider: any) {
+  registerProvider(provider: any): Promise<any> {
     return this.http.post(`${ApplicationSettings.BASE_URL}/consumer/register`, provider, {
       responseType: 'text',
-    }).subscribe(
-      res => {
-        console.log(res);
-        this.router.navigateByUrl('/app/user/login');
-      },
-      err => {
-        console.log(err);
-        this.router.navigateByUrl('/app/user/registerConsumer');
-      },
-    );
+    }).toPromise()
+      .then(
+        res => {
+          return res;
+        });
   }
 
-  login(user: any) {
-    return this.http.post(`${ApplicationSettings.BASE_URL}/login`, user, {
+  registerConsumer(consumer: any): Promise<any> {
+    return this.http.post(`${ApplicationSettings.BASE_URL}/consumer/register`, consumer, {
       responseType: 'text',
-    }).subscribe(
-      res => {
-        const data = JSON.parse(res);
-        if (data.token) {
-          this.token = data.token;
-          this.getCurrentUser();
+    }).toPromise()
+      .then(
+        res => {
+          return res;
+        });
+  }
+
+  login(user: any): Promise<any> {
+    return this.http.post(`${ApplicationSettings.BASE_URL}/login`, user, {responseType: 'text'}).toPromise()
+      .then(data => {
+        const res = JSON.parse(data);
+        if (res.token) {
+          this.token = res.token;
+          return this.getCurrentUser()
+            .then(userData => {
+              this.fromJsonToUser(userData);
+              localStorage.setItem('currentUser', JSON.stringify({user: this.user, token: this.token}));
+              return this.user;
+            });
         }
-      },
-      err => {
-        console.log(err);
-        this.router.navigateByUrl('/app/user/login');
-      },
-    );
+      });
   }
 
   logout() {
@@ -76,20 +65,13 @@ export class UserService {
     localStorage.removeItem('currentUser');
   }
 
-  getCurrentUser() {
+  getCurrentUser(): Promise<any> {
     return this.http.get<User>('http://meeseeksbox-staging.eu-central-1.elasticbeanstalk.com/user/current', {
       headers: this.getHeaders(),
-    }).subscribe(
-      data => {
-        this.fromJsonToUser(data);
-        localStorage.setItem('currentUser', JSON.stringify({user: this.user, token: this.token}));
-        this.router.navigateByUrl('/auth/dashboard');
-      },
-      err => {
-        console.log(err);
-        this.router.navigateByUrl('/app/user/login');
-      },
-    );
+    }).toPromise()
+      .then(data => {
+        return data;
+      });
   }
 
   fromJsonToUser(data) {

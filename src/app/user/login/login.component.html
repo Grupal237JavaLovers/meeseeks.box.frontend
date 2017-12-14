@@ -1,6 +1,9 @@
 <div class="login-background">
   <mat-card class="login-card">
     <h2>Log In</h2>
+    <div class="alert alert-danger" role="alert" *ngIf="badCredentials">
+      <strong>Login failed</strong> {{badCredentials}}
+    </div>
     <form [formGroup]="userLoginForm" novalidate>
       <mat-form-field class="full-width">
         <input matInput placeholder="User name" type="text" formControlName="userName">
@@ -13,6 +16,7 @@
       </mat-form-field>
 
       <button mat-raised-button color="primary" [disabled]="userLoginForm.invalid" (click)="login()">Login</button>
+      <button mat-raised-button type="button" color="secondary" (click)="goToLandingPage()">Back</button>
     </form>
   </mat-card>
 </div>
