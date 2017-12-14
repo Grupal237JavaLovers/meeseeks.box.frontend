@@ -1,13 +1,25 @@
 import { NgModule } from '@angular/core';
-import { MbRegisterComponent } from './register/register.component';
+import { SharedModule } from '../shared/shared.module';
 import { MbProfileComponent } from './profile/profile.component';
+import { MbRegisterProviderComponent } from './registerProvider/register-provider.component';
+import { MbLoginComponent } from './login/login.component';
+import { MbRegisterConsumerComponent } from './registerConsumer/register-consumer.component';
+import { MbRegisterComponent } from './register/register.component';
+import { MbLogoutComponent } from './logout/logout.component';
 @NgModule({
-  imports: [],
+  imports: [
+    SharedModule
+  ],
   declarations: [
-    MbRegisterComponent,
+    MbRegisterProviderComponent,
     MbProfileComponent,
+    MbLoginComponent,
+    MbRegisterConsumerComponent,
+    MbRegisterComponent,
+    MbLogoutComponent,
   ],
   exports: [],
+  providers: [],
 })
-export class UserLayout {
+export class UserModule {
 }

@@ -1,65 +1,47 @@
-<div class="container">
-  <h2>Register</h2>
-  <form name="form" (ngSubmit)="onSubmit()" #registerForm="ngForm" class="example-form">
+<form [formGroup]="userRegisterForm" novalidate>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="User name" type="text" formControlName="userName">
+    <mat-error>{{errors.userName}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Real name" type="text" formControlName="realName">
+    <mat-error>{{errors.realName}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" type="text" formControlName="email">
+    <mat-error>{{errors.email}}</mat-error>
+  </mat-form-field>
+
+  <div formGroupName="passwordGroup">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="UserName" type="text" class="form-control"
-             required
-             [(ngModel)]="model.userName" name="userName"
-             #userName="ngModel">
-      <mat-error *ngIf="userName.valid || userName.pristine">Username is <strong>required</strong></mat-error>
+      <input matInput placeholder="Password" type="password" formControlName="password">
+      <mat-error>{{errors.password}}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Email" type="email" class="form-control"
-             pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required
-             [(ngModel)]="model.email" name="email"
-             #email="ngModel">
-      <mat-error *ngIf="email.hasError('required')">Email is <strong>required</strong></mat-error>
-      <mat-error *ngIf="email.hasError('pattern')">Please enter a valid email address</mat-error>
+      <input matInput placeholder="Confirm password" type="password" formControlName="confirmPassword"
+             [errorStateMatcher]="confirmValidParentMatcher">
+      <mat-error>{{errors.confirmPassword}}</mat-error>
     </mat-form-field>
+  </div>
 
-    <mat-form-field class="example-full-width">
-      <input matInput type="password" placeholder="Password" class="form-control"
-             required minlength="8"
-             [(ngModel)]="model.password" name="password"
-             #password="ngModel">
-      <mat-error *ngIf="password.hasError('required')">Password is required</mat-error>
-      <mat-error *ngIf="password.hasError('minlength')">Password should be at least 8 characters</mat-error>
-    </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Profile image url" type="text" formControlName="profileImage">
+  </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Confirm Password" type="password" class="form-control" name="confirmPassword"
-             required
-             [(ngModel)]="model.confirmPassword"
-             #confirmPassword="ngModel">
-      <mat-error *ngIf="confirmPassword.hasError('required')">Confirm password is required</mat-error>
-    </mat-form-field>
+  <mat-form-field *ngIf="this.type == 'provider'" class="example-full-width">
+    <input matInput placeholder="Video url" type="text" formControlName="video">
+  </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Real name" type="text" class="form-control" name="realName"
-             required
-             [(ngModel)]="model.realName"
-             #realName="ngModel">
-      <mat-error *ngIf="realName.hasError('required')">Real name is required</mat-error>
-    </mat-form-field>
+  <mat-form-field *ngIf="this.type == 'provider'" class="example-full-width">
+    <input matInput placeholder="Description" type="text" formControlName="description">
+  </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Profile image url" type="text" class="form-control"
-             [(ngModel)]="model.profileImage" name="profileImage">
-    </mat-form-field>
+  <button mat-raised-button  color="primary" [disabled]="userRegisterForm.invalid" (click)="register()">Register</button>
 
-    <mat-form-field class="example-full-width">
-        <textarea matInput placeholder="Description" type="text" class="form-control"
-                  [(ngModel)]="model.description" name="description">
-      </textarea>
-    </mat-form-field>
+</form>
 
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Video url" type="text" class="form-control"
-             [(ngModel)]="model.video" name="video">
-    </mat-form-field>
 
-    <button type="submit" class="btn btn-success" [disabled]="!registerForm.form.valid">Register</button>
-  </form>
-</div>
 
