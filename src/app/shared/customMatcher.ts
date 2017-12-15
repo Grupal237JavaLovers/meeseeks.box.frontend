@@ -1,5 +1,5 @@
-import { FormControl, FormGroup, FormGroupDirective, NgForm, ValidatorFn } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material';
+import {FormControl, FormGroup, FormGroupDirective, NgForm, ValidatorFn} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material';
 
 /**
  * Custom validator functions for reactive form validation
@@ -35,4 +35,16 @@ export const errorMessages: { [key: string]: string } = {
   confirmEmail: 'Email addresses must match',
   password: 'Password must be at least 8 characters ',
   confirmPassword: 'Passwords must match',
+  // job errors
+  jobName: 'Job name is required',
+  description: 'Job description is required',
+  location: 'Job location is required',
+  type: 'Job type is required',
+  price: 'Job price is required',
+  expirationDate: 'Job expiration date is required',
+  expirationTime: 'Job expiration time is required',
+  category: 'Job category is required',
+  availabilityDay: 'Job availability day is required',
+  availabilityStartHour: 'Job availabilit start hour is required',
+  availabilityEndHour: 'Job availability end hour is required'
 };

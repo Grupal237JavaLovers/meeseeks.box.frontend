@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatCardModule, MatButtonModule, MatGridListModule,
-  MatIconModule, MatFormFieldModule, MatInputModule, MatToolbarModule,
+  MatIconModule, MatFormFieldModule, MatInputModule, MatToolbarModule, MatSelectModule,
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
@@ -23,6 +23,7 @@ const sharedModules = [
   MatCardModule,
   CommonModule,
   MatIconModule,
+  MatSelectModule,
 ];
 const sharedComponents = [];
 const sharedProviders = [UserService, AuthGuard];
