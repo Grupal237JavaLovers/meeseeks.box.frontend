@@ -1,0 +1,36 @@
+<h2>Make review</h2>
+<div class="alert alert-danger" role="alert" *ngIf="reviewErrors.error">
+  <strong>Oh snap!</strong> {{reviewErrors.error}}
+</div>
+<div class="alert alert-success" role="alert" *ngIf="reviewErrors.success">
+  <strong>Well done!</strong> {{reviewErrors.success}}
+</div>
+<form (ngSubmit)="onSubmit()" #reviewForm="ngForm" class="form">
+  <mat-form-field class="full-width">
+    <textarea matInput placeholder="Message"
+              [(ngModel)]="model.message" class="input-form_textarea"
+              #description="ngModel" name="message"
+              required></textarea>
+    <mat-error *ngIf="description.invalid">{{errors.reviewMessage}}</mat-error>
+  </mat-form-field>
+
+  <mat-card>
+    <mat-card-content>
+      <h4>Rating: {{model.rating}}</h4>
+      <mat-slider
+        class="input-form_slider"
+        [disabled]="false"
+        [invert]="false"
+        [max]="10"
+        [min]="1"
+        [step]="1"
+        [thumb-label]="true"
+        [vertical]="false"
+        [(ngModel)]="model.rating"
+        [ngModelOptions]="{standalone: true}"
+      >
+      </mat-slider>
+    </mat-card-content>
+  </mat-card>
+  <button mat-raised-button color="primary" [disabled]="reviewForm.invalid" class="btn-submit">Submit</button>
+</form>

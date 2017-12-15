@@ -11,12 +11,14 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { JobModule } from './job1/job.module';
 import { WildcardRoutingModule } from './not-found/not-found.module';
+import { MbReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MbHomepageComponent,
     LandingPageComponent,
+    MbReviewComponent,
   ],
   imports: [
     AppRoutingModule,
