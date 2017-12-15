@@ -1,9 +1,5 @@
-//@import "../../shared/variables";
-//:host {
-//  height: 50px;
-//  background-color: red;
-//  box-shadow: 0 2px 5px rgba(0, 0, 0, .26);
-//  width: 100%;
-//  position: fixed;
-//  top: 0;
-//}
+.example-fill-remaining-space {
+  // This fills the remaining space, by using flexbox.
+  // Every toolbar row uses a flexbox row layout.
+  flex: 1 1 auto;
+}
