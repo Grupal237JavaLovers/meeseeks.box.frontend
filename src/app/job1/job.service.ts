@@ -1,27 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserService } from '../user/user.service';
+import { ApplicationSettings } from '../shared/applicationSettings';
 /**
  * Created by csebestin on 11/24/2017.
  */
 
 @Injectable()
 export class JobService {
-  private baseUrl = 'http://localhost:8080/job';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private userService: UserService) {
   }
 
   /** Craete new job */
   createJob(job: any) {
-    /* get this from userService after is implemet the method getToken */
-    const token = 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYyIsImV4cCI6MTUyMDgyMzIzN30.' +
-      'v3V2goB2oUUnByTrfyaovqk76plBNGx2_Qx8rFGINzOX_-8KBnyJlE-WM1P8xdqr6RfeP0uwdBKeu5Q3Q2fEIA';
-    const url = this.baseUrl + '/insert';
-    console.log(url);
 
-    this.http.post(url, job, {
-      responseType: 'text',
-      headers: new HttpHeaders().set('Authorization', token)
+    this.http.post(`${ApplicationSettings.BASE_URL}/job/insert`, job, {
+      headers: this.userService.getHeaders(),
     }).subscribe(
       res => {
         console.log(res);
@@ -32,5 +28,12 @@ export class JobService {
         // this.router.navigateByUrl('/register');
       },
     );
+  }
+
+  getJobs(): Promise<any> {
+    return this.http.get(`${ApplicationSettings.BASE_URL}//job/find/price_between/0/90000/10000`, {
+      headers: this.userService.getHeaders()
+    }).toPromise()
+      .then(res => res);
   }
 }

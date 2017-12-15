@@ -13,14 +13,45 @@ import { JobService } from '../job.service';
   ],
 })
 export class MbCreateJobComponent {
-  model: any = {};
+  model: any = {
+    availabilities: [],
+    category: '',
+    job: {},
+  };
   errors = errorMessages;
+
+  days = [
+    {value: 'monday', viewValue: 'Monday'},
+    {value: 'tuesday', viewValue: 'Tuesday'},
+    {value: 'wednesday', viewValue: 'Wednesday'},
+    {value: 'thursday', viewValue: 'Thursday'},
+    {value: 'friday', viewValue: 'Friday'},
+    {value: 'saturday', viewValue: 'Satrday'},
+    {value: 'sunday', viewValue: 'Sunday'},
+  ];
 
   constructor(private jobService: JobService) {
   }
 
   onSubmit() {
+    this.model.availabilities.forEach(availability => {
+      availability.startHour = availability.startHour + ':00';
+      availability.endHour = availability.endHour + ':00';
+
+    });
     console.log(this.model);
     this.jobService.createJob(this.model);
+  }
+
+  addAvailability() {
+    this.model.availabilities.push({
+      day: '',
+      startHour: '',
+      endHour: '',
+    });
+  }
+
+  deleteAvailability() {
+    this.model.availabilities.slice(-1, 1);
   }
 }
