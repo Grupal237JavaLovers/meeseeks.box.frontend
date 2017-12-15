@@ -3,14 +3,14 @@
   <mat-form-field class="full-width">
     <input matInput placeholder="Name" type="text" class="form-control"
            id="name" name="name"
-           [(ngModel)]="model.name" #name="ngModel"
+           [(ngModel)]="model.job.name" #name="ngModel"
            required>
     <mat-error *ngIf="name.invalid">{{errors.jobName}}</mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <textarea matInput placeholder="Description" id="description"
-              [(ngModel)]="model.description"
+              [(ngModel)]="model.job.description"
               #description="ngModel" name="description"
               required></textarea>
     <mat-error *ngIf="description.invalid">{{errors.description}}</mat-error>
@@ -19,7 +19,7 @@
   <mat-form-field class="full-width">
     <input matInput placeholder="Location" type="text" class="form-control"
            id="location" name="location"
-           [(ngModel)]="model.location" #location="ngModel"
+           [(ngModel)]="model.job.location" #location="ngModel"
            required>
     <mat-error *ngIf="location.invalid">{{errors.location}}</mat-error>
   </mat-form-field>
@@ -27,15 +27,23 @@
   <mat-form-field class="full-width">
     <input matInput placeholder="Type" type="text" class="form-control"
            id="type" name="type"
-           [(ngModel)]="model.type" #type="ngModel"
+           [(ngModel)]="model.job.type" #type="ngModel"
            required>
     <mat-error *ngIf="type.invalid">{{errors.type}}</mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
+    <input matInput type="text" placeholder="Category" class="form-control"
+           name="category" [(ngModel)]="model.category"
+           #category="ngModel"
+           required>
+    <mat-error *ngIf="category.invalid">{{errors.category}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
     <input matInput placeholder="Price" type="number"
            id="price" name="price"
-           [(ngModel)]="model.price" #price="ngModel"
+           [(ngModel)]="model.job.price" #price="ngModel"
            required>
     <mat-error *ngIf="price.invalid">{{errors.price}}</mat-error>
   </mat-form-field>
@@ -43,11 +51,45 @@
   <mat-form-field class="full-width">
     <input matInput type="datetime-local" placeholder="Expiration job date"
            id="expirationDate" name="expirationaDate"
-           [(ngModel)]="model.expirationDate" #expirationDate="ngModel"
+           [(ngModel)]="model.job.expirationDate" #expirationDate="ngModel"
            required>
     <mat-error *ngIf="expirationDate.invalid">{{errors.expirationDate}}</mat-error>
   </mat-form-field>
 
+  <div *ngFor="let availability of model.availabilities; let i=index">
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Day" [(ngModel)]="availability.day" name="availabilityDay {{i}}"
+                  class="form-field" #availabilityday="ngModel"
+                  required>
+        <mat-option *ngFor="let day of days" [value]="day.value">
+          {{day.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="availabilityday.invalid">{{errors.availabilityDay}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput type="time" placeholder="Start hour" class="form-field"
+             name="startHour {{i}}" #startHour="ngModel"
+             [(ngModel)]="availability.startHour"
+             step="2"
+             required>
+      <mat-error *ngIf="startHour.invalid">{{errors.availabilityStartHour}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput type="time" placeholder="End hour" class="form-field"
+             name="endHour {{i}}" #endHour="ngModel"
+             [(ngModel)]="availability.endHour"
+             step="2"
+             required>
+      <mat-error *ngIf="endHour.invalid">{{errors.availabilityEndHour}}</mat-error>
+
+    </mat-form-field>
+  </div>
+
+
   <button mat-raised-button color="primary" [disabled]="jobForm.invalid">Submit</button>
+  <!--<button mat-raised-button color="secondary" (click)="addAvailability()" type="button">Add availability</button>-->
 </form>
 

@@ -42,5 +42,9 @@ export const errorMessages: { [key: string]: string } = {
   type: 'Job type is required',
   price: 'Job price is required',
   expirationDate: 'Job expiration date is required',
-  expirationTime: 'Job expiration time is required'
+  expirationTime: 'Job expiration time is required',
+  category: 'Job category is required',
+  availabilityDay: 'Job availability day is required',
+  availabilityStartHour: 'Job availabilit start hour is required',
+  availabilityEndHour: 'Job availability end hour is required'
 };

@@ -13,8 +13,22 @@ import { JobService } from '../job.service';
   ],
 })
 export class MbCreateJobComponent {
-  model: any = {};
+  model: any = {
+    availabilities: [],
+    category: '',
+    job: {},
+  };
   errors = errorMessages;
+
+  days = [
+    {value: 'monday', viewValue: 'Monday'},
+    {value: 'tuesday', viewValue: 'Tuesday'},
+    {value: 'wednesday', viewValue: 'Wednesday'},
+    {value: 'thursday', viewValue: 'Thursday'},
+    {value: 'friday', viewValue: 'Friday'},
+    {value: 'saturday', viewValue: 'Satrday'},
+    {value: 'sunday', viewValue: 'Sunday'},
+  ];
 
   constructor(private jobService: JobService) {
   }
@@ -22,5 +36,13 @@ export class MbCreateJobComponent {
   onSubmit() {
     console.log(this.model);
     this.jobService.createJob(this.model);
+  }
+
+  addAvailability() {
+    this.model.availabilities.push({
+      day: '',
+      startHour: '00:00:01',
+      endHour: '00:00:01',
+    });
   }
 }
