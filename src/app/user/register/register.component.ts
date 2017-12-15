@@ -5,6 +5,7 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { ConfirmValidParentMatcher, CustomValidators, errorMessages } from '../../shared/customMatcher';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,9 +20,11 @@ export class MbRegisterComponent {
   confirmValidParentMatcher = new ConfirmValidParentMatcher();
 
   errors = errorMessages;
+  badUsernameOrEmail = '';
 
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private router: Router) {
     this.createForm();
   }
 
@@ -48,7 +51,6 @@ export class MbRegisterComponent {
 
   register(): void {
     // API call to register your provider
-    // this.userService.register();
     const user: any = {};
     user.password = this.userRegisterForm.get('passwordGroup').get('password').value;
     user.confirmPassword = this.userRegisterForm.get('passwordGroup').get('confirmPassword').value;
@@ -61,13 +63,21 @@ export class MbRegisterComponent {
     // console.log(provider);
     switch (this.type) {
       case 'provider':
-        this.userService.registerProvider(user);
+        this.userService.registerProvider(user)
+          .then(() => this.router.navigate(['/app/user/login']))
+          .catch((err) => this.badUsernameOrEmail = 'Username or Email are already used');
         break;
       case 'consumer':
-        this.userService.registerConsumer(user);
+        this.userService.registerConsumer(user)
+          .then(() => this.router.navigate(['/app/user/login']))
+          .catch((err) => this.badUsernameOrEmail = 'Username or Email are already used');
         break;
       default:
-        console.log('invalid type: ' + this.type);
+        console.log('Invalid type: ' + this.type);
     }
+  }
+
+  goToLandingPage(): void {
+    this.router.navigate(['/']);
   }
 }

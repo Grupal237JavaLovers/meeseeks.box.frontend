@@ -1,13 +1,12 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'mb-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss'],
-  encapsulation: ViewEncapsulation.None
 })
-export class LandingPageComponent implements OnInit {
+export class LandingPageComponent{
 
   constructor(private router: Router) {
     if (localStorage.getItem('currentUser')) {
@@ -17,7 +16,11 @@ export class LandingPageComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  goToRegisterConsumer() {
+    this.router.navigate(['app/user/registerConsumer']);
   }
 
+  goToRegisterProvider() {
+    this.router.navigate(['app/user/registerProvider']);
+  }
 }

@@ -1,3 +1,6 @@
+<div class="alert alert-danger" role="alert" *ngIf="badUsernameOrEmail">
+  <strong>Register failed</strong> {{badUsernameOrEmail}}
+</div>
 <form [formGroup]="userRegisterForm" novalidate>
   <mat-form-field class="example-full-width">
     <input matInput placeholder="User name" type="text" formControlName="userName">
@@ -40,6 +43,7 @@
   </mat-form-field>
 
   <button mat-raised-button  color="primary" [disabled]="userRegisterForm.invalid" (click)="register()">Register</button>
+  <button mat-raised-button type="button" color="secondary" (click)="goToLandingPage()">Back</button>
 
 </form>
 
