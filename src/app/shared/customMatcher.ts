@@ -1,5 +1,5 @@
-import {FormControl, FormGroup, FormGroupDirective, NgForm, ValidatorFn} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material';
+import { FormControl, FormGroup, FormGroupDirective, NgForm, ValidatorFn } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material';
 
 /**
  * Custom validator functions for reactive form validation
@@ -12,7 +12,7 @@ export class CustomValidators {
     const [firstControlName, otherControlNames] = Object.keys(formGroup.controls || {});
     const isValid = formGroup.get(otherControlNames).value === formGroup.get(firstControlName).value;
     return isValid ? null : {childrenNotEqual: true};
-  }
+  };
 }
 
 /**
@@ -35,6 +35,8 @@ export const errorMessages: { [key: string]: string } = {
   confirmEmail: 'Email addresses must match',
   password: 'Password must be at least 8 characters ',
   confirmPassword: 'Passwords must match',
+
+  reviewMessage: 'Message is required',
   // job errors
   jobName: 'Job name is required',
   description: 'Job description is required',
