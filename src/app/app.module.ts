@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { JobModule } from './job1/job.module';
 import { WildcardRoutingModule } from './not-found/not-found.module';
 import { MbReviewComponent } from './review/review.component';
+import { ReviewService } from './review/review.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { MbReviewComponent } from './review/review.component';
 
     WildcardRoutingModule // Last position always, do not change
   ],
-  providers: [],
+  providers: [ReviewService],
   bootstrap: [AppComponent],
 })
 export class AppModule {
