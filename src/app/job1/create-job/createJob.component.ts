@@ -34,6 +34,10 @@ export class MbCreateJobComponent {
   }
 
   onSubmit() {
+    this.model.availabilities.forEach(availability => {
+      availability.startHour = availability.startHour + ':00';
+      availability.endHour = availability.endHour + ':00';
+    });
     console.log(this.model);
     this.jobService.createJob(this.model);
   }
@@ -41,8 +45,12 @@ export class MbCreateJobComponent {
   addAvailability() {
     this.model.availabilities.push({
       day: '',
-      startHour: '00:00:01',
-      endHour: '00:00:01',
+      startHour: '',
+      endHour: '',
     });
+  }
+
+  deleteAvailability() {
+    this.model.availabilities.splice(-1, 1);
   }
 }
