@@ -4,13 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
+  MatDialogModule,
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
   MatInputModule,
-  MatSliderModule,
-  MatToolbarModule,
   MatSelectModule,
+  MatSliderModule,
+  MatToolbarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
@@ -32,6 +33,7 @@ const sharedModules = [
   MatIconModule,
   MatSliderModule,
   MatSelectModule,
+  MatDialogModule,
 ];
 const sharedComponents = [];
 const sharedProviders = [

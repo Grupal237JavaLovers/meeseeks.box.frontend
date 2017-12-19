@@ -58,7 +58,7 @@
         <div class="msbx-text msbx-login__link">LOGIN</div>
       </a>
       <a class="msbx-navbtn__link msbx-navbtn__video" data-toggle="modal" data-target="#embedVideoModal">
-        <div class="msbx-video__link"><img src="../../assets/play.png" alt=">"></div>
+        <div class="msbx-video__link" (click)="openDialog()"><img src="../../assets/play.png" alt=">"></div>
       </a>
     </div>
 
@@ -82,13 +82,5 @@
         <div class="msbx-text msbx-footer__google">Connect with Google</div>
       </div>
     </a>
-  </div>
-</div>
-
-
-<div id="embedVideoModal" style="display:none" class="modal fade modal--position" role="dialog">
-  <div class="modal-dialog msbx-modal-dialog--size msbx-modal-dialog--position">
-    <div class="modal-content embed-responsive embed-responsive-16by9">
-    </div>
   </div>
 </div>

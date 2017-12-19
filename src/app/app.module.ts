@@ -13,6 +13,7 @@ import { JobModule } from './job1/job.module';
 import { WildcardRoutingModule } from './not-found/not-found.module';
 import { MbReviewComponent } from './review/review.component';
 import { ReviewService } from './review/review.service';
+import { MbLandingPageVideoComponent } from './landing-page/landing-page-video/landing-page-video.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ReviewService } from './review/review.service';
     MbHomepageComponent,
     LandingPageComponent,
     MbReviewComponent,
+    MbLandingPageVideoComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -33,6 +35,7 @@ import { ReviewService } from './review/review.service';
   ],
   providers: [ReviewService],
   bootstrap: [AppComponent],
+  entryComponents: [MbLandingPageVideoComponent]
 })
 export class AppModule {
 }

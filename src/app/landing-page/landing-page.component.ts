@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MbLandingPageVideoComponent } from './landing-page-video/landing-page-video.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'mb-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss'],
 })
-export class LandingPageComponent{
+export class LandingPageComponent {
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              public dialog: MatDialog) {
     if (localStorage.getItem('currentUser')) {
       // logged in so return true
       console.log('user connected', localStorage.getItem('currentUser'));
@@ -22,5 +25,13 @@ export class LandingPageComponent{
 
   goToRegisterProvider() {
     this.router.navigate(['app/user/registerProvider']);
+  }
+
+  openDialog(): void {
+    // in case intellij say here is an error, intellij is wrong
+    this.dialog.open(MbLandingPageVideoComponent, {
+      width: '90%',
+      height: '90%'
+    });
   }
 }
