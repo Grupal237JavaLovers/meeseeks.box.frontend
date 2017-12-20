@@ -36,4 +36,11 @@ export class JobService {
     }).toPromise()
       .then(res => res);
   }
+
+  // getJobsByLocation(location: string): Promise<any> {
+  //   return this.http.get(`${ApplicationSettings.BASE_URL}//job/find/${location}/10000`, {
+  //     headers: this.userService.getHeaders()
+  //   }).toPromise()
+  //     .then(res => res);
+  // }
 }
