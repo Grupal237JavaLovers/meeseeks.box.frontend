@@ -20,6 +20,13 @@ import { MbViewReviewComponent } from './review/view-review/view-review.componen
 import { MbReviewGridComponent } from './review/review-grid/review-grid.component';
 import { MbMyReviewsComponent } from './review/my-reviews/my-reviews.component';
 import { MbRatingComponent } from './review/rating/rating.component';
+import { JobsFilterPanelComponent } from './jobs-filter-panel/jobs-filter-panel.component';
+import { CategoryFilterFieldComponent } from './jobs-filter-panel/category-filter-field/category-filter-field.component';
+import { LocationFilterFieldComponent } from './jobs-filter-panel/location-filter-field/location-filter-field.component';
+import { PriceFilterFieldComponent } from './jobs-filter-panel/price-filter-field/price-filter-field.component';
+import { TypeFilterFieldComponent } from './jobs-filter-panel/type-filter-field/type-filter-field.component';
+import { ExpirationDateFilterFieldComponent } from './jobs-filter-panel/expiration-date-filter-field/expiration-date-filter-field.component';
+import { MbJobsComponent } from './jobs/jobs.component';
 
 @NgModule({
   imports: [
@@ -40,6 +47,14 @@ import { MbRatingComponent } from './review/rating/rating.component';
     MbReviewGridComponent,
     MbMyReviewsComponent,
     MbRatingComponent,
+    MbCreateJobComponent,
+    JobsFilterPanelComponent,
+    CategoryFilterFieldComponent,
+    LocationFilterFieldComponent,
+    PriceFilterFieldComponent,
+    TypeFilterFieldComponent,
+    ExpirationDateFilterFieldComponent,
+    MbJobsComponent
   ],
   exports: [
     MbJobsGridComponent,

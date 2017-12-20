@@ -1,0 +1,12 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'mb-jobs',
+  templateUrl: './jobs.component.html',
+  styleUrls: ['./jobs.component.scss'],
+})
+export class MbJobsComponent {
+
+  constructor() { }
+
+}

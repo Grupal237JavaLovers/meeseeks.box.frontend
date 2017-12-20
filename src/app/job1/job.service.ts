@@ -116,5 +116,4 @@ export class JobService {
     }).toPromise()
       .then(res => res);
   }
-
 }
