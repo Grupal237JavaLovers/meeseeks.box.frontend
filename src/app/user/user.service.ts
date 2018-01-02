@@ -73,6 +73,22 @@ export class UserService {
       });
   }
 
+  postProfileEdit(user: any): Promise<any> {
+    let userType = '';
+
+    if (user.role === 'consumer') {
+      userType = 'consumer';
+    }else {
+      userType = 'provider';
+    }
+
+    return this.http.patch(`${ApplicationSettings.BASE_URL}/${userType}/update`, user, {responseType: 'text'}).toPromise()
+      .then(data => {
+        const res = JSON.parse(<string>data);
+        console.log(res);
+      });
+  }
+
   fromJsonToUser(data) {
     this.user = new User();
     this.user.id = data.id;

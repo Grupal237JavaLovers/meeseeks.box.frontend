@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MbHomepageComponent } from '../home/homepage.component';
 import { MbProfileComponent } from '../user/profile/profile.component';
 import { MbLayoutComponent } from './layout.componet';
+import { MbJobsGridComponent } from '../job1/jobs-grid/jobs-grid.component';
 import { AuthGuard } from '../authentification/auth.guard';
 import { MbReviewComponent } from '../job1/review/review.component';
 import { MbCreateJobComponent } from '../job1/create-job/createJob.component';
@@ -12,6 +13,7 @@ import { MbSearchJobComponent } from '../job1/search-job/search-job.component';
 import { MbMyJobsComponent } from '../job1/my-jobs/my-jobs.component';
 import { MbConsumerSelectProviderComponent } from '../job1/consumer-select-provider/consumer-select-provider.component';
 import { MbMyReviewsComponent } from '../job1/review/my-reviews/my-reviews.component';
+import {EditProfileComponent} from '../user/edit-profile/edit-profile.component';
 
 const LAYOUT_ROUTES: Routes = [
 
@@ -81,6 +83,10 @@ const LAYOUT_ROUTES: Routes = [
         redirectTo: '/app',
         pathMatch: 'full',
       },
+      {
+        path: 'edit-profile',
+        component: EditProfileComponent
+      }
     ],
   },
 ];
