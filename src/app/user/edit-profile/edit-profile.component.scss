@@ -1,0 +1,28 @@
+.msbx-edit-profile__page-container{
+  width:100vw;
+  height:90vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.msbx-form__container{
+  display:flex;
+  justify-content: space-between;
+}
+
+.msbx-profile{
+  margin:0 10px;
+  &__img{
+    height:25vh;
+  }
+}
+
+.msbx-profile-form__container{
+  display:flex;
+  flex-direction: column;
+}
+
+.msbx-profile__form{
+  min-width: 45vw;
+}

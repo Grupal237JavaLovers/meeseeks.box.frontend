@@ -1,0 +1,40 @@
+<div class="msbx-edit-profile__page-container">
+  <div class="msbx-form__container">
+    <mat-card class="msbx-profile">
+      <img class="msbx-profile__img" src="{{getUser().profileImageUrl}}"
+           onError="this.onerror=null;this.src='https://cdn.dribbble.com/users/4971/screenshots/2846308/mr-meeseeks.png';">
+      <mat-card-title class="msbx-profile__name">{{getUser().name}}</mat-card-title>
+      <mat-card-subtitle class="msbx-profile__email">{{getUser().email}}</mat-card-subtitle>
+    </mat-card>
+    <mat-card class="msbx-profile__form">
+      <form class="example-form msbx-profile-form__container"
+        (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Name" [(ngModel)]="model.name" name="name" required>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Username" [(ngModel)]="model.username" name="username">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput type="Password" placeholder="Password" [(ngModel)]="model.password" name="password">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput type="Password" placeholder="Confirm Password" [(ngModel)]="model.confirmPassword" name="confirmPassword">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="E-mail" [(ngModel)]="model.email" name="email">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Profile Image URL" [(ngModel)]="model.profileImgUrl" name="profileImgUrl">
+        </mat-form-field>
+        <mat-form-field *ngIf="isProvider()" class="example-full-width">
+          <input matInput placeholder="Video URL">
+        </mat-form-field>
+        <mat-form-field *ngIf="isProvider()" class="example-full-width">
+          <textarea matInput placeholder="Description"></textarea>
+        </mat-form-field>
+        <button class="mat-button" type="submit" style="background-color:#3f51b5; color:white">Submit</button>
+      </form>
+    </mat-card>
+  </div>
+</div>

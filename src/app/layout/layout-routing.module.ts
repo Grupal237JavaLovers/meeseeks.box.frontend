@@ -7,6 +7,7 @@ import { MbJobsGridComponent } from '../job1/jobs-grid/jobs-grid.component';
 import { AuthGuard } from '../authentification/auth.guard';
 import { MbReviewComponent } from '../review/review.component';
 import { MbCreateJobComponent } from '../job1/create-job/createJob.component';
+import {EditProfileComponent} from '../user/edit-profile/edit-profile.component';
 
 const LAYOUT_ROUTES: Routes = [
 
@@ -51,6 +52,10 @@ const LAYOUT_ROUTES: Routes = [
         redirectTo: '/app',
         pathMatch: 'full',
       },
+      {
+        path: 'edit-profile',
+        component: EditProfileComponent
+      }
     ],
   },
 ];
