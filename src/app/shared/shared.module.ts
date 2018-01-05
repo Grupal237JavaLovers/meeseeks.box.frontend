@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../user/user.service';
 import { AuthGuard } from '../authentification/auth.guard';
+import { MbApplyJobComponent } from '../job1/apply-job/apply-job.component';
 
 const sharedModules = [
   MatToolbarModule,
@@ -35,7 +36,9 @@ const sharedModules = [
   MatSelectModule,
   MatDialogModule,
 ];
-const sharedComponents = [];
+const sharedComponents = [
+  MbApplyJobComponent,
+];
 const sharedProviders = [
   UserService,
   AuthGuard,

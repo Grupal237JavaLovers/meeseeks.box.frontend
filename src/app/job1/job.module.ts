@@ -7,14 +7,16 @@ import { MbJobsGridComponent } from './jobs-grid/jobs-grid.component';
 import { SharedModule } from '../shared/shared.module';
 import { MbCreateJobComponent } from './create-job/createJob.component';
 import { JobService } from './job.service';
+import { MbApplyJobDialogComponent } from './apply-job/apply-job-dialog/apply-job-dialog.component';
 
 @NgModule({
   imports: [
-    SharedModule
+    SharedModule,
   ],
   declarations: [
     MbJobsGridComponent,
-    MbCreateJobComponent
+    MbCreateJobComponent,
+    MbApplyJobDialogComponent
   ],
   exports: [],
   providers: [ JobService ],
