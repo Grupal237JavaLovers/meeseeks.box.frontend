@@ -7,6 +7,7 @@ import { MbJobsGridComponent } from '../job1/jobs-grid/jobs-grid.component';
 import { AuthGuard } from '../authentification/auth.guard';
 import { MbReviewComponent } from '../review/review.component';
 import { MbCreateJobComponent } from '../job1/create-job/createJob.component';
+import { MbJobComponent } from '../job1/view-job/job.component';
 
 const LAYOUT_ROUTES: Routes = [
 
@@ -25,7 +26,11 @@ const LAYOUT_ROUTES: Routes = [
       },
       {
         path: 'job/create',
-        component: MbCreateJobComponent
+        component: MbCreateJobComponent,
+      },
+      {
+        path: 'job/details/:id',
+        component: MbJobComponent,
       },
       {
         path: 'user',
