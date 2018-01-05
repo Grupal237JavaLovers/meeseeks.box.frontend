@@ -13,4 +13,9 @@ export class TypeFilterFieldComponent implements OnInit {
   ngOnInit() {
   }
 
+  types = [
+    {value: 'fullTime', viewValue: 'Full Time'},
+    {value: 'partTime', viewValue: 'Part Time'},
+    {value: 'volunteer', viewValue: 'Volunteer'}
+  ];
 }
