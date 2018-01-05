@@ -14,7 +14,7 @@ export class CategoryFilterFieldComponent implements OnInit {
   }
 
   categories = [
-    {value: 'categorie', viewValue: 'Categorie'},
+    // {value: 'categorie', viewValue: 'Categorie'},
   ];
 
 }

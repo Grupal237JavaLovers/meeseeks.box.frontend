@@ -1,6 +1,8 @@
 <div class="field-container">
-  <input matInput placeholder="Location" type="text" class="form-control"
-       id="location" name="location"
-       [(ngModel)]="model.job.location" #name="ngModel"
-       required>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Location" type="text" class="form-control"
+         id="location" name="location"
+         [(ngModel)]="model.job.location" #name="ngModel"
+         required>
+  </mat-form-field>
 </div>
