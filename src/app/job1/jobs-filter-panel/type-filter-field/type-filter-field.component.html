@@ -1,10 +1,9 @@
 <div class="field-container">
-  <p>
-  Job type
-  </p>
-  <mat-select required>
-    <mat-option value="fullTime">Full Time</mat-option>
-    <mat-option value="partTime">Part Time</mat-option>
-    <mat-option value="volunteer">Volunteer</mat-option>
-  </mat-select>
+  <mat-form-field>
+    <mat-select placeholder="Type">
+      <mat-option *ngFor="let type of types" [value]="type.value">
+        {{ type.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
