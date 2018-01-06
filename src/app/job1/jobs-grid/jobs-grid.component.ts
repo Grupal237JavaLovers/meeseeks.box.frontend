@@ -1,8 +1,7 @@
 /**
  * Created by csebestin on 11/21/2017.
  */
-import { Component } from '@angular/core';
-import { JobService } from '../job.service';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'mb-jobs-grid',
@@ -10,9 +9,5 @@ import { JobService } from '../job.service';
   styleUrls: ['./jobs-grid.component.scss'],
 })
 export class MbJobsGridComponent {
-  jobs: any = [];
-
-  constructor(private jobService: JobService) {
-    jobService.getJobs().then(res => this.jobs = res);
-  }
+  @Input() jobs: any = [];
 }

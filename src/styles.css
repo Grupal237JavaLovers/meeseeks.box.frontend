@@ -48,6 +48,13 @@ body::-webkit-scrollbar-thumb {
   padding: 0 !important;
 }
 
+/*TODO fix this in future if you don't want that all mb-search-job content to be the size of the dialog*/
+
+mb-search-job {
+  width: 90%;
+  margin: auto;
+}
+
 .full-width {
   width: 100%;
 }

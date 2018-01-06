@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { UserService } from '../user/user.service';
 import { ApplicationSettings } from '../shared/applicationSettings';
 /**
@@ -30,10 +30,19 @@ export class JobService {
     );
   }
 
+  searchJobs(criteria: string, limit: number): Promise<any> {
+    if (criteria === '') {
+      criteria = null;
+    }
+    return this.http.get(`${ApplicationSettings.BASE_URL}/job/search/${criteria}/${limit}`, {
+      headers: this.userService.getHeaders()
+    }).toPromise()
+      .then(res => res);
+  }
 
   getJobs(): Promise<any> {
-    return this.http.get(`${ApplicationSettings.BASE_URL}//job/find/price_between/0/90000/10000`, {
-      headers: this.userService.getHeaders(),
+    return this.http.get(`${ApplicationSettings.BASE_URL}/job/find/price_between/0/90000/10000`, {
+      headers: this.userService.getHeaders()
     }).toPromise()
       .then(res => res);
   }

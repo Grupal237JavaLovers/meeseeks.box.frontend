@@ -10,6 +10,7 @@ import { JobService } from './job.service';
 import { MbApplyJobDialogComponent } from './apply-job/apply-job-dialog/apply-job-dialog.component';
 import { MbJobComponent } from './view-job/job.component';
 import { MbJobEditComponent } from './edit-job/job-edit.component';
+import { MbSearchJobComponent } from './search-job/search-job.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { MbJobEditComponent } from './edit-job/job-edit.component';
     MbApplyJobDialogComponent,
     MbJobComponent,
     MbJobEditComponent
+    MbSearchJobComponent
   ],
   exports: [],
   providers: [JobService],
