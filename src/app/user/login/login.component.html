@@ -17,6 +17,15 @@
 
       <button mat-raised-button color="primary" [disabled]="userLoginForm.invalid" (click)="login()">Login</button>
       <button mat-raised-button type="button" color="secondary" (click)="goToLandingPage()">Back</button>
+
+      <div class="social-buttons">
+        <a class="btn btn-block btn-social btn-facebook" (click)="signInWithFB()">
+          <span class="fa fa-facebook"></span> Log in with Facebook
+        </a>
+        <a class="btn btn-block btn-social btn-google" (click)="signInWithGoogle()">
+          <span class="fa fa-google"></span> Log in with Google
+        </a>
+      </div>
     </form>
   </mat-card>
 </div>

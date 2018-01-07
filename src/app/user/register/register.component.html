@@ -45,6 +45,15 @@
   <button mat-raised-button  color="primary" [disabled]="userRegisterForm.invalid" (click)="register()">Register</button>
   <button mat-raised-button type="button" color="secondary" (click)="goToLandingPage()">Back</button>
 
+  <div class="social-buttons">
+    <a class="btn btn-block btn-social btn-facebook" (click)="signInWithFB()">
+      <span class="fa fa-facebook"></span> Register with Facebook
+    </a>
+    <a class="btn btn-block btn-social btn-google" (click)="signInWithGoogle()">
+      <span class="fa fa-google"></span> Register with Google
+    </a>
+  </div>
+
 </form>
 
 
