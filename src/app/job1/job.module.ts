@@ -11,6 +11,11 @@ import { MbApplyJobDialogComponent } from './apply-job/apply-job-dialog/apply-jo
 import { MbJobComponent } from './view-job/job.component';
 import { MbJobEditComponent } from './edit-job/job-edit.component';
 import { MbSearchJobComponent } from './search-job/search-job.component';
+import { MbConsumerJobsComponent } from './consumer-jobs/consumer-jobs.component';
+import { MbConsumerSelectProviderComponent } from './consumer-select-provider/consumer-select-provider.component';
+import { MbRequestCardComponent } from './request-card/request-card.component';
+import { MbReviewComponent } from './review/review.component';
+import { ReviewService } from './review/review.service';
 
 @NgModule({
   imports: [
@@ -21,11 +26,20 @@ import { MbSearchJobComponent } from './search-job/search-job.component';
     MbCreateJobComponent,
     MbApplyJobDialogComponent,
     MbJobComponent,
-    MbJobEditComponent
-    MbSearchJobComponent
+    MbJobEditComponent,
+    MbSearchJobComponent,
+    MbConsumerJobsComponent,
+    MbConsumerSelectProviderComponent,
+    MbRequestCardComponent,
+    MbReviewComponent,
   ],
-  exports: [],
-  providers: [JobService],
+  exports: [
+    MbJobsGridComponent,
+  ],
+  providers: [
+    JobService,
+    ReviewService,
+  ],
 })
 export class JobModule {
 }

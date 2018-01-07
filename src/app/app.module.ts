@@ -11,8 +11,6 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { JobModule } from './job1/job.module';
 import { WildcardRoutingModule } from './not-found/not-found.module';
-import { MbReviewComponent } from './review/review.component';
-import { ReviewService } from './review/review.service';
 import { MbLandingPageVideoComponent } from './landing-page/landing-page-video/landing-page-video.component';
 import { MbApplyJobDialogComponent } from './job1/apply-job/apply-job-dialog/apply-job-dialog.component';
 
@@ -21,7 +19,6 @@ import { MbApplyJobDialogComponent } from './job1/apply-job/apply-job-dialog/app
     AppComponent,
     MbHomepageComponent,
     LandingPageComponent,
-    MbReviewComponent,
     MbLandingPageVideoComponent,
   ],
   imports: [
@@ -31,10 +28,9 @@ import { MbApplyJobDialogComponent } from './job1/apply-job/apply-job-dialog/app
     SharedModule,
     UserModule,
     JobModule,
-
     WildcardRoutingModule // Last position always, do not change
   ],
-  providers: [ReviewService],
+  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
     MbLandingPageVideoComponent,

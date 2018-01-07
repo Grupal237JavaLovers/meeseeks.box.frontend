@@ -92,4 +92,26 @@ export class JobService {
       responseType: 'text',
     }).toPromise();
   }
+
+  getConsumerJobs(limit: number): Promise<any> {
+    return this.http.get(`${ApplicationSettings.BASE_URL}/job/latest/consumer/${limit}`, {
+      headers: this.userService.getHeaders()
+    }).toPromise()
+      .then(res => res);
+  }
+
+  getRequestsForJob(idJob: number, limit: number): Promise<any> {
+    return this.http.get(`${ApplicationSettings.BASE_URL}/request/latest/job/${idJob}/${limit}`, {
+      headers: this.userService.getHeaders()
+    }).toPromise()
+      .then(res => res);
+  }
+
+  acceptRequest(idJob, idProvider): Promise<any> {
+    return this.http.post(`${ApplicationSettings.BASE_URL}/consumer/accept/${idJob}/${idProvider}`, null, {
+      headers: this.userService.getHeaders()
+    }).toPromise();
+  }
+
+
 }

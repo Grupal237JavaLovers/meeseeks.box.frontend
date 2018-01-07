@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { ReviewService } from './review.service';
-import { errorMessages } from '../shared/customMatcher';
-import { UserService } from '../user/user.service';
+import { errorMessages } from '../../shared/customMatcher';
+import { UserService } from '../../user/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'mb-review',
@@ -23,9 +24,14 @@ export class MbReviewComponent {
   errors = errorMessages;
 
   constructor(private reviewService: ReviewService,
-              private userService: UserService) {
-    this.jobId = 3;
-    this.reviewedUserId = 12;
+              private userService: UserService,
+              private route: ActivatedRoute) {
+
+    this.route.params.subscribe(params => {
+      console.log(params);
+      this.jobId = params.idJob;
+      this.reviewedUserId = params.reviewedUserId;
+    });
   }
 
   onSubmit() {
