@@ -48,11 +48,11 @@ body::-webkit-scrollbar-thumb {
   padding: 0 !important;
 }
 
-/*.full-width {*/
-  /*width: 100%;*/
-/*}*/
+.full-width {
+  width: 100%;
+}
 
-/*.content-center {*/
-  /*display: flex;*/
-  /*justify-content: center;*/
-/*}*/
+.content-center {
+  display: flex;
+  justify-content: center;
+}

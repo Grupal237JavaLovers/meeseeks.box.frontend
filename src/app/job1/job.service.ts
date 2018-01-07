@@ -40,8 +40,24 @@ export class JobService {
 
   /** Get job by id*/
   getJobById(id: number): Promise<any> {
-    console.log(`${ApplicationSettings.BASE_URL}//job/${id}`);
-    return this.http.get(`${ApplicationSettings.BASE_URL}//job/${id}`, {
+    console.log(`${ApplicationSettings.BASE_URL}/job/${id}`);
+    return this.http.get(`${ApplicationSettings.BASE_URL}/job/${id}`, {
+      headers: this.userService.getHeaders(),
+    }).toPromise()
+      .then(res => res);
+  }
+
+  /**Delete job by id*/
+  deleteJobById(id: number): Promise<any> {
+    return this.http.delete(`${ApplicationSettings.BASE_URL}/job/delete/${id}`, {
+      headers: this.userService.getHeaders(),
+    }).toPromise()
+      .then(res => res);
+  }
+
+  /**Update job*/
+  updateJob(job: any): Promise<any> {
+    return this.http.put(`${ApplicationSettings.BASE_URL}/job/update`, job, {
       headers: this.userService.getHeaders(),
     }).toPromise()
       .then(res => res);

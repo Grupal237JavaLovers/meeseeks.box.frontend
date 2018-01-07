@@ -5,6 +5,8 @@
     <mat-card-subtitle>{{job.job.description}}</mat-card-subtitle>
   </mat-card-header>
 
+  <div class="alert alert-danger" role="alert" *ngIf="errors">{{errors}}</div>
+
   <mat-grid-list cols="2">
 
     <mat-grid-tile>
@@ -80,8 +82,8 @@
     </mat-list>
     <mat-card>
       <mat-card-actions align="center">
-        <button mat-button>Delete</button>
-        <button mat-button>Edit</button>
+        <button mat-raised-button color="warn" (click)="deleteJob(job.job.id)">Delete</button>
+        <button mat-raised-button color="primary" (click)="editJob(job.job.id)">Edit</button>
       </mat-card-actions>
     </mat-card>
   </mat-card-footer>

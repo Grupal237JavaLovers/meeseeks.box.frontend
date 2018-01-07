@@ -9,9 +9,11 @@ import {
   MatGridListModule,
   MatIconModule,
   MatInputModule,
-  MatSliderModule,
-  MatToolbarModule,
+  MatListModule,
   MatSelectModule,
+  MatSliderModule,
+  MatTableModule,
+  MatToolbarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
