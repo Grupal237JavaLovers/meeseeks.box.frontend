@@ -24,7 +24,7 @@ export class UserService {
   }
 
   registerProvider(provider: any): Promise<any> {
-    return this.http.post(`${ApplicationSettings.BASE_URL}/consumer/register`, provider, {
+    return this.http.post(`${ApplicationSettings.BASE_URL}/provider/register`, provider, {
       responseType: 'text',
     }).toPromise()
       .then(
@@ -66,7 +66,7 @@ export class UserService {
   }
 
   getCurrentUser(): Promise<any> {
-    return this.http.get<User>('http://meeseeksbox-staging.eu-central-1.elasticbeanstalk.com/user/current', {
+    return this.http.get<User>(`${ApplicationSettings.BASE_URL}/user/current`, {
       headers: this.getHeaders(),
     }).toPromise()
       .then(data => {

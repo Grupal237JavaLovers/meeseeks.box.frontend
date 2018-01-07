@@ -14,6 +14,7 @@ import { WildcardRoutingModule } from './not-found/not-found.module';
 import { MbReviewComponent } from './review/review.component';
 import { ReviewService } from './review/review.service';
 import { MbLandingPageVideoComponent } from './landing-page/landing-page-video/landing-page-video.component';
+import { MbApplyJobDialogComponent } from './job1/apply-job/apply-job-dialog/apply-job-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,10 @@ import { MbLandingPageVideoComponent } from './landing-page/landing-page-video/l
   ],
   providers: [ReviewService],
   bootstrap: [AppComponent],
-  entryComponents: [MbLandingPageVideoComponent]
+  entryComponents: [
+    MbLandingPageVideoComponent,
+    MbApplyJobDialogComponent,
+  ],
 })
 export class AppModule {
 }

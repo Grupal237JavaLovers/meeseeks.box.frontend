@@ -60,14 +60,16 @@ export class MbRegisterComponent {
     user.profileImageUrl = this.userRegisterForm.get('profileImage').value;
     user.description = this.userRegisterForm.get('description').value;
     user.profileVideoUrl = this.userRegisterForm.get('video').value;
-    // console.log(provider);
+     console.log(this.type);
     switch (this.type) {
       case 'provider':
+        console.log('register provider');
         this.userService.registerProvider(user)
           .then(() => this.router.navigate(['/app/user/login']))
           .catch((err) => this.badUsernameOrEmail = 'Username or Email are already used');
         break;
       case 'consumer':
+        console.log('register consumer');
         this.userService.registerConsumer(user)
           .then(() => this.router.navigate(['/app/user/login']))
           .catch((err) => this.badUsernameOrEmail = 'Username or Email are already used');

@@ -1,0 +1,11 @@
+<form novalidate>
+  <div>
+    <mat-form-field class="apply-job-textarea">
+  <textarea matInput placeholder="Message" matTextareaAutosize matAutosizeMinRows="2"
+            matAutosizeMaxRows="5" [(ngModel)]="message" name="message"></textarea>
+    </mat-form-field>
+  </div>
+  <div class="text-center">
+    <button mat-raised-button color="primary" (click)="send()">Send</button>
+  </div>
+</form>
