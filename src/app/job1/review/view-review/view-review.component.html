@@ -1,0 +1,32 @@
+<mat-card class="card-review" (click)="editReview()">
+  <mat-card-header>
+        <img mat-card-avatar src="../../../../assets/review-icon.svg">
+        <mat-card-title *ngIf="received">From</mat-card-title>
+        <mat-card-title *ngIf="!received">To</mat-card-title>
+        <mat-card-subtitle *ngIf="!isProvider()">{{review.provider.name}}</mat-card-subtitle>
+    <!--ToDo change after the consumer is returned from backend-->
+        <mat-card-subtitle *ngIf="isProvider()">{{review.consumer.name}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    {{review.message}}
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-list>
+      <mat-list-item class="review-rating">
+        <mb-rating [rating]="review.rating"></mb-rating>
+      </mat-list-item>
+      <mat-list-item class="footer-job-list-item">
+        <h4 mat-line>Job: </h4>
+        <p mat-line>{{review.job.name}}</p>
+        <mat-icon mat-list-icon>work</mat-icon>
+      </mat-list-item>
+      <mat-list-item class="footer-job-list-item">
+        <h4 mat-line>Send on:</h4>
+        <p mat-line>{{review.date}}</p>
+        <mat-icon mat-list-icon>alarm_on</mat-icon>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-footer>
+</mat-card>
+

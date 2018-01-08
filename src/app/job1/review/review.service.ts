@@ -8,6 +8,7 @@ import { UserService } from '../../user/user.service';
 
 @Injectable()
 export class ReviewService {
+  editedReview: any;
 
   constructor(private http: HttpClient,
               private userService: UserService) {
@@ -22,4 +23,24 @@ export class ReviewService {
         });
   }
 
+  getReviewsProvider(idProvider: number, received: boolean, limit: number): Promise<any> {
+    return this.http.get(`${ApplicationSettings.BASE_URL}/review/latest/provider/${idProvider}/${limit}/${received}`, {
+      headers: this.userService.getHeaders()
+    }).toPromise()
+      .then(res => res);
+  }
+
+  getReviewsConsumer(idConsumer: number, received: boolean, limit: number): Promise<any> {
+    return this.http.get(`${ApplicationSettings.BASE_URL}/review/latest/consumer/${idConsumer}/${limit}/${received}`, {
+      headers: this.userService.getHeaders()
+    }).toPromise()
+      .then(res => res);
+  }
+
+  updateReview(id, review, type) {
+    return this.http.post(`${ApplicationSettings.BASE_URL}/review/update/${type}/${id}?rating=${review.rating}&message=${review.message}`, null, {
+      headers: this.userService.getHeaders(),
+      responseType: 'text',
+    }).toPromise();
+  }
 }
