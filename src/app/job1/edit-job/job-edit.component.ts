@@ -2,7 +2,6 @@
  * Created by Clusi on 1/7/2018.
  */
 import { Component, OnInit } from '@angular/core';
-import { JobService } from '../job.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -12,19 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MbJobEditComponent implements OnInit {
   id: number;
-  job: any;
 
-  constructor(private jobService: JobService,
-              private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
-
-    this.jobService.getJobById(this.id)
-      .then(res => {
-        this.job = res;
-      });
   }
 }

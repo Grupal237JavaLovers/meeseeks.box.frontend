@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
  * Created by mtoader on 11/18/2017.
  */
 import { Injectable } from '@angular/core';
-import { ApplicationSettings } from '../shared/applicationSettings';
-import { UserService } from '../user/user.service';
+import { ApplicationSettings } from '../../shared/applicationSettings';
+import { UserService } from '../../user/user.service';
 
 @Injectable()
 export class ReviewService {

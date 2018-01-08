@@ -1,0 +1,11 @@
+<mat-card class="request-cart">
+  <span class="badge badge-pill badge-primary request-badge" *ngIf="request.accepted">Accepted</span>
+  <mat-card-title>{{request.provider.name}}</mat-card-title>
+  <mat-card-subtitle>{{request.provider.email}}</mat-card-subtitle>
+  <mat-card-content>{{request.message}}</mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" [disabled]="request.accepted" (click)="acceptRequest()">Accept</button>
+    <button mat-raised-button color="warn" [disabled]="!request.accepted" (click)="makeReview()">Make review</button>
+  </mat-card-actions>
+  <mat-card-footer>{{request.date}}</mat-card-footer>
+</mat-card>

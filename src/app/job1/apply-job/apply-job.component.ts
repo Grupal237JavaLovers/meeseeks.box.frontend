@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { User } from '../../model/user';
 import { UserService } from '../../user/user.service';
 import { MatDialog } from '@angular/material';
@@ -19,6 +19,7 @@ export class MbApplyJobComponent implements OnInit {
   };
   user: User;
   @Input() job: any;
+  @Output() requestSent = new EventEmitter<any>();
 
   constructor(private userService: UserService,
               private jobService: JobService,
@@ -27,7 +28,7 @@ export class MbApplyJobComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.userService.getUser();
-    if (this.isProvider()){
+    if (this.isProvider()) {
       this.checkIfAlreadyApplied();
     }
   }
@@ -39,16 +40,22 @@ export class MbApplyJobComponent implements OnInit {
           if (request.job.id === this.job.id) {
             this.request.applied = true;
             this.request.id = request.id;
+            this.requestSent.emit(this.request.id);
           }
         });
+        if (this.request.id === -1) {
+          this.requestSent.emit(null);
+        }
       })
       .catch((err) => console.log(err));
   }
 
-  unroll() {
+  unroll(event) {
+    event.stopPropagation();
     this.jobService.providerUnrollFromJob(this.request.id)
       .then(() => {
         this.request.applied = false;
+        this.requestSent.emit(null);
       })
       .catch((err) => console.log(err));
   }
@@ -61,15 +68,16 @@ export class MbApplyJobComponent implements OnInit {
     return this.user.role === 'provider';
   }
 
-  openDialog(): void {
+  openDialog(event): void {
     // in case intellij say here is an error, intellij is wrong
+    event.stopPropagation();
     console.log(this.job);
     const dialogRef = this.dialog.open(MbApplyJobDialogComponent, {
       data: {
         jobId: this.job.id,
       },
-      width: '20%',
-      height: '20%',
+      width: '400px',
+      height: '160px',
     });
 
     dialogRef.afterClosed().subscribe(result => {

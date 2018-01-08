@@ -1,0 +1,18 @@
+<div class="search-job">
+  <mat-card>
+    <form (ngSubmit)="onSubmit()" class="form">
+      <div class="input-group">
+        <span class="input-group-addon">Search job</span>
+        <input matInput placeholder="" type="text" class="form-control"
+               id="search" name="search"
+               [(ngModel)]="search">
+        <span class="input-group-btn">
+        <button mat-raised-button color="primary">Search</button>
+      </span>
+      </div>
+    </form>
+  </mat-card>
+
+
+  <mb-jobs-grid [jobs]="jobs" class="jobs-grid" (jobClicked)="onJobClicked($event)"></mb-jobs-grid>
+</div>
