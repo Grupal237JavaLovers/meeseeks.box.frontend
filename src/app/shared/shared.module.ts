@@ -9,8 +9,10 @@ import {
   MatGridListModule,
   MatIconModule,
   MatInputModule,
+  MatListModule,
   MatSelectModule,
   MatSliderModule,
+  MatTableModule,
   MatToolbarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +20,7 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '../user/user.service';
 import { AuthGuard } from '../authentification/auth.guard';
 import { MbApplyJobComponent } from '../job1/apply-job/apply-job.component';
+import { RouterModule } from '@angular/router';
 
 const sharedModules = [
   MatToolbarModule,
@@ -34,6 +37,10 @@ const sharedModules = [
   MatIconModule,
   MatSliderModule,
   MatSelectModule,
+  MatGridListModule,
+  MatTableModule,
+  MatListModule,
+  RouterModule,
   MatDialogModule,
 ];
 const sharedComponents = [

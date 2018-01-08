@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { MbCreateJobComponent } from './create-job/createJob.component';
 import { JobService } from './job.service';
 import { MbApplyJobDialogComponent } from './apply-job/apply-job-dialog/apply-job-dialog.component';
+import { MbJobComponent } from './view-job/job.component';
+import { MbJobEditComponent } from './edit-job/job-edit.component';
 
 @NgModule({
   imports: [
@@ -16,10 +18,12 @@ import { MbApplyJobDialogComponent } from './apply-job/apply-job-dialog/apply-jo
   declarations: [
     MbJobsGridComponent,
     MbCreateJobComponent,
-    MbApplyJobDialogComponent
+    MbApplyJobDialogComponent,
+    MbJobComponent,
+    MbJobEditComponent
   ],
   exports: [],
-  providers: [ JobService ],
+  providers: [JobService],
 })
 export class JobModule {
 }

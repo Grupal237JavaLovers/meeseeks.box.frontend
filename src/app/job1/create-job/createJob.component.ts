@@ -1,7 +1,7 @@
 /**
  * Created by csebestin on 11/24/2017.
  */
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { errorMessages } from '../../shared/customMatcher';
 import { JobService } from '../job.service';
 
@@ -12,7 +12,8 @@ import { JobService } from '../job.service';
     './createJob.component.scss',
   ],
 })
-export class MbCreateJobComponent {
+export class MbCreateJobComponent implements OnInit {
+  @Input() job: any;
   model: any = {
     availabilities: [],
     category: '',
@@ -33,13 +34,23 @@ export class MbCreateJobComponent {
   constructor(private jobService: JobService) {
   }
 
+  ngOnInit() {
+    if (this.job) {
+      this.model = this.job;
+    }
+  }
+
   onSubmit() {
-    this.model.availabilities.forEach(availability => {
-      availability.startHour = availability.startHour + ':00';
-      availability.endHour = availability.endHour + ':00';
-    });
-    console.log(this.model);
-    this.jobService.createJob(this.model);
+    /*this.model.availabilities.forEach(availability => {
+     availability.startHour = availability.startHour + ':00';
+     availability.endHour = availability.endHour + ':00';
+     });
+     console.log(this.model);*/
+    if (this.job) {
+      this.jobService.updateJob(this.model);
+    } else {
+      this.jobService.createJob(this.model);
+    }
   }
 
   addAvailability() {

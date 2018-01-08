@@ -1,0 +1,94 @@
+<mat-card *ngIf="job">
+  <mat-card-header>
+    <img mat-card-avatar src="../../assets/job-icon.png">
+    <mat-card-title>{{job.job.name}}</mat-card-title>
+    <mat-card-subtitle>{{job.job.description}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <div class="alert alert-danger" role="alert" *ngIf="errors">{{errors}}</div>
+
+  <mat-grid-list cols="2">
+
+    <mat-grid-tile>
+
+      <mat-list>
+
+        <mat-list-item>
+          <mat-icon mat-list-icon>attach_money</mat-icon>
+          <h4 mat-line>Price</h4>
+          <p mat-line>{{job.job.price}}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h3 mat-line>Location</h3>
+          <span mat-line>{{job.job.location}}</span>
+          <mat-icon mat-list-icon>place</mat-icon>
+
+        </mat-list-item>
+
+        <mat-list-item>
+          <mat-icon mat-list-icon>timelapse</mat-icon>
+          <h4 mat-line>Type</h4>
+          <p mat-line>{{job.job.type}}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <mat-icon mat-list-icon>list</mat-icon>
+          <h4 mat-line>Category</h4>
+          <p mat-line>{{job.category}}</p>
+        </mat-list-item>
+
+      </mat-list>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+
+      <mat-card class="full-width">
+        <mat-card-title class="text-center">Availabilities</mat-card-title>
+        <mat-card-content>
+          <mat-table #table [dataSource]="dataSource" aria-labelledby="Availabilities" class="table-availabilities">
+
+            <ng-container matColumnDef="day">
+              <mat-header-cell *matHeaderCellDef>Day</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.day}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="startHour">
+              <mat-header-cell *matHeaderCellDef>Start hour</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.startHour}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="endHour">
+              <mat-header-cell *matHeaderCellDef>End hour</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.endHour}}</mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </mat-card-content>
+      </mat-card>
+
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  <mat-card-footer>
+    <mat-list>
+      <mat-list-item class="footer-job-list-item">
+        <h4 mat-line>Expiration date</h4>
+        <p mat-line>{{job.job.expirationDate | date}}</p>
+        <mat-icon mat-list-icon>alarm_on</mat-icon>
+      </mat-list-item>
+    </mat-list>
+    <mat-card>
+      <mat-card-actions align="center">
+        <button mat-raised-button color="warn" (click)="deleteJob(job.job.id)">Delete</button>
+        <button mat-raised-button color="primary" (click)="editJob(job.job.id)">Edit</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-card-footer>
+</mat-card>
+
+
+
+

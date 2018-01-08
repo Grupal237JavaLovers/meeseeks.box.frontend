@@ -4,7 +4,9 @@
     <mat-card-content>
       <mat-grid-list cols="4" rowHeight="200px" gutterSize="20px">
         <mat-grid-tile class="job-card" *ngFor="let job of jobs" style="background:lightgreen; color: #fff">
-          {{job.name}}
+          <a [routerLink]="['/auth/job/details', job.id]">
+            {{job.name}}
+          </a>
           <mat-grid-tile-header style="background:lightgreen">
             <h3 mat-line>{{job.expiration | date}}</h3>
             <span mat-line>{{job.location}}</span>
