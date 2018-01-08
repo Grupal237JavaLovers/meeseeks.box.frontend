@@ -14,5 +14,5 @@
   </mat-card>
 
 
-  <mb-jobs-grid [jobs]="jobs" class="jobs-grid"></mb-jobs-grid>
+  <mb-jobs-grid [jobs]="jobs" class="jobs-grid" (jobClicked)="onJobClicked($event)"></mb-jobs-grid>
 </div>

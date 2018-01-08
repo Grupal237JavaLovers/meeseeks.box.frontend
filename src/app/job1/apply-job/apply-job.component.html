@@ -1,4 +1,2 @@
-<div *ngIf="isProvider()">
-  <button *ngIf="!applied()" mat-raised-button color="primary" (click)="openDialog()">Apply</button>
-  <button *ngIf="applied()" mat-raised-button color="warn" (click)="unroll()">Unroll</button>
-</div>
+<button *ngIf="isProvider() && !applied()" mat-raised-button color="primary" (click)="openDialog($event)">Apply</button>
+<button *ngIf="isProvider() && applied()" mat-raised-button color="warn" (click)="unroll($event)">Unroll</button>

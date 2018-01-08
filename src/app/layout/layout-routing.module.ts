@@ -9,7 +9,7 @@ import { MbCreateJobComponent } from '../job1/create-job/createJob.component';
 import { MbJobComponent } from '../job1/view-job/job.component';
 import { MbJobEditComponent } from '../job1/edit-job/job-edit.component';
 import { MbSearchJobComponent } from '../job1/search-job/search-job.component';
-import { MbConsumerJobsComponent } from '../job1/consumer-jobs/consumer-jobs.component';
+import { MbMyJobsComponent } from '../job1/my-jobs/my-jobs.component';
 import { MbConsumerSelectProviderComponent } from '../job1/consumer-select-provider/consumer-select-provider.component';
 
 const LAYOUT_ROUTES: Routes = [
@@ -46,7 +46,7 @@ const LAYOUT_ROUTES: Routes = [
       },
       {
         path: 'consumer/jobs',
-        component: MbConsumerJobsComponent,
+        component: MbMyJobsComponent,
       },
       {
         path: 'consumer/job/selectProvider/:idJob',

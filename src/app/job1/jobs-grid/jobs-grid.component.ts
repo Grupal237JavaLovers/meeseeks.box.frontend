@@ -11,6 +11,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class MbJobsGridComponent {
   @Input() jobs: any = [];
   @Output() jobClicked = new EventEmitter<any>();
+  @Input() title = 'Jobs';
 
   onJobClicked(job) {
     this.jobClicked.emit(job);

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { JobService } from '../job.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -8,9 +8,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./consumer-select-provider.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class MbConsumerSelectProviderComponent implements OnInit {
+export class MbConsumerSelectProviderComponent implements OnInit, OnDestroy {
   private jobId: number;
   private requests: any;
+  private message = '';
+  private getRequests: any;
 
   constructor(private jobService: JobService,
               private route: ActivatedRoute) {
@@ -21,12 +23,31 @@ export class MbConsumerSelectProviderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getRequestsForJob();
+    this.getRequests = setInterval(() => {
+      this.getRequestsForJob();
+    }, 5000);
+
+  }
+
+  getRequestsForJob() {
     this.jobService.getRequestsForJob(this.jobId, 10000)
       .then((res) => {
         console.log(res);
         this.requests = res;
+        if (res.length === 0) {
+          this.message = 'Nobody applied for the job';
+        } else {
+          this.message = '';
+        }
       })
       .catch(err => console.log(err));
+  }
+
+  ngOnDestroy() {
+    if (this.getRequests) {
+      clearInterval(this.getRequests);
+    }
   }
 
 }

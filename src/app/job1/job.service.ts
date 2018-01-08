@@ -14,20 +14,11 @@ export class JobService {
   }
 
   /** Craete new job */
-  createJob(job: any) {
+  createJob(job: any): Promise<any> {
 
-    this.http.post(`${ApplicationSettings.BASE_URL}/job/insert`, job, {
+    return this.http.post(`${ApplicationSettings.BASE_URL}/job/insert`, job, {
       headers: this.userService.getHeaders(),
-    }).subscribe(
-      res => {
-        console.log(res);
-        // this.router.navigateByUrl('/logIn');
-      },
-      err => {
-        console.log(err);
-        // this.router.navigateByUrl('/register');
-      },
-    );
+    }).toPromise();
   }
 
   searchJobs(criteria: string, limit: number): Promise<any> {
@@ -49,7 +40,6 @@ export class JobService {
 
   /** Get job by id*/
   getJobById(id: number): Promise<any> {
-    console.log(`${ApplicationSettings.BASE_URL}/job/${id}`);
     return this.http.get(`${ApplicationSettings.BASE_URL}/job/${id}`, {
       headers: this.userService.getHeaders(),
     }).toPromise()
@@ -60,8 +50,8 @@ export class JobService {
   deleteJobById(id: number): Promise<any> {
     return this.http.delete(`${ApplicationSettings.BASE_URL}/job/delete/${id}`, {
       headers: this.userService.getHeaders(),
-    }).toPromise()
-      .then(res => res);
+      responseType: 'text',
+    }).toPromise();
   }
 
   /**Update job*/
@@ -100,6 +90,13 @@ export class JobService {
       .then(res => res);
   }
 
+  getProviderJobs(limit: number): Promise<any> {
+    return this.http.get(`${ApplicationSettings.BASE_URL}/job/latest/provider/${limit}`, {
+      headers: this.userService.getHeaders()
+    }).toPromise()
+      .then(res => res);
+  }
+
   getRequestsForJob(idJob: number, limit: number): Promise<any> {
     return this.http.get(`${ApplicationSettings.BASE_URL}/request/latest/job/${idJob}/${limit}`, {
       headers: this.userService.getHeaders()
@@ -111,6 +108,13 @@ export class JobService {
     return this.http.post(`${ApplicationSettings.BASE_URL}/consumer/accept/${idJob}/${idProvider}`, null, {
       headers: this.userService.getHeaders()
     }).toPromise();
+  }
+
+  getRequest(id: number) {
+    return this.http.get(`${ApplicationSettings.BASE_URL}/request/get/${id}`, {
+      headers: this.userService.getHeaders()
+    }).toPromise()
+      .then(res => res);
   }
 
 

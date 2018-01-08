@@ -21,7 +21,8 @@ export class MbRequestCardComponent implements OnInit {
   }
 
   acceptRequest() {
-    this.jobService.acceptRequest(this.request.job.id, this.request.provider.id);
+    this.jobService.acceptRequest(this.request.job.id, this.request.provider.id)
+      .then(() => this.request.accepted = true);
   }
 
   makeReview() {

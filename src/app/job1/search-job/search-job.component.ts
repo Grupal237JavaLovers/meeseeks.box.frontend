@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { JobService } from '../job.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mb-search-job',
@@ -11,7 +12,8 @@ export class MbSearchJobComponent {
   jobs: any;
   search = '';
 
-  constructor(private jobService: JobService) {
+  constructor(private jobService: JobService,
+              private router: Router) {
     jobService.getJobs().then(res => {
       console.log(res);
       this.jobs = res;
@@ -22,6 +24,10 @@ export class MbSearchJobComponent {
     this.jobService.searchJobs(this.search, 1000)
       .then((res) => this.jobs = res)
       .catch((err) => console.log(err));
+  }
+
+  onJobClicked($event) {
+    this.router.navigate(['/auth/job/details', $event.id]);
   }
 
 }

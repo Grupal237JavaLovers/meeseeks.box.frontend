@@ -1,68 +1,47 @@
 /**
  * Created by Clusi on 12/17/2017.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobService } from '../job.service';
+import { UserService } from '../../user/user.service';
 @Component({
   selector: 'mb-job',
   templateUrl: './job.component.html',
   styleUrls: ['./job.component.scss'],
 })
-export class MbJobComponent implements OnInit {
+export class MbJobComponent implements OnInit, OnDestroy {
 
   displayedColumns = ['day', 'startHour', 'endHour'];
-  /* job: any;
-   dataSource: any;*/
+  dataSource: any;
   errors = '';
-  job = {
-    availabilities: [
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-      {day: 'tuesday', startHour: '22:10:00', endHour: '02:02:00'},
-    ],
-    category: 'category',
-    job: {
-      name: 'Suge ',
-      description: 'descroprskgvdfj kln;kldfnvb↵fdslkf;lsk;f fijsdogodsfjg kdsjglkdfnglk fkjdskfjls',
-      expirationDate: '1212-12-21T14:12',
-      location: 'location',
-      type: 'type',
-      price: 1213,
-      id: 10,
-    },
-  };
-  dataSource = new MatTableDataSource<Availability>(this.job.availabilities);
+  job: any;
+  request: any;
+  requestId: number;
+  getRequest: any;
+  checkingRequestStatus = false;
+  checkingGetRequestId = false;
 
   constructor(private route: ActivatedRoute,
               private jobService: JobService,
+              private userService: UserService,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    /*this.getJob();*/
+    this.getJob();
+    this.checkRequestStateIfProvider();
+    this.getRequest = setInterval(() => {
+      this.checkRequestStateIfProvider();
+    }, 2000);
   }
 
   getJob(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.jobService.getJobById(id)
       .then(res => {
+        console.log(res);
         this.job = res;
         this.dataSource = new MatTableDataSource<Availability>(this.job.availabilities);
       });
@@ -86,6 +65,57 @@ export class MbJobComponent implements OnInit {
     this.router.navigateByUrl('/auth/job/edit/' + id);
   }
 
+  goToRequests(jobId: number) {
+    this.router.navigate(['/auth/consumer/job/selectProvider', jobId]);
+  }
+
+  isMainConsumer() {
+    return this.userService.getUser().username === this.job.consumer.username;
+  }
+
+  isProvider() {
+    return this.userService.getUser().role === 'provider';
+  }
+
+  refreshRequest(requestId) {
+    this.requestId = requestId;
+    this.checkingGetRequestId = true;
+    console.log(this.requestId);
+  }
+
+  checkRequestStateIfProvider() {
+    if (this.requestId != null) {
+      this.jobService.getRequest(this.requestId)
+        .then((res) => {
+          this.request = res;
+          this.checkingRequestStatus = true;
+        })
+        .catch(err => console.log(err));
+    } else {
+      this.request = null;
+      if (this.checkingGetRequestId) {
+        this.checkingRequestStatus = true;
+      }
+    }
+  }
+
+  appliedToJob() {
+    return this.request !== null;
+  }
+
+  providerAccepted() {
+    return this.request != null && this.request.accepted;
+  }
+
+  providerMakeReview() {
+    this.router.navigate(['/auth/review/create/', this.job.id, this.job.consumer.id]);
+  }
+
+  ngOnDestroy() {
+    if (this.getRequest) {
+      clearInterval(this.getRequest);
+    }
+  }
 }
 
 export interface Availability {
