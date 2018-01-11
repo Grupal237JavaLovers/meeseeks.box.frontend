@@ -1,19 +1,19 @@
 /**
  * Created by csebestin on 11/10/2017.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { ConfirmValidParentMatcher, CustomValidators, errorMessages } from '../../shared/customMatcher';
 import { Router } from '@angular/router';
-
+import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angular4-social-login';
 
 @Component({
   selector: 'mb-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class MbRegisterComponent {
+export class MbRegisterComponent implements OnInit{
   @Input() type: string; // provider or consumer
   userRegisterForm: FormGroup;
 
@@ -22,10 +22,39 @@ export class MbRegisterComponent {
   errors = errorMessages;
   badUsernameOrEmail = '';
 
+  clickedOnSocialButtons = false;
+
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private authService: AuthService) {
     this.createForm();
+  }
+
+  ngOnInit() {
+    this.authService.authState.subscribe((user) => {
+      console.log('register', user);
+      if (user != null && this.clickedOnSocialButtons) {
+        this.clickedOnSocialButtons = false;
+        this.userService.socialRegister(user, this.type)
+          .then(() => {
+            this.userService.socialLogin(user)
+              .then((res) => {
+                console.log('user connected', res);
+                this.router.navigate(['/auth/dashboard']);
+              })
+              .catch((err) => {
+                console.log(err);
+                this.signOut();
+              });
+          })
+          .catch((err) =>  {
+            console.log(err);
+            this.signOut();
+            this.badUsernameOrEmail = 'The email used is already registered';
+          });
+      }
+    });
   }
 
   createForm() {
@@ -82,4 +111,19 @@ export class MbRegisterComponent {
   goToLandingPage(): void {
     this.router.navigate(['/']);
   }
+
+  signInWithGoogle(): void {
+    this.clickedOnSocialButtons = true;
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  signInWithFB(): void {
+    this.clickedOnSocialButtons = true;
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  signOut(): void {
+    this.authService.signOut();
+  }
+
 }

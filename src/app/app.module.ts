@@ -13,6 +13,23 @@ import { JobModule } from './job1/job.module';
 import { WildcardRoutingModule } from './not-found/not-found.module';
 import { MbLandingPageVideoComponent } from './landing-page/landing-page-video/landing-page-video.component';
 import { MbApplyJobDialogComponent } from './job1/apply-job/apply-job-dialog/apply-job-dialog.component';
+import {
+  AuthServiceConfig,
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialLoginModule
+} from 'angular4-social-login';
+
+const config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider('307225112783-mp27lfmlg19t35bkmlf8o341krm32qse.apps.googleusercontent.com')
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider('893569507483755')
+  }
+]);
 
 @NgModule({
   declarations: [
@@ -28,6 +45,7 @@ import { MbApplyJobDialogComponent } from './job1/apply-job/apply-job-dialog/app
     SharedModule,
     UserModule,
     JobModule,
+    SocialLoginModule.initialize(config),
     WildcardRoutingModule // Last position always, do not change
   ],
   providers: [],

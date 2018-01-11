@@ -84,6 +84,30 @@ export class UserService {
     this.user.email = data.email;
   }
 
+  socialRegister(userFromSocial: any, type: string): Promise<any> {
+    const user = {
+      username: userFromSocial.email,
+      name: userFromSocial.name,
+      email: userFromSocial.email,
+      password: userFromSocial.id,
+      confirmPassword: userFromSocial.id,
+      profileImageUrl: userFromSocial.photoUrl,
+    };
+
+    if (type === 'consumer') {
+      return this.registerConsumer(user);
+    }
+    return this.registerProvider(user);
+  }
+
+  socialLogin(userFromSocial: any): Promise<any> {
+    const user = {
+      username: userFromSocial.email,
+      password: userFromSocial.id,
+    };
+    return this.login(user);
+  }
+
   getHeaders() {
     return new HttpHeaders().set('Authorization', this.token);
   }
@@ -94,5 +118,9 @@ export class UserService {
 
   getToken() {
     return this.token;
+  }
+
+  isUserConnected() {
+    return this.getUser() != null;
   }
 }
