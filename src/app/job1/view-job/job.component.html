@@ -1,0 +1,104 @@
+<mat-card *ngIf="job">
+ <div *ngIf="isProvider() && checkingRequestStatus">
+  <span class="badge badge-primary badge-job-card" *ngIf="providerAccepted()">Accepted</span>
+  <span class="badge badge-info badge-job-card" *ngIf="!appliedToJob() && !providerAccepted()">Didn't applied yet</span>
+  <span class="badge badge-success badge-job-card" *ngIf="appliedToJob() && !providerAccepted()">Applied</span>
+ </div>
+  <span class="badge badge-warning  badge-job-card" *ngIf="!checkingRequestStatus && isProvider()">Checking status...</span>
+  <mat-card-header>
+    <img mat-card-avatar src="../../assets/job-icon.png">
+    <mat-card-title>{{job.name}}</mat-card-title>
+    <mat-card-subtitle>{{job.description}}</mat-card-subtitle>
+  </mat-card-header>
+  <div class="alert alert-danger" role="alert" *ngIf="errors">{{errors}}</div>
+
+  <mat-grid-list cols="2">
+
+    <mat-grid-tile>
+
+      <mat-list>
+
+        <mat-list-item>
+          <mat-icon mat-list-icon>attach_money</mat-icon>
+          <h4 mat-line>Price</h4>
+          <p mat-line>{{job.price}}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <h3 mat-line>Location</h3>
+          <span mat-line>{{job.location}}</span>
+          <mat-icon mat-list-icon>place</mat-icon>
+
+        </mat-list-item>
+
+        <mat-list-item>
+          <mat-icon mat-list-icon>timelapse</mat-icon>
+          <h4 mat-line>Type</h4>
+          <p mat-line>{{job.type}}</p>
+        </mat-list-item>
+
+        <mat-list-item>
+          <mat-icon mat-list-icon>list</mat-icon>
+          <h4 mat-line>Category</h4>
+          <p mat-line>{{job.category.name}}</p>
+        </mat-list-item>
+
+      </mat-list>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+
+      <mat-card class="full-width">
+        <mat-card-title class="text-center">Availabilities</mat-card-title>
+        <mat-card-content>
+          <mat-table #table [dataSource]="dataSource" aria-labelledby="Availabilities" class="table-availabilities">
+
+            <ng-container matColumnDef="day">
+              <mat-header-cell *matHeaderCellDef>Day</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.day}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="startHour">
+              <mat-header-cell *matHeaderCellDef>Start hour</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.startHour}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="endHour">
+              <mat-header-cell *matHeaderCellDef>End hour</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.endHour}}</mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </mat-card-content>
+      </mat-card>
+
+    </mat-grid-tile>
+
+  </mat-grid-list>
+  <mat-card-footer>
+    <mat-list>
+      <mat-list-item class="footer-job-list-item">
+        <h4 mat-line>Expiration date</h4>
+        <p mat-line>{{job.expiration | date}}</p>
+        <mat-icon mat-list-icon>alarm_on</mat-icon>
+      </mat-list-item>
+    </mat-list>
+    <mat-card>
+      <mat-card-actions align="center" *ngIf="isMainConsumer()">
+        <button mat-raised-button color="warn" (click)="deleteJob(job.id)">Delete</button>
+        <button mat-raised-button color="primary" (click)="editJob(job.id)">Edit</button>
+        <button mat-raised-button color="primary" (click)="goToRequests(job.id)">Requests</button>
+      </mat-card-actions>
+      <mat-card-actions align="center" *ngIf="isProvider()">
+        <mb-apply-job [job]="job" (requestSent)="refreshRequest($event)"></mb-apply-job>
+        <button mat-raised-button color="basic" (click)="providerMakeReview()" *ngIf="providerAccepted() && isProvider()">Make review</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-card-footer>
+</mat-card>
+
+
+
+

@@ -1,8 +1,7 @@
 /**
  * Created by csebestin on 11/21/2017.
  */
-import { Component } from '@angular/core';
-import { JobService } from '../job.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'mb-jobs-grid',
@@ -10,9 +9,11 @@ import { JobService } from '../job.service';
   styleUrls: ['./jobs-grid.component.scss'],
 })
 export class MbJobsGridComponent {
-  jobs: any = [];
+  @Input() jobs: any = [];
+  @Output() jobClicked = new EventEmitter<any>();
+  @Input() title = 'Jobs';
 
-  constructor(private jobService: JobService) {
-    jobService.getJobs().then(res => this.jobs = res);
+  onJobClicked(job) {
+    this.jobClicked.emit(job);
   }
 }

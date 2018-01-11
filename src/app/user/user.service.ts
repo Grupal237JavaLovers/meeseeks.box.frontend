@@ -24,7 +24,7 @@ export class UserService {
   }
 
   registerProvider(provider: any): Promise<any> {
-    return this.http.post(`${ApplicationSettings.BASE_URL}/consumer/register`, provider, {
+    return this.http.post(`${ApplicationSettings.BASE_URL}/provider/register`, provider, {
       responseType: 'text',
     }).toPromise()
       .then(
@@ -66,7 +66,7 @@ export class UserService {
   }
 
   getCurrentUser(): Promise<any> {
-    return this.http.get<User>('http://meeseeksbox-staging.eu-central-1.elasticbeanstalk.com/user/current', {
+    return this.http.get<User>(`${ApplicationSettings.BASE_URL}/user/current`, {
       headers: this.getHeaders(),
     }).toPromise()
       .then(data => {
@@ -84,6 +84,30 @@ export class UserService {
     this.user.email = data.email;
   }
 
+  socialRegister(userFromSocial: any, type: string): Promise<any> {
+    const user = {
+      username: userFromSocial.email,
+      name: userFromSocial.name,
+      email: userFromSocial.email,
+      password: userFromSocial.id,
+      confirmPassword: userFromSocial.id,
+      profileImageUrl: userFromSocial.photoUrl,
+    };
+
+    if (type === 'consumer') {
+      return this.registerConsumer(user);
+    }
+    return this.registerProvider(user);
+  }
+
+  socialLogin(userFromSocial: any): Promise<any> {
+    const user = {
+      username: userFromSocial.email,
+      password: userFromSocial.id,
+    };
+    return this.login(user);
+  }
+
   getHeaders() {
     return new HttpHeaders().set('Authorization', this.token);
   }
@@ -94,5 +118,9 @@ export class UserService {
 
   getToken() {
     return this.token;
+  }
+
+  isUserConnected() {
+    return this.getUser() != null;
   }
 }

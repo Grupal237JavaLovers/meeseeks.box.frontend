@@ -1,4 +1,8 @@
 <h2>Create job</h2>
+<div class="alert alert-success" role="alert" *ngIf="message">
+  <strong>Well done!</strong> {{message}}
+</div>
+
 <form (ngSubmit)="onSubmit()" #jobForm="ngForm" class="form">
   <mat-form-field class="full-width">
     <input matInput placeholder="Name" type="text" class="form-control"
@@ -50,10 +54,10 @@
 
   <mat-form-field class="full-width">
     <input matInput type="datetime-local" placeholder="Expiration job date"
-           id="expirationDate" name="expirationaDate"
-           [(ngModel)]="model.job.expirationDate" #expirationDate="ngModel"
+           id="expiration" name="expiration"
+           [(ngModel)]="model.job.expiration" #expiration="ngModel"
            required>
-    <mat-error *ngIf="expirationDate.invalid">{{errors.expirationDate}}</mat-error>
+    <mat-error *ngIf="expiration.invalid">{{errors.expirationDate}}</mat-error>
   </mat-form-field>
 
   <div *ngFor="let availability of model.availabilities; let i=index">
@@ -72,7 +76,6 @@
       <input matInput type="time" placeholder="Start hour" class="form-field"
              name="startHour {{i}}" #startHour="ngModel"
              [(ngModel)]="availability.startHour"
-             step="2"
              required>
       <mat-error *ngIf="startHour.invalid">{{errors.availabilityStartHour}}</mat-error>
     </mat-form-field>
@@ -81,7 +84,6 @@
       <input matInput type="time" placeholder="End hour" class="form-field"
              name="endHour {{i}}" #endHour="ngModel"
              [(ngModel)]="availability.endHour"
-             step="2"
              required>
       <mat-error *ngIf="endHour.invalid">{{errors.availabilityEndHour}}</mat-error>
 
@@ -90,6 +92,8 @@
 
 
   <button mat-raised-button color="primary" [disabled]="jobForm.invalid">Submit</button>
-  <!--<button mat-raised-button color="secondary" (click)="addAvailability()" type="button">Add availability</button>-->
+  <button mat-raised-button color="secondary" [disabled]="jobForm.invalid" (click)="addAvailability()" type="button">Add availability</button>
+  <button mat-raised-button color="secondary" (click)="deleteAvailability()" type="button">Delete availability</button>
+
 </form>
 

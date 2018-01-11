@@ -1,7 +1,7 @@
 /**
  * Created by csebestin on 11/24/2017.
  */
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { errorMessages } from '../../shared/customMatcher';
 import { JobService } from '../job.service';
 
@@ -12,7 +12,8 @@ import { JobService } from '../job.service';
     './createJob.component.scss',
   ],
 })
-export class MbCreateJobComponent {
+export class MbCreateJobComponent implements OnInit {
+  @Input() jobId: any;
   model: any = {
     availabilities: [],
     category: '',
@@ -26,23 +27,65 @@ export class MbCreateJobComponent {
     {value: 'wednesday', viewValue: 'Wednesday'},
     {value: 'thursday', viewValue: 'Thursday'},
     {value: 'friday', viewValue: 'Friday'},
-    {value: 'saturday', viewValue: 'Satrday'},
+    {value: 'saturday', viewValue: 'Saturday'},
     {value: 'sunday', viewValue: 'Sunday'},
   ];
+
+  message = '';
 
   constructor(private jobService: JobService) {
   }
 
+  ngOnInit() {
+    if (this.jobId) {
+      this.jobService.getJobById(this.jobId)
+        .then((res) => {
+          console.log(res);
+          this.model.job.name = res.name;
+          this.model.job.description = res.description;
+          this.model.job.location = res.location;
+          this.model.job.type = res.type;
+          this.model.job.category = res.category;
+          this.model.job.price = res.price;
+          this.model.job.expiration = new Date(res.expiration).toISOString().split('.')[0];
+          this.model.category = res.category.name;
+          this.model.availabilities = res.availabilities;
+        })
+        .catch((err) => console.log(err));
+    }
+  }
+
   onSubmit() {
-    console.log(this.model);
-    this.jobService.createJob(this.model);
+    this.model.availabilities.forEach(availability => {
+      if (availability.startHour.split(':').length < 3) {
+        availability.startHour = availability.startHour + ':00';
+        availability.endHour = availability.endHour + ':00';
+      }
+     });
+    if (this.model.job.expiration.split(':').length < 3)
+    this.model.job.expiration += ':00';
+    if (this.jobId) {
+      this.jobService.updateJob(this.model);
+    } else {
+      this.jobService.createJob(this.model)
+        .then((res) => {
+          this.message = 'Job ' + res.name + ' created with succes';
+        })
+        .catch((err) => {
+          this.message = '';
+        });
+    }
   }
 
   addAvailability() {
     this.model.availabilities.push({
       day: '',
-      startHour: '00:00:01',
-      endHour: '00:00:01',
+      startHour: '',
+      endHour: '',
     });
+  }
+
+  deleteAvailability() {
+    this.model.availabilities.splice(-1, 1);
   }
 }
