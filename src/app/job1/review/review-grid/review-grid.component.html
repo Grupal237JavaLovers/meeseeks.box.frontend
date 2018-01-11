@@ -1,0 +1,10 @@
+<div class="grid-list">
+  <mat-card>
+    <mat-card-title>{{title}}</mat-card-title>
+    <mat-card-content>
+        <div class="list-review">
+          <mb-view-review *ngFor="let review of reviews" [review]="review" [received]="received"></mb-view-review>
+        </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -16,6 +16,10 @@ import { MbConsumerSelectProviderComponent } from './consumer-select-provider/co
 import { MbRequestCardComponent } from './request-card/request-card.component';
 import { MbReviewComponent } from './review/review.component';
 import { ReviewService } from './review/review.service';
+import { MbViewReviewComponent } from './review/view-review/view-review.component';
+import { MbReviewGridComponent } from './review/review-grid/review-grid.component';
+import { MbMyReviewsComponent } from './review/my-reviews/my-reviews.component';
+import { MbRatingComponent } from './review/rating/rating.component';
 
 @NgModule({
   imports: [
@@ -32,6 +36,10 @@ import { ReviewService } from './review/review.service';
     MbConsumerSelectProviderComponent,
     MbRequestCardComponent,
     MbReviewComponent,
+    MbViewReviewComponent,
+    MbReviewGridComponent,
+    MbMyReviewsComponent,
+    MbRatingComponent,
   ],
   exports: [
     MbJobsGridComponent,

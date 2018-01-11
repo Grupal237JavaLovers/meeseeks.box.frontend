@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ReviewService } from './review.service';
 import { errorMessages } from '../../shared/customMatcher';
 import { UserService } from '../../user/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'mb-review',
@@ -14,23 +14,34 @@ export class MbReviewComponent {
   model: any = {
     rating: 1,
   };
-  @Input() jobId;
-  @Input() reviewedUserId;
+  reviewId: number;
+  jobId: number;
+  reviewedUserId: number;
   reviewErrors: any = {
     success: '',
     error: '',
   };
+  type: string;
 
   errors = errorMessages;
 
   constructor(private reviewService: ReviewService,
               private userService: UserService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
 
     this.route.params.subscribe(params => {
-      console.log(params);
       this.jobId = params.idJob;
       this.reviewedUserId = params.reviewedUserId;
+      this.type = params.type;
+      if (this.type === 'edit') {
+        this.model.rating = this.reviewService.editedReview.rating;
+        this.model.message = this.reviewService.editedReview.message;
+        this.reviewId = this.reviewService.editedReview.id;
+        console.log(this.reviewService.editedReview);
+      } else if (this.type !== 'create') {
+        this.router.navigate(['/404']);
+      }
     });
   }
 
@@ -44,7 +55,16 @@ export class MbReviewComponent {
         type = 'provider';
     }
     this.model.date = new Date().toISOString();
+    switch (this.type) {
+      case 'create':
+        this.createReview(type);
+        break;
+      default:
+          this.editReview(type);
+    }
+  }
 
+  createReview(type) {
     if (this.jobId === undefined) {
       this.reviewErrors.success = '';
       this.reviewErrors.error = 'Invalid job';
@@ -64,5 +84,19 @@ export class MbReviewComponent {
           this.reviewErrors.error = 'Review could not been created';
         });
     }
+  }
+
+  editReview(type) {
+    this.reviewService.updateReview(this.reviewId, this.model, type)
+      .then((res) => {
+        console.log(res);
+        this.reviewErrors.success = 'Review edited';
+        this.reviewErrors.error = '';
+      })
+      .catch((err) => {
+        console.log(err);
+        this.reviewErrors.success = '';
+        this.reviewErrors.error = 'Review could not been edited';
+      });
   }
 }

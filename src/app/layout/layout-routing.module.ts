@@ -11,6 +11,7 @@ import { MbJobEditComponent } from '../job1/edit-job/job-edit.component';
 import { MbSearchJobComponent } from '../job1/search-job/search-job.component';
 import { MbMyJobsComponent } from '../job1/my-jobs/my-jobs.component';
 import { MbConsumerSelectProviderComponent } from '../job1/consumer-select-provider/consumer-select-provider.component';
+import { MbMyReviewsComponent } from '../job1/review/my-reviews/my-reviews.component';
 
 const LAYOUT_ROUTES: Routes = [
 
@@ -45,7 +46,7 @@ const LAYOUT_ROUTES: Routes = [
         ],
       },
       {
-        path: 'consumer/jobs',
+        path: 'myJobs',
         component: MbMyJobsComponent,
       },
       {
@@ -68,8 +69,12 @@ const LAYOUT_ROUTES: Routes = [
         ],
       },
       {
-        path: 'review/create/:idJob/:reviewedUserId',
+        path: 'review/:type/:idJob/:reviewedUserId',
         component: MbReviewComponent,
+      },
+      {
+        path: 'review/myReviews',
+        component: MbMyReviewsComponent,
       },
       {
         path: '',

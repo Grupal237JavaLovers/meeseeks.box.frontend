@@ -117,5 +117,4 @@ export class JobService {
       .then(res => res);
   }
 
-
 }
