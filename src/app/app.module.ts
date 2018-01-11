@@ -20,6 +20,18 @@ import {
   SocialLoginModule
 } from 'angular4-social-login';
 
+/*export function socialConfiguration() {
+  return new AuthServiceConfig([
+    {
+      id: GoogleLoginProvider.PROVIDER_ID,
+      provider: new GoogleLoginProvider('307225112783-mp27lfmlg19t35bkmlf8o341krm32qse.apps.googleusercontent.com')
+    },
+    {
+      id: FacebookLoginProvider.PROVIDER_ID,
+      provider: new FacebookLoginProvider('893569507483755')
+    }]);
+}*/
+
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -28,8 +40,12 @@ const config = new AuthServiceConfig([
   {
     id: FacebookLoginProvider.PROVIDER_ID,
     provider: new FacebookLoginProvider('893569507483755')
-  }
-]);
+  }]);
+
+export function provideConfig() {
+  return config;
+}
+
 
 @NgModule({
   declarations: [
@@ -45,10 +61,15 @@ const config = new AuthServiceConfig([
     SharedModule,
     UserModule,
     JobModule,
-    SocialLoginModule.initialize(config),
+    SocialLoginModule,
     WildcardRoutingModule // Last position always, do not change
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig,
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     MbLandingPageVideoComponent,

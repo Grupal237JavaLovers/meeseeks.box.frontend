@@ -21,6 +21,6 @@ script:
   - "pip install --user awscli"
 before_deploy:
   - "~/.local/bin/aws s3 rm s3://meeseeksbox --region=eu-central-1 --recursive"
-  - "ng build --prod"
+  - "ng build"
 notifications:
   email: false
