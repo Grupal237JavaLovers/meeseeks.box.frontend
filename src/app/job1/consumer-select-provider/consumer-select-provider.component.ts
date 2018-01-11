@@ -10,8 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MbConsumerSelectProviderComponent implements OnInit, OnDestroy {
   private jobId: number;
-  private requests: any;
-  private message = '';
+  requests: any;
+  message = '';
   private getRequests: any;
 
   constructor(private jobService: JobService,

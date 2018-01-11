@@ -22,10 +22,10 @@
     "@angular/material": "^5.0.0-rc0",
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
+    "angular4-social-login": "^1.1.1",
     "@angular/router": "^5.0.0",
     "core-js": "^2.4.1",
     "lodash": "^4.17.4",
-    "rxjs": "^5.5.4",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

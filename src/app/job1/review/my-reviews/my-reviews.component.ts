@@ -9,8 +9,8 @@ import { ReviewService } from '../review.service';
   encapsulation: ViewEncapsulation.None
 })
 export class MbMyReviewsComponent implements OnInit {
-  private receivedReviews: any;
-  private sendReviews: any;
+  receivedReviews: any;
+  sendReviews: any;
 
   constructor(private reviewService: ReviewService,
               private userService: UserService) {}
