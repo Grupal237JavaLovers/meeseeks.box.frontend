@@ -6,7 +6,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { ApplicationSettings } from '../shared/applicationSettings';
-import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
