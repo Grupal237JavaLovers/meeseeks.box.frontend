@@ -1,20 +1,20 @@
-$namespace : 'msbx-';
+$namespace: 'msbx-';
 
-body{
+body {
   background: white;
 }
 
 //container
-.#{$namespace}container{
+.#{$namespace}container {
 }
 
 //text
-.#{$namespace}text{
+.#{$namespace}text {
   font-family: 'Montserrat', serif !important;
 }
 
 //navigation
-.#{$namespace}navbtn__container{
+.#{$namespace}navbtn__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,13 +23,13 @@ body{
   padding: 0 14%;
 }
 
-.#{$namespace}login__link{
-  display:flex;
+.#{$namespace}login__link {
+  display: flex;
   justify-content: center;
   align-items: center;
   font-size: .7rem;
   font-weight: 500;
-  color:white;
+  color: white;
   border: 5px #4166EE;
   width: 180px;
   height: 50px;
@@ -37,7 +37,7 @@ body{
   background-color: #4166EE;
 }
 
-.#{$namespace}video__link{
+.#{$namespace}video__link {
   margin-left: 15px;
   display: flex;
   justify-content: center;
@@ -46,40 +46,40 @@ body{
   height: 50px;
   border: 1px solid #CCCCCC;
   border-radius: 50%;
-  color:black;
-  cursor:pointer;
+  color: black;
+  cursor: pointer;
 }
 
-.#{$namespace}navbtn__link:hover{
+.#{$namespace}navbtn__link:hover {
   text-decoration: none;
 }
 
 //content text
-.#{$namespace}content__panel{
-  display:flex;
+.#{$namespace}content__panel {
+  display: flex;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
   margin-bottom: 2rem;
   padding: 0 14%;
 
 }
 
-.#{$namespace}content__title{
+.#{$namespace}content__title {
   width: 40%;
   font-size: 2.25rem;
   font-weight: bolder;
   color: black;
 }
 
-.#{$namespace}content__carousel{
+.#{$namespace}content__carousel {
   float: left;
   width: 40%;
   opacity: 0.3;
   font-size: 1rem;
 }
 
-.#{$namespace}content__vertical-line{
-  position:absolute;
+.#{$namespace}content__vertical-line {
+  position: absolute;
   left: 50%;
   height: 70px;
   border-left: 2px solid lightgray;
@@ -101,6 +101,7 @@ body{
   text-decoration: none;
   background-color: #4166ee;
 }
+
 .#{$namespace}consumer__wrapper {
   padding-left: 28%;
 }
@@ -138,7 +139,7 @@ body{
 }
 
 .#{$namespace}provider__wrapper {
-  padding-left: 28%;
+  padding-left: 15%;
 }
 
 //logo
@@ -150,17 +151,17 @@ body{
   padding: 0 14%;
 }
 
-.#{$namespace}header__metanav{
+.#{$namespace}header__metanav {
   width: 40%;
 
 }
 
 .#{$namespace}header__metanav__wrapper {
-  display:flex;
+  display: flex;
   justify-content: space-between;
 }
 
-.#{$namespace}metanav__item{
+.#{$namespace}metanav__item {
   width: 28%;
 }
 
@@ -168,7 +169,9 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width:100%;
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .#{$namespace}header__logo {
@@ -199,11 +202,11 @@ body{
   filter: blur(5px);
 }
 
-.#{$namespace}modal-dialog--size{
+.#{$namespace}modal-dialog--size {
   min-width: 80%;
 }
 
-.#{$namespace}modal-dialog--position{
+.#{$namespace}modal-dialog--position {
   display: inline-block;
   text-align: left;
   vertical-align: middle;
@@ -211,7 +214,7 @@ body{
 
 .modal--position {
   text-align: center;
-  padding: 0!important;
+  padding: 0 !important;
 }
 
 .modal--position:before {
