@@ -1,10 +1,10 @@
 <div class="msbx-edit-profile__page-container">
   <div class="msbx-form__container">
     <mat-card class="msbx-profile">
-      <img class="msbx-profile__img" src="{{getUser().profileImageUrl}}"
+      <img class="msbx-profile__img" src="{{model.profileImageUrl}}"
            onError="this.onerror=null;this.src='https://cdn.dribbble.com/users/4971/screenshots/2846308/mr-meeseeks.png';">
-      <mat-card-title class="msbx-profile__name">{{getUser().name}}</mat-card-title>
-      <mat-card-subtitle class="msbx-profile__email">{{getUser().email}}</mat-card-subtitle>
+      <mat-card-title class="msbx-profile__name">{{model.name}}</mat-card-title>
+      <mat-card-subtitle class="msbx-profile__email">{{model.email}}</mat-card-subtitle>
     </mat-card>
     <mat-card class="msbx-profile__form">
       <form class="example-form msbx-profile-form__container"
@@ -13,16 +13,16 @@
           <input matInput placeholder="Name" [(ngModel)]="model.name" name="name" required>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Username" [(ngModel)]="model.username" name="username">
+          <input matInput placeholder="Username" [(ngModel)]="model.username" name="modelname" required>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput type="Password" placeholder="Password" [(ngModel)]="model.password" name="password">
+          <input matInput type="Password" placeholder="Password" [(ngModel)]="model.password" name="password" required>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput type="Password" placeholder="Confirm Password" [(ngModel)]="model.confirmPassword" name="confirmPassword">
+          <input matInput type="Password" placeholder="Confirm Password" [(ngModel)]="model.confirmPassword" name="confirmPassword" required>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="E-mail" [(ngModel)]="model.email" name="email">
+          <input matInput placeholder="E-mail" [(ngModel)]="model.email" name="email" required>
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Profile Image URL" [(ngModel)]="model.profileImgUrl" name="profileImgUrl">

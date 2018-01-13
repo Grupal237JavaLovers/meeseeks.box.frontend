@@ -6,6 +6,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { ApplicationSettings } from '../shared/applicationSettings';
+import 'rxjs/add/operator/toPromise';
+import {Consumer} from '../model/consumer';
+import {Provider} from '../model/provider';
 
 @Injectable()
 export class UserService {
@@ -82,10 +85,29 @@ export class UserService {
       userType = 'provider';
     }
 
-    return this.http.patch(`${ApplicationSettings.BASE_URL}/${userType}/update`, user, {responseType: 'text'}).toPromise()
+    return this.http.patch(`${ApplicationSettings.BASE_URL}/${userType}/update`, user, {
+      headers: this.getHeaders(),
+    }).toPromise()
       .then(data => {
-        const res = JSON.parse(<string>data);
-        console.log(res);
+        console.log(data);
+      });
+  }
+
+  findConsumerById(id: any) {
+    return this.http.get<Consumer>(`${ApplicationSettings.BASE_URL}/consumer/get/${id}`, {
+      headers: this.getHeaders(),
+    }).toPromise()
+      .then(data => {
+        return data;
+      });
+  }
+
+  findProviderById(id: any) {
+    return this.http.get<Provider>(`${ApplicationSettings.BASE_URL}/provider/get/${id}`, {
+      headers: this.getHeaders(),
+    }).toPromise()
+      .then(data => {
+        return data;
       });
   }
 
