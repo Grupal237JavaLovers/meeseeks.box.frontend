@@ -54,7 +54,6 @@ export class MbReviewComponent {
       case 'consumer':
         type = 'provider';
     }
-    this.model.date = new Date().toISOString();
     switch (this.type) {
       case 'create':
         this.createReview(type);
