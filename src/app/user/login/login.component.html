@@ -1,6 +1,11 @@
 <div class="login-background">
-  <mat-card class="login-card">
-    <h2>Log In</h2>
+    <div [class.mat-elevation-z0] id="register-card">
+    <div class="close-button-container">
+      <button mat-icon-button type="button" color="secondary" id="black-button" (click)="goToLandingPage()">
+        <img src="../../../assets/close_icon.png" width="20px"/></button>
+    </div>
+    <h3 class="form-title">Login</h3>
+
     <div class="alert alert-danger" role="alert" *ngIf="badCredentials">
       <strong>Login failed</strong> {{badCredentials}}
     </div>
@@ -15,17 +20,18 @@
         <mat-error>{{errors.password}}</mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" [disabled]="userLoginForm.invalid" (click)="login()">Login</button>
-      <button mat-raised-button type="button" color="secondary" (click)="goToLandingPage()">Back</button>
+      <button mat-raised-button color="primary" [disabled]="userLoginForm.invalid" id="form-button" (click)="login()">Login</button>
 
-      <div class="social-buttons">
+      <div id="social-buttons-container">
         <a class="btn btn-block btn-social btn-facebook" (click)="signInWithFB()">
-          <span class="fa fa-facebook"></span> Log in with Facebook
+          <span class="fa fa-facebook"></span>
+          <div class="social-text">Register with Facebook</div>
         </a>
         <a class="btn btn-block btn-social btn-google" (click)="signInWithGoogle()">
-          <span class="fa fa-google"></span> Log in with Google
+          <span class="fa fa-google"></span>
+          <div class="social-text">Register with Google</div>
         </a>
       </div>
     </form>
-  </mat-card>
+  </div>
 </div>

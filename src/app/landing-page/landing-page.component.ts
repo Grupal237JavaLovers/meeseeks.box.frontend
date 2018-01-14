@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { MbLandingPageVideoComponent } from './landing-page-video/landing-page-video.component';
-import { MatDialog } from '@angular/material';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {MbLandingPageVideoComponent} from './landing-page-video/landing-page-video.component';
+import {MatDialog} from '@angular/material';
+
 
 @Component({
   selector: 'mb-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss'],
 })
+
 export class LandingPageComponent {
 
   constructor(private router: Router,
