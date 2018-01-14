@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, Output, ViewEncapsulation, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'mb-type-filter-field',
@@ -7,10 +7,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class TypeFilterFieldComponent implements OnInit {
+  typeValue: any;
 
   constructor() { }
 
   ngOnInit() {
+    this.TypeValue.emit(this.typeValue);
+  }
+
+  @Output() TypeValue = new EventEmitter();
+
+  typeValueSelected(){
+    this.TypeValue.emit(this.typeValue);
   }
 
   types = [

@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, EventEmitter, Output} from '@angular/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @Component({
   selector: 'mb-expiration-date-filter-field',
@@ -7,10 +8,19 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class ExpirationDateFilterFieldComponent implements OnInit {
+  expirationDateValue: any;
 
-  constructor() { }
+  constructor() {
+    this.ExpirationDateValue.emit(this.expirationDateValue);
+  }
 
   ngOnInit() {
+  }
+
+  @Output() ExpirationDateValue = new EventEmitter();
+
+  expirationDateValueSelected(){
+    this.ExpirationDateValue.emit(this.expirationDateValue);
   }
 
 }

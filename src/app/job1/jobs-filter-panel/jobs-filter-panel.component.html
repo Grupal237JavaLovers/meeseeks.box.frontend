@@ -1,11 +1,8 @@
-<mb-category-filter-field></mb-category-filter-field>
-
-<mb-type-filter-field></mb-type-filter-field>
-
-<mb-price-filter-field></mb-price-filter-field>
-
-<mb-expiration-date-filter-field></mb-expiration-date-filter-field>
-
-<mb-location-filter-field></mb-location-filter-field>
-
-<button mat-button onclick="" onsubmit="" >Apply filters</button>
+<div>
+  <mb-category-filter-field (CategoryValue)="categoryChangedHandler($event)"></mb-category-filter-field>
+  <mb-type-filter-field (TypeValue)="typeChangedHandler($event)"></mb-type-filter-field>
+  <mb-price-filter-field (MinPriceValue)="minPriceChangedHandler($event)" (MaxPriceValue)="maxPriceChangedHandler($event)"></mb-price-filter-field>
+  <mb-expiration-date-filter-field (ExpirationDateValue)="expirationDateChangedHandler($event)"></mb-expiration-date-filter-field>
+  <mb-location-filter-field (LocationValue)="locationChangedHandler($event)"></mb-location-filter-field>
+  <button mat-button (click)="applyFilter()">Apply filters</button>
+</div>

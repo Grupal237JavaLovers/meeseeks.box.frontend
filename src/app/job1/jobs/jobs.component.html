@@ -1,8 +1,8 @@
 <div class="container">
   <div class="filter-panel">
-    <mb-jobs-filter-panel></mb-jobs-filter-panel>
+    <mb-jobs-filter-panel (FilterResult)="filterHandler($event)"></mb-jobs-filter-panel>
   </div>
   <div class="jobs-panel">
-    <mb-jobs-grid></mb-jobs-grid>
+    <mb-jobs-grid [jobs]="result"></mb-jobs-grid>
   </div>
 </div>

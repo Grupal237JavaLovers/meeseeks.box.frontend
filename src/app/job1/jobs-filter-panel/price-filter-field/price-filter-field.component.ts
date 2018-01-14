@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnInit, Output, ViewEncapsulation, EventEmitter} from '@angular/core';
 import {MatSliderModule} from '@angular/material/slider';
 
 @Component({
@@ -9,9 +9,23 @@ import {MatSliderModule} from '@angular/material/slider';
 })
 export class PriceFilterFieldComponent implements OnInit {
 
-  constructor() { }
+  minValue = 0;
+  maxValue = 9000;
+
+  constructor() {
+    this.MinPriceValue.emit(this.minValue);
+    this.MaxPriceValue.emit(this.maxValue);
+  }
 
   ngOnInit() {
+  }
+
+  @Output() MinPriceValue = new EventEmitter();
+  @Output() MaxPriceValue = new EventEmitter();
+
+  priceValueSelected(){
+    this.MinPriceValue.emit(this.minValue);
+    this.MaxPriceValue.emit(this.maxValue);
   }
 
 }

@@ -1,14 +1,15 @@
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  width: 100vw;
+  max-width: 100vw !important;
+  justify-content: space-around;
 }
 
 .filter-panel {
-  width: 20%;
-  display: block;
+  width: max-content;
 }
 
 .jobs-panel{
-
+  width: 100%;
 }
