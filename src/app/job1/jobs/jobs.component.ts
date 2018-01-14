@@ -6,7 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./jobs.component.scss'],
 })
 export class MbJobsComponent {
+  result: any = [];
 
   constructor() { }
 
+  filterHandler(result: any)
+  {
+    if(result != []) this.result = result;
+  }
 }

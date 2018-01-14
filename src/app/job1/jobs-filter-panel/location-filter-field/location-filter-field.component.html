@@ -2,7 +2,6 @@
   <mat-form-field class="full-width">
     <input matInput placeholder="Location" type="text" class="form-control"
          id="location" name="location"
-         [(ngModel)]="model.job.location" #name="ngModel"
-         required>
+         [(ngModel)]="locationValue" (change)="locationValueSelected()">
   </mat-form-field>
 </div>

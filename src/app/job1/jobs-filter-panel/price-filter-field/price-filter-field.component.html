@@ -2,28 +2,32 @@
   <p class="mat-body-2">
     Price range
   </p>
+
   <div>
    <mat-slider
       thumbLabel
       min="0"
-      max="9000"
+      [max]="maxValue"
       step="1"
       tickInterval="1000"
-      [(ngModel)]="minvalue"></mat-slider>
+      [(ngModel)]="minValue"
+      (change)="priceValueSelected()"></mat-slider>
     <mat-form-field class="slider-value">
-      <input matInput type="number" placeholder="Min" [(ngModel)]="minvalue">
+      <input matInput type="number" placeholder="Min" [(ngModel)]="minValue" min="0" [max]="maxValue" (change)="priceValueSelected()">
     </mat-form-field>
   </div>
+
   <div>
     <mat-slider
       thumbLabel
-      min="0"
+      [min]="minValue"
       max="9000"
       step="1"
       tickInterval="1000"
-      [(ngModel)]="maxvalue"></mat-slider>
+      [(ngModel)]="maxValue"
+      (change)="priceValueSelected()"></mat-slider>
     <mat-form-field class="slider-value">
-      <input matInput type="number" placeholder="Max" [(ngModel)]="maxvalue">
+      <input matInput type="number" placeholder="Max" [(ngModel)]="maxValue" [min]="minValue" max="9000" (change)="priceValueSelected()">
     </mat-form-field>
   </div>
 </div>
