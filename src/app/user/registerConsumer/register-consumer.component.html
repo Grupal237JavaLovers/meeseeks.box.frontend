@@ -1,6 +1,10 @@
 <div class="register-background">
-  <mat-card class="register-card">
-    <h3>Register Consumer</h3>
+  <div [class.mat-elevation-z0] id="register-card">
+    <div class="close-button-container">
+      <button mat-icon-button type="button" color="secondary" id="black-button" (click)="goToLandingPage()">
+        <img src="../../../assets/close_icon.png" width="20px"/></button>
+    </div>
+    <h3 class="form-title">Register Consumer</h3>
     <mb-register [type]="'consumer'"></mb-register>
-  </mat-card>
+  </div>
 </div>
