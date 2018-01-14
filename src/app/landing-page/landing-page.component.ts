@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {MbLandingPageVideoComponent} from './landing-page-video/landing-page-video.component';
 import {MatDialog} from '@angular/material';
-import {setInterval} from 'timers';
+
 
 @Component({
   selector: 'mb-landing-page',
