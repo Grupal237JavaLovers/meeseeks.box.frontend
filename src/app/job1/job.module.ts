@@ -60,6 +60,7 @@ import { FilterJobsComponent } from './filter-jobs/filter-jobs.component';
   ],
   exports: [
     MbJobsGridComponent,
+    MbRatingComponent
   ],
   providers: [
     JobService,
