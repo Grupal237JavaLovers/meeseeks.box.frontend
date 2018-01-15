@@ -10,16 +10,16 @@ export class LocationFilterFieldComponent implements OnInit {
   locationValue: any;
 
   constructor() {
-    this.LocationValue.emit(this.locationValue);
   }
 
   ngOnInit() {
+    this.LocationValue.emit(this.locationValue);
   }
 
   @Output() LocationValue = new EventEmitter();
 
   locationValueSelected(){
-    this.LocationValue.emit(this.locationValue);
+    //this.LocationValue.emit(this.locationValue);  TO DO: (change) function not working
   }
 
 
