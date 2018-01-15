@@ -11,10 +11,10 @@ export class ExpirationDateFilterFieldComponent implements OnInit {
   expirationDateValue: any;
 
   constructor() {
-    this.ExpirationDateValue.emit(this.expirationDateValue);
   }
 
   ngOnInit() {
+    this.ExpirationDateValue.emit(this.expirationDateValue);
   }
 
   @Output() ExpirationDateValue = new EventEmitter();

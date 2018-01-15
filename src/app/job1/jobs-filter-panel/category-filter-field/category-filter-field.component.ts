@@ -14,10 +14,10 @@ export class CategoryFilterFieldComponent implements OnInit {
 
   constructor(private jobService: JobService) {
     jobService.getAllCategories().then(res => this.categories = res);
-    this.CategoryValue.emit(this.categoryValue);
   }
 
   ngOnInit() {
+    this.CategoryValue.emit(this.categoryValue);
   }
 
   @Output() CategoryValue = new EventEmitter();

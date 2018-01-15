@@ -47,7 +47,7 @@ export class JobService {
   }
 
   getJobsByCategory(category: any): Promise<any> {
-    return this.http.get(`${ApplicationSettings.BASE_URL}//job/find/category/10000`, {
+    return this.http.get(`${ApplicationSettings.BASE_URL}//job/find/${category}/10000`, {
       headers: this.userService.getHeaders(),
     }).toPromise()
       .then(res => res)

@@ -9,7 +9,8 @@ import {Component, OnInit, Output, ViewEncapsulation, EventEmitter} from '@angul
 export class TypeFilterFieldComponent implements OnInit {
   typeValue: any;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
     this.TypeValue.emit(this.typeValue);

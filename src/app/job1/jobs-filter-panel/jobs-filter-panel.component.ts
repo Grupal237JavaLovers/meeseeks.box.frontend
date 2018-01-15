@@ -29,54 +29,76 @@ export class JobsFilterPanelComponent implements OnInit {
   applyFilter(){
     this.filterResults = [];
     this.result = [];
-    var localResult: any;
+    let localResult: any = [];
 
-    console.log(this.category)
+    if(!isUndefined(this.category)) { this.jobService.getJobsByCategory(this.category).then(res => localResult = res); }
+    else { localResult = []; }
+    console.log(localResult);
+    if(localResult instanceof Array) this.filterResults.push(localResult[0]);
 
-    localResult = !isUndefined(this.category) ? this.jobService.getJobsByCategory(this.category) : [];
+    if(!isUndefined(this.location)) { this.jobService.getJobsByLocation(this.location).then(res => localResult = res); }
+    else { localResult = []; }
+    console.log(localResult);
     if(localResult instanceof Array) this.filterResults.push(localResult);
 
-    localResult = (!isUndefined(this.location)) ? this.filterResults.push(this.jobService.getJobsByLocation(this.location)) : this.filterResults.push([]);
+    if(!isUndefined(this.expirationDate)) { this.jobService.getJobsByExpirationDate(this.expirationDate).then(res => localResult = res); }
+    else { localResult = []; }
+    console.log(localResult);
     if(localResult instanceof Array) this.filterResults.push(localResult);
 
-    localResult = (this.expirationDate != null) ? this.filterResults.push(this.jobService.getJobsByExpirationDate(this.expirationDate)) : this.filterResults.push([]);
+    if(!isUndefined(this.minPrice) && !isUndefined(this.maxPrice)) { this.jobService.getJobsByPriceBetween(this.minPrice, this.maxPrice).then(res => localResult = res); }
+    else { localResult = []; }
+    console.log(localResult);
     if(localResult instanceof Array) this.filterResults.push(localResult);
 
-    localResult = (!isUndefined(this.minPrice) && !isUndefined(this.maxPrice)) ? this.filterResults.push(this.jobService.getJobsByPriceBetween(this.minPrice, this.maxPrice)) : this.filterResults.push([]);
+    if(!isUndefined(this.type)) { this.jobService.getJobsByType(this.type).then(res => localResult = res); }
+    else { localResult = []; }
+    console.log(localResult);
     if(localResult instanceof Array) this.filterResults.push(localResult);
 
-    localResult = (!isUndefined(this.type)) ? this.filterResults.push(this.jobService.getJobsByType(this.type)) : this.filterResults.push([]);
-    if(localResult instanceof Array) this.filterResults.push(localResult);
-
+    console.log( "vectorul de rezultate" + this.filterResults);
     this.result = this.filterResults[0].concat(this.filterResults[1], this.filterResults[2], this.filterResults[3], this.filterResults[4]);
+
     if(this.result == [])
       this.jobService.getJobs().then(res => this.result = res);
-    console.log("!!!!!!!!!!!!!!!!!!!!" + this.result);
+
     this.FilterResult.emit(this.result);
   }
 
   categoryChangedHandler(category:any)
   {
+      console.log("-s-a primit categoria filter panel");
+      console.log(category);
     if(category != null) this.category = category;
   }
   expirationDateChangedHandler(expirationDate:any)
   {
+    console.log("-s-a primit expiration Date filter panel");
+    console.log(this.expirationDate);
     if(expirationDate != null) this.expirationDate = expirationDate;
   }
   locationChangedHandler(location:any)
   {
+    console.log("-s-a primit location filter panel");
+    console.log(location);
     if(location != null) this.location = location;
   }
   minPriceChangedHandler(minPrice: any)
   {
+    console.log("-s-a primit min price filter panel");
+    console.log(minPrice);
     if(minPrice != null) this.minPrice = minPrice;
   }
   maxPriceChangedHandler(maxPrice: any )
   {
+    console.log("-s-a primit max price filter panel");
+    console.log(this.maxPrice);
     if(maxPrice != null) this.maxPrice = maxPrice;
   }
   typeChangedHandler(type:any)
   {
+    console.log("-s-a primit type filter panel");
+    console.log(type);
     if(type != null) this.type = type;
   }
 }
