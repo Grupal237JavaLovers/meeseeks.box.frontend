@@ -2,6 +2,6 @@
   <mat-form-field class="full-width">
     <input matInput type="datetime-local" placeholder="Expiration job date"
            id="expirationDate" name="expirationaDate"
-           [(ngModel)]="expirationDateValue" (change)="expirationDateValueSelected()">
+           [(ngModel)]="expirationDateValue" (blur)="expirationDateValueSelected()">
   </mat-form-field>
 </div>

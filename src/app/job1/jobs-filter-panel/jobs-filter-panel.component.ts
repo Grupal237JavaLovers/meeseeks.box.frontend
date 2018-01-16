@@ -29,35 +29,36 @@ export class JobsFilterPanelComponent implements OnInit {
   applyFilter(){
     this.filterResults = [];
     this.result = [];
-    let localResult: any = [];
+    var localResult: any;
+    var that = this;
 
     if(!isUndefined(this.category)) { this.jobService.getJobsByCategory(this.category).then(res => localResult = res); }
-    else { localResult = []; }
+    else { localResult = null; }
     console.log(localResult);
-    if(localResult instanceof Array) this.filterResults.push(localResult[0]);
+    if(localResult instanceof Array) this.filterResults.push(localResult);
 
     if(!isUndefined(this.location)) { this.jobService.getJobsByLocation(this.location).then(res => localResult = res); }
-    else { localResult = []; }
+    else { localResult = null; }
     console.log(localResult);
     if(localResult instanceof Array) this.filterResults.push(localResult);
 
     if(!isUndefined(this.expirationDate)) { this.jobService.getJobsByExpirationDate(this.expirationDate).then(res => localResult = res); }
-    else { localResult = []; }
+    else { localResult = null; }
     console.log(localResult);
     if(localResult instanceof Array) this.filterResults.push(localResult);
 
-    if(!isUndefined(this.minPrice) && !isUndefined(this.maxPrice)) { this.jobService.getJobsByPriceBetween(this.minPrice, this.maxPrice).then(res => localResult = res); }
-    else { localResult = []; }
-    console.log(localResult);
+    if(!isUndefined(this.minPrice) && !isUndefined(this.maxPrice)) { this.jobService.getJobsByPriceBetween(this.minPrice, this.maxPrice).then(res => localResult = res) }
+    else { localResult = null; }
+    console.log("LR: " + localResult);
     if(localResult instanceof Array) this.filterResults.push(localResult);
 
     if(!isUndefined(this.type)) { this.jobService.getJobsByType(this.type).then(res => localResult = res); }
-    else { localResult = []; }
+    else { localResult = null; }
     console.log(localResult);
     if(localResult instanceof Array) this.filterResults.push(localResult);
 
     console.log( "vectorul de rezultate" + this.filterResults);
-    this.result = this.filterResults[0].concat(this.filterResults[1], this.filterResults[2], this.filterResults[3], this.filterResults[4]);
+    this.result = [].join.apply([], this.filterResults);
 
     if(this.result == [])
       this.jobService.getJobs().then(res => this.result = res);
@@ -92,7 +93,7 @@ export class JobsFilterPanelComponent implements OnInit {
   maxPriceChangedHandler(maxPrice: any )
   {
     console.log("-s-a primit max price filter panel");
-    console.log(this.maxPrice);
+    console.log(maxPrice);
     if(maxPrice != null) this.maxPrice = maxPrice;
   }
   typeChangedHandler(type:any)
