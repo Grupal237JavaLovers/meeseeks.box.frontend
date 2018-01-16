@@ -19,7 +19,7 @@ export class LocationFilterFieldComponent implements OnInit {
   @Output() LocationValue = new EventEmitter();
 
   locationValueSelected(){
-    //this.LocationValue.emit(this.locationValue);  TO DO: (change) function not working
+    this.LocationValue.emit(this.locationValue);
   }
 
 

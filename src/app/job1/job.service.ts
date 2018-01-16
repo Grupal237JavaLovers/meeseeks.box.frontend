@@ -35,7 +35,7 @@ export class JobService {
       headers: this.userService.getHeaders()
     }).toPromise()
       .then(res => res)
-      .catch(res => []);
+      .catch(res => console.log(res));
   }
 
   getJobsByLocation(location: any): Promise<any> {
@@ -43,7 +43,7 @@ export class JobService {
       headers: this.userService.getHeaders()
     }).toPromise()
       .then(res => res)
-      .catch(res => []);
+      .catch(res => console.log(res));
   }
 
   getJobsByCategory(category: any): Promise<any> {
@@ -51,7 +51,7 @@ export class JobService {
       headers: this.userService.getHeaders(),
     }).toPromise()
       .then(res => res)
-      .catch(res => []);
+      .catch(res => console.log(res));
   }
 
   getJobsByPriceBetween(low: any, high: any): Promise<any> {
@@ -59,7 +59,7 @@ export class JobService {
       headers: this.userService.getHeaders()
     }).toPromise()
       .then(res => res)
-      .catch(res => []);
+      .catch(res => console.log(res));
   }
 
   getJobsByType(type: any): Promise<any> {
@@ -67,7 +67,7 @@ export class JobService {
       headers: this.userService.getHeaders()
     }).toPromise()
       .then(res => res)
-      .catch(res => []);
+      .catch(res => console.log(res));
   }
 
   getJobsByExpirationDate(expirationDate: any): Promise<any> {
@@ -75,7 +75,7 @@ export class JobService {
       headers: this.userService.getHeaders()
     }).toPromise()
       .then(res => res)
-      .catch(res => []);
+      .catch(res => console.log(res));
   }
 
   getAllCategories(): Promise<any> {
@@ -83,7 +83,7 @@ export class JobService {
       headers: this.userService.getHeaders()
     }).toPromise()
       .then(res => res)
-      .catch(res => []);
+      .catch(res => console.log(res));
   }
 
 }

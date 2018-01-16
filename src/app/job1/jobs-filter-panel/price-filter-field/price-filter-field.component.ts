@@ -17,8 +17,7 @@ export class PriceFilterFieldComponent implements OnInit {
 
   ngOnInit() {
     this.MinPriceValue.emit(this.minValue);
-    this.MaxPriceValue.emit(this.maxValue); // din ceva motiv, se emite undefined prima data, cu toate ca are valoarea setata
-    this.MaxPriceValue.emit(this.maxValue); // a doua oara se trimite ce trebuie
+    this.MaxPriceValue.emit(this.maxValue);
   }
 
   @Output() MinPriceValue = new EventEmitter();
