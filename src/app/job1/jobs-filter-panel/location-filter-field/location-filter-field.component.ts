@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, ViewEncapsulation, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, ViewEncapsulation, EventEmitter, Input} from '@angular/core';
 
 @Component({
   selector: 'mb-location-filter-field',
@@ -7,7 +7,7 @@ import {Component, OnInit, Output, ViewEncapsulation, EventEmitter} from '@angul
   encapsulation: ViewEncapsulation.None
 })
 export class LocationFilterFieldComponent implements OnInit {
-  locationValue: any;
+  @Input() locationValue: any;
 
   constructor() {
   }

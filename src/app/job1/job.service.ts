@@ -39,6 +39,7 @@ export class JobService {
   }
 
   async getJobsByLocation(location: any): Promise<any> {
+    console.log("cu asta se apeleaza " + location);
     return await this.http.get(`${ApplicationSettings.BASE_URL}//job/find/location/${location}/10000`, {
       headers: this.userService.getHeaders()
     }).toPromise()
@@ -47,7 +48,7 @@ export class JobService {
   }
 
   async getJobsByCategory(category: any): Promise<any> {
-    return await this.http.get(`${ApplicationSettings.BASE_URL}//job/find/category/${category}/10000`, {
+    return await this.http.get(`${ApplicationSettings.BASE_URL}//job/find/category/10000`, {
       headers: this.userService.getHeaders(),
     }).toPromise()
       .then(res => res)
@@ -58,8 +59,6 @@ export class JobService {
     return await this.http.get(`${ApplicationSettings.BASE_URL}//job/find/price_between/${low}/${high}/10000`, {
       headers: this.userService.getHeaders()
     }).toPromise()
-      .then(res => res)
-      .catch(res => console.log(res));
   }
 
   async getJobsByType(type: any): Promise<any> {
