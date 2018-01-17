@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, ViewEncapsulation, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, ViewEncapsulation, EventEmitter, Input} from '@angular/core';
 
 @Component({
   selector: 'mb-type-filter-field',
@@ -7,7 +7,7 @@ import {Component, OnInit, Output, ViewEncapsulation, EventEmitter} from '@angul
   encapsulation: ViewEncapsulation.None
 })
 export class TypeFilterFieldComponent implements OnInit {
-  typeValue: any;
+  @Input() typeValue: any;
 
   constructor() {
   }

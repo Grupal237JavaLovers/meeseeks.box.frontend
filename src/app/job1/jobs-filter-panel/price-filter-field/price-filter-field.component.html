@@ -9,7 +9,7 @@
       min="0"
       [max]="maxValue"
       step="1"
-      tickInterval="1000"
+      tickInterval="10000"
       [(ngModel)]="minValue"
       (change)="priceValueSelected()"></mat-slider>
     <mat-form-field class="slider-value">
@@ -21,13 +21,13 @@
     <mat-slider
       thumbLabel
       [min]="minValue"
-      max="9000"
+      max="90000"
       step="1"
       tickInterval="1000"
       [(ngModel)]="maxValue"
       (change)="priceValueSelected()"></mat-slider>
     <mat-form-field class="slider-value">
-      <input matInput type="number" placeholder="Max" [(ngModel)]="maxValue" [min]="minValue" max="9000" (change)="priceValueSelected()">
+      <input matInput type="number" placeholder="Max" [(ngModel)]="maxValue" [min]="minValue" max="90000" (change)="priceValueSelected()">
     </mat-form-field>
   </div>
 </div>

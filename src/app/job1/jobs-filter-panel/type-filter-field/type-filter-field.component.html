@@ -1,6 +1,7 @@
 <div class="field-container">
   <mat-form-field>
     <mat-select placeholder="Type" [(ngModel)]="typeValue" (change)="typeValueSelected()">
+      <mat-option>None</mat-option>
       <mat-option *ngFor="let type of types" [value]="type.value">
         {{ type.viewValue }}
       </mat-option>

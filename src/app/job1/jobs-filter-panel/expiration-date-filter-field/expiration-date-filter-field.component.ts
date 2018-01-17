@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, EventEmitter, Output, Input} from '@angular/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @Component({
@@ -8,7 +8,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
   encapsulation: ViewEncapsulation.None
 })
 export class ExpirationDateFilterFieldComponent implements OnInit {
-  expirationDateValue: any;
+  @Input() expirationDateValue: any;
 
   constructor() {
   }
