@@ -12,6 +12,6 @@ export class MbJobsComponent {
 
   filterHandler(result: any)
   {
-    if(result != []) this.result = result;
+    this.result = result;
   }
 }
