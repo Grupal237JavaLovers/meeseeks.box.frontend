@@ -12,7 +12,6 @@ export class JobsFilterPanelComponent implements OnInit {
   result = [];
 
   category: any;
-  expirationDate: any;
   location: any;
   minPrice = 0;
   maxPrice = 90000;
@@ -28,15 +27,25 @@ export class JobsFilterPanelComponent implements OnInit {
   applyFilters(){
     while(this.result.length > 0) { this.result.pop(); }
 
-    if(this.category) { var getJobsByCategory = this.jobService.getJobsByCategory(this.category).then(res => this.result.push(res)); }
+    if(this.category) {
+      var getJobsByCategory = this.jobService.getJobsByCategory(this.category)
+        .then(res => this.result.push(res));
+    }
 
-    if(this.location) { console.log(this.location); var getJobsByLocation = this.jobService.getJobsByLocation(this.location).then(res => this.result.push(res)); }
+    if(this.location) {
+      var getJobsByLocation = this.jobService.getJobsByLocation(this.location)
+        .then(res => this.result.push(res));
+    }
 
-    //if(this.expirationDate) { var getJobsByDate = this.jobService.getJobsByExpirationDate(this.expirationDate).then(res => this.result.push(res)); }
+    if(!isUndefined(this.minPrice) && !isUndefined(this.maxPrice)) {
+      var getJobsByPrice = this.jobService.getJobsByPriceBetween(this.minPrice, this.maxPrice)
+        .then(res => this.result.push(res));
+    }
 
-    if(!isUndefined(this.minPrice) && !isUndefined(this.maxPrice)) { var getJobsByPrice = this.jobService.getJobsByPriceBetween(this.minPrice, this.maxPrice).then(res => this.result.push(res)); }
-
-    if(this.type) { var getJobsByType = this.jobService.getJobsByType(this.type).then(res => this.result.push(res)); }
+    if(this.type) {
+      var getJobsByType = this.jobService.getJobsByType(this.type)
+        .then(res => this.result.push(res));
+    }
 
     Promise.all([getJobsByCategory, getJobsByLocation, getJobsByPrice, getJobsByType]).then(() => {
       if (this.result.length != 1) {
@@ -61,17 +70,12 @@ export class JobsFilterPanelComponent implements OnInit {
     this.minPrice = 0;
     this.maxPrice = 90000;
     this.location = null;
-    this.expirationDate = null;
     this.applyFilters();
   }
 
   categoryChangedHandler(category:any)
   {
     this.category = category;
-  }
-  expirationDateChangedHandler(expirationDate:any)
-  {
-    this.expirationDate = expirationDate;
   }
   locationChangedHandler(location:any)
   {
