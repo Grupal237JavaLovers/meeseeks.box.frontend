@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MbHomepageComponent } from '../home/homepage.component';
 import { MbProfileComponent } from '../user/profile/profile.component';
 import { MbLayoutComponent } from './layout.componet';
+import { MbJobsGridComponent } from '../job1/jobs-grid/jobs-grid.component';
 import { AuthGuard } from '../authentification/auth.guard';
 import { MbReviewComponent } from '../job1/review/review.component';
 import { MbCreateJobComponent } from '../job1/create-job/createJob.component';

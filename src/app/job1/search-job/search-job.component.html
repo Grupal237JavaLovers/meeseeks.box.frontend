@@ -1,17 +1,24 @@
-<div class="search-job">
-  <div [class.mat-elevation-z0] class="search-box-container">
-    <form (ngSubmit)="onSubmit()" class="form">
-      <div class="input-group">
-        <input matInput placeholder="Search for new opportunities ..." type="text" class="form-control"
-               id="search" name="search" [(ngModel)]="search">
-        <span class="input-group-btn">
+<div class="container">
+  <div class="filter-panel">
+    <mb-jobs-filter-panel (FilterResult)="filterHandler($event)"></mb-jobs-filter-panel>
+  </div>
+  <div class="jobs-panel">
+    <div class="search-job">
+      <div [class.mat-elevation-z0] class="search-box-container">
+        <form (ngSubmit)="onSubmit()" class="form">
+          <div class="input-group">
+            <input matInput placeholder="Search for new opportunities ..." type="text" class="form-control"
+                   id="search" name="search" [(ngModel)]="search">
+            <span class="input-group-btn">
         <button mat-icon-button color="primary">
           <mat-icon>search</mat-icon></button>
       </span>
+          </div>
+        </form>
       </div>
-    </form>
+
+
+      <mb-jobs-grid [jobs]="jobs" class="jobs-grid" (jobClicked)="onJobClicked($event)"></mb-jobs-grid>
+    </div>
   </div>
-
-
-  <mb-jobs-grid [jobs]="jobs" class="jobs-grid" (jobClicked)="onJobClicked($event)"></mb-jobs-grid>
 </div>

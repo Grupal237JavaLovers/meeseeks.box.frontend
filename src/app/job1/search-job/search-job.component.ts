@@ -30,4 +30,9 @@ export class MbSearchJobComponent {
     this.router.navigate(['/auth/job/details', $event.id]);
   }
 
+  filterHandler(result: any)
+  {
+    this.jobs = result;
+  }
+
 }

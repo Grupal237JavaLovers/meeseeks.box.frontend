@@ -1,0 +1,11 @@
+<div class="field-container">
+  <mat-form-field>
+    <mat-select placeholder="Categories" [(ngModel)]="categoryValue" (change)="categoryValueSelected()">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let category of categories" [value]="category.id">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
+
+  </mat-form-field>
+</div>
