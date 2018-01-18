@@ -23,7 +23,7 @@ export class CategoryFilterFieldComponent implements OnInit {
   @Output() CategoryValue = new EventEmitter();
 
   categoryValueSelected(){
-    var category = this.getCategoryById(this.categoryValue);
+    let category: any = this.getCategoryById(this.categoryValue);
     this.CategoryValue.emit(category);
   }
 

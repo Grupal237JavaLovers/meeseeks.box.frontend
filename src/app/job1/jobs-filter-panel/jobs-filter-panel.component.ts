@@ -67,7 +67,6 @@ export class JobsFilterPanelComponent implements OnInit {
 
   categoryChangedHandler(category:any)
   {
-    console.log("categorie" + category);
     this.category = category;
   }
   expirationDateChangedHandler(expirationDate:any)
@@ -76,22 +75,18 @@ export class JobsFilterPanelComponent implements OnInit {
   }
   locationChangedHandler(location:any)
   {
-    console.log("locatie" + location);
     this.location = location;
   }
   minPriceChangedHandler(minPrice: any)
   {
-    console.log("pret nim" + minPrice);
     this.minPrice = minPrice;
   }
   maxPriceChangedHandler(maxPrice: any )
   {
-    console.log("pret max" + maxPrice);
     this.maxPrice = maxPrice;
   }
   typeChangedHandler(type:any)
   {
-    console.log("type" + type);
     this.type = type;
   }
 }
