@@ -3,31 +3,43 @@
     Price range
   </p>
 
-  <div>
-   <mat-slider
-      thumbLabel
-      min="0"
-      [max]="maxValue"
-      step="1"
-      tickInterval="10000"
-      [(ngModel)]="minValue"
-      (change)="priceValueSelected()"></mat-slider>
-    <mat-form-field class="slider-value">
-      <input matInput type="number" placeholder="Min" [(ngModel)]="minValue" min="0" [max]="maxValue" (change)="priceValueSelected()">
-    </mat-form-field>
+  <div class="row">
+    <div class="col-sm-8">
+      <mat-slider
+        class="full-width"
+        thumbLabel
+        min="0"
+        [max]="maxValue"
+        step="1"
+        tickInterval="10000"
+        [(ngModel)]="minValue"
+        (change)="priceValueSelected()"></mat-slider>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field class="slider-value">
+        <input matInput type="number" placeholder="Min" [(ngModel)]="minValue" min="0" [max]="maxValue"
+               (change)="priceValueSelected()">
+      </mat-form-field>
+    </div>
   </div>
 
-  <div>
-    <mat-slider
-      thumbLabel
-      [min]="minValue"
-      max="90000"
-      step="1"
-      tickInterval="1000"
-      [(ngModel)]="maxValue"
-      (change)="priceValueSelected()"></mat-slider>
-    <mat-form-field class="slider-value">
-      <input matInput type="number" placeholder="Max" [(ngModel)]="maxValue" [min]="minValue" max="90000" (change)="priceValueSelected()">
-    </mat-form-field>
+  <div class="row">
+    <div class="col-sm-8">
+      <mat-slider
+        class="full-width"
+        thumbLabel
+        [min]="minValue"
+        max="90000"
+        step="1"
+        tickInterval="1000"
+        [(ngModel)]="maxValue"
+        (change)="priceValueSelected()"></mat-slider>
+    </div>
+    <div class="col-sm-4">
+      <mat-form-field class="slider-value">
+        <input matInput type="number" placeholder="Max" [(ngModel)]="maxValue" [min]="minValue" max="90000"
+               (change)="priceValueSelected()">
+      </mat-form-field>
+    </div>
+    </div>
   </div>
-</div>

@@ -56,7 +56,7 @@ export class JobService {
 
   /**Update job*/
   updateJob(job: any): Promise<any> {
-    return this.http.put(`${ApplicationSettings.BASE_URL}/job/update`, job, {
+    return this.http.patch(`${ApplicationSettings.BASE_URL}/job/update`, job, {
       headers: this.userService.getHeaders(),
     }).toPromise()
       .then(res => res);
@@ -125,15 +125,16 @@ export class JobService {
   }
 
   async getJobsByCategory(category: any): Promise<any> {
-    return await this.http.get(`${ApplicationSettings.BASE_URL}//job/find/category/10000`, {
+    console.log(category);
+    return await this.http.get(`${ApplicationSettings.BASE_URL}/job/find/category/10000`, {name: category.name}, {
       headers: this.userService.getHeaders(),
     }).toPromise()
       .then(res => res)
-      .catch(res => []);
+      .catch(res => console.log(res));
   }
 
   async getJobsByPriceBetween(low: any, high: any): Promise<any> {
-    return await this.http.get(`${ApplicationSettings.BASE_URL}//job/find/price_between/${low}/${high}/10000`, {
+    return await this.http.get(`${ApplicationSettings.BASE_URL}/job/find/price_between/${low}/${high}/10000`, {
       headers: this.userService.getHeaders()
     }).toPromise()
       .then(res => res)
@@ -141,7 +142,7 @@ export class JobService {
   }
 
   async getJobsByType(type: any): Promise<any> {
-    return await this.http.get(`${ApplicationSettings.BASE_URL}//job/find/type/${type}/10000`, {
+    return await this.http.get(`${ApplicationSettings.BASE_URL}/job/find/type/${type}/10000`, {
       headers: this.userService.getHeaders()
     }).toPromise()
       .then(res => res)
@@ -149,7 +150,7 @@ export class JobService {
   }
 
   async getJobsByExpirationDate(expirationDate: any): Promise<any> {
-    return await this.http.get(`${ApplicationSettings.BASE_URL}//job/find/${expirationDate}/10000`, {
+    return await this.http.get(`${ApplicationSettings.BASE_URL}/job/find/${expirationDate}/10000`, {
       headers: this.userService.getHeaders()
     }).toPromise()
       .then(res => res)
@@ -157,7 +158,7 @@ export class JobService {
   }
 
   async getAllCategories(): Promise<any> {
-    return await this.http.get(`${ApplicationSettings.BASE_URL}//job/categories`, {
+    return await this.http.get(`${ApplicationSettings.BASE_URL}/job/categories`, {
       headers: this.userService.getHeaders()
     }).toPromise()
       .then(res => res)

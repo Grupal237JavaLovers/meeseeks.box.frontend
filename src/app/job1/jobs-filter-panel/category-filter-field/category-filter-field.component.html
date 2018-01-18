@@ -1,5 +1,5 @@
 <div class="field-container">
-  <mat-form-field>
+  <mat-form-field class="full-width">
     <mat-select placeholder="Categories" [(ngModel)]="categoryValue" (change)="categoryValueSelected()">
       <mat-option>None</mat-option>
       <mat-option *ngFor="let category of categories" [value]="category.id">
