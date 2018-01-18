@@ -58,7 +58,6 @@ import { MbJobsComponent } from './jobs/jobs.component';
   ],
   exports: [
     MbJobsGridComponent,
-    MbRatingComponent
   ],
   providers: [
     JobService,
