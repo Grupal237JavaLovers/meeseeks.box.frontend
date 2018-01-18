@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {Router} from '@angular/router';
-import {MbLandingPageVideoComponent} from './landing-page-video/landing-page-video.component';
-import {MatDialog} from '@angular/material';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { MbLandingPageVideoComponent } from './landing-page-video/landing-page-video.component';
+import { MatDialog } from '@angular/material';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class LandingPageComponent {
     if (localStorage.getItem('currentUser')) {
       // logged in so return true
       console.log('user connected', localStorage.getItem('currentUser'));
-      this.router.navigate(['auth/dashboard']);
+      this.router.navigate(['auth/jobs']);
     }
   }
 
@@ -33,7 +33,7 @@ export class LandingPageComponent {
     // in case intellij say here is an error, intellij is wrong
     this.dialog.open(MbLandingPageVideoComponent, {
       width: '90%',
-      height: '90%'
+      height: '90%',
     });
   }
 }
