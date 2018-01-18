@@ -27,7 +27,7 @@ const LAYOUT_ROUTES: Routes = [
       },
       {
         path: 'jobs',
-        component: MbJobsGridComponent,
+        component: MbSearchJobComponent,
       },
       {
         path: 'job',
