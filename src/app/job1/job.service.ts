@@ -117,7 +117,7 @@ export class JobService {
       .then(res => res);
   }
   getJobsByLocation(location: any): Promise<any> {
-    return this.http.get(`${ApplicationSettings.BASE_URL}//job/find/${location}/10000`, {
+    return this.http.get(`${ApplicationSettings.BASE_URL}//job/find/location/${location}/10000`, {
       headers: this.userService.getHeaders()
     }).toPromise()
       .then(res => res)
