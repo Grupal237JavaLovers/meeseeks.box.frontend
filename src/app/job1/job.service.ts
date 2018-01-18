@@ -38,9 +38,6 @@ export class JobService {
       .then(res => res);
   }
 
-  async getJobsByLocation(location: any): Promise<any> {
-    console.log("cu asta se apeleaza " + location);
-    return await this.http.get(`${ApplicationSettings.BASE_URL}//job/find/location/${location}/10000`, {
   /** Get job by id*/
   getJobById(id: number): Promise<any> {
     return this.http.get(`${ApplicationSettings.BASE_URL}/job/${id}`, {
