@@ -43,6 +43,7 @@ import { MbRatingComponent } from './review/rating/rating.component';
   ],
   exports: [
     MbJobsGridComponent,
+    MbRatingComponent
   ],
   providers: [
     JobService,
