@@ -41,7 +41,7 @@ export class MbLoginComponent implements OnInit {
     this.userService.login(user)
       .then((userData) => {
         console.log('user connected', userData);
-        this.router.navigate(['/auth/dashboard']);
+        this.router.navigate(['/auth/jobs']);
       })
       .catch(() => {
         this.badCredentials = 'Username or password incorrect';
@@ -56,7 +56,7 @@ export class MbLoginComponent implements OnInit {
         this.userService.socialLogin(user)
           .then((res) => {
             console.log('user connected', res);
-            this.router.navigate(['/auth/dashboard']);
+            this.router.navigate(['/auth/jobs']);
           })
           .catch((err) => {
             this.badCredentials = 'Maybe you are not registered, or your email is used for other account';
