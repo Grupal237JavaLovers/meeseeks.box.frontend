@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, ViewEncapsulation, EventEmitter, Input} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 import { JobService } from '../../job.service';
 
@@ -11,6 +11,7 @@ import { JobService } from '../../job.service';
 export class CategoryFilterFieldComponent implements OnInit {
   categories = [];
   @Input() categoryValue: any;
+  @Output() CategoryValue = new EventEmitter();
 
   constructor(private jobService: JobService) {
     jobService.getAllCategories().then(res => this.categories = res);
@@ -20,17 +21,16 @@ export class CategoryFilterFieldComponent implements OnInit {
     this.CategoryValue.emit(this.categoryValue);
   }
 
-  @Output() CategoryValue = new EventEmitter();
 
-  categoryValueSelected(){
-    let category: any = this.getCategoryById(this.categoryValue);
+  categoryValueSelected() {
+    const category: any = this.getCategoryById(this.categoryValue);
     this.CategoryValue.emit(category);
   }
 
-  getCategoryById(id: any){
+  getCategoryById(id: any) {
     return this.categories.find(function (element) {
-      return element.id == id;
-    })
+      return element.id === id;
+    });
   }
 
 }

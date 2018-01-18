@@ -5,6 +5,7 @@ import {
   MatButtonModule,
   MatCardModule,
   MatDialogModule,
+  MatExpansionModule,
   MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
@@ -42,6 +43,7 @@ const sharedModules = [
   MatListModule,
   RouterModule,
   MatDialogModule,
+  MatExpansionModule,
 ];
 const sharedComponents = [
   MbApplyJobComponent,

@@ -1,12 +1,12 @@
-import {Component, OnInit, Output, ViewEncapsulation, EventEmitter} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { JobService } from '../job.service';
-import {isUndefined} from "util";
+import { isUndefined } from 'util';
 
 @Component({
   selector: 'mb-jobs-filter-panel',
   templateUrl: './jobs-filter-panel.component.html',
   styleUrls: ['./jobs-filter-panel.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class JobsFilterPanelComponent implements OnInit {
   result = [];
@@ -17,54 +17,63 @@ export class JobsFilterPanelComponent implements OnInit {
   maxPrice = 90000;
   type: any;
 
-  constructor(private jobService: JobService) { }
+  constructor(private jobService: JobService) {
+  }
 
   ngOnInit() {
   }
 
   @Output() FilterResult = new EventEmitter();
 
-  applyFilters(){
-    while(this.result.length > 0) { this.result.pop(); }
+  applyFilters() {
+    while (this.result.length > 0) {
+      this.result.pop();
+    }
+    let getJobsByType;
+    let getJobsByCategory;
+    let getJobsByLocation;
+    let getJobsByPrice;
 
-    if(this.category) {
-      var getJobsByCategory = this.jobService.getJobsByCategory(this.category)
+    if (this.category) {
+      getJobsByCategory = this.jobService.getJobsByCategory(this.category)
         .then(res => this.result.push(res));
     }
 
-    if(this.location) {
-      var getJobsByLocation = this.jobService.getJobsByLocation(this.location)
+    if (this.location) {
+      getJobsByLocation = this.jobService.getJobsByLocation(this.location)
         .then(res => this.result.push(res));
     }
 
-    if(!isUndefined(this.minPrice) && !isUndefined(this.maxPrice)) {
-      var getJobsByPrice = this.jobService.getJobsByPriceBetween(this.minPrice, this.maxPrice)
+    if (!isUndefined(this.minPrice) && !isUndefined(this.maxPrice)) {
+      getJobsByPrice = this.jobService.getJobsByPriceBetween(this.minPrice, this.maxPrice)
         .then(res => this.result.push(res));
     }
 
-    if(this.type) {
-      var getJobsByType = this.jobService.getJobsByType(this.type)
+    if (this.type) {
+      getJobsByType = this.jobService.getJobsByType(this.type)
         .then(res => this.result.push(res));
     }
 
     Promise.all([getJobsByCategory, getJobsByLocation, getJobsByPrice, getJobsByType]).then(() => {
-      if (this.result.length != 1) {
-        var filterResult = [];
-        for (let arrayElement of this.result[0]) {
-          for (let filteredArray of this.result.slice(1))
-            for (let el of filteredArray)
-              if (el.id == arrayElement.id)               //javascript e de vina. N-are functie de intersectie
+      if (this.result.length !== 1) {
+        const filterResult = [];
+        for (const arrayElement of this.result[0]) {
+          for (const filteredArray of this.result.slice(1)) {
+            for (const el of filteredArray) {
+              if (el.id === arrayElement.id) {               //  javascript e de vina. N-are functie de intersectie
                 filterResult.push(arrayElement);
+              }
+            }
+          }
+          this.FilterResult.emit(filterResult);
         }
-        this.FilterResult.emit(filterResult);
-      }
-      else{
+      } else {
         this.FilterResult.emit(this.result[0]);
       }
     });
   }
 
-  clearFilters(){
+  clearFilters() {
     this.category = null;
     this.type = null;
     this.minPrice = 0;
@@ -73,24 +82,23 @@ export class JobsFilterPanelComponent implements OnInit {
     this.applyFilters();
   }
 
-  categoryChangedHandler(category:any)
-  {
+  categoryChangedHandler(category: any) {
     this.category = category;
   }
-  locationChangedHandler(location:any)
-  {
+
+  locationChangedHandler(location: any) {
     this.location = location;
   }
-  minPriceChangedHandler(minPrice: any)
-  {
+
+  minPriceChangedHandler(minPrice: any) {
     this.minPrice = minPrice;
   }
-  maxPriceChangedHandler(maxPrice: any )
-  {
+
+  maxPriceChangedHandler(maxPrice: any) {
     this.maxPrice = maxPrice;
   }
-  typeChangedHandler(type:any)
-  {
+
+  typeChangedHandler(type: any) {
     this.type = type;
   }
 }
