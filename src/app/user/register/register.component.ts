@@ -1,19 +1,21 @@
 /**
  * Created by csebestin on 11/10/2017.
  */
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../user.service';
-import { ConfirmValidParentMatcher, CustomValidators, errorMessages } from '../../shared/customMatcher';
-import { Router } from '@angular/router';
-import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angular4-social-login';
+
+import {Component, Input, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../user.service';
+import {ConfirmValidParentMatcher, CustomValidators, errorMessages} from '../../shared/customMatcher';
+import {Router} from '@angular/router';
+import {AuthService, FacebookLoginProvider, GoogleLoginProvider} from 'angular4-social-login';
 
 @Component({
   selector: 'mb-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class MbRegisterComponent implements OnInit{
+
+export class MbRegisterComponent implements OnInit {
   @Input() type: string; // provider or consumer
   userRegisterForm: FormGroup;
 
@@ -48,7 +50,7 @@ export class MbRegisterComponent implements OnInit{
                 this.signOut();
               });
           })
-          .catch((err) =>  {
+          .catch((err) => {
             console.log(err);
             this.signOut();
             this.badUsernameOrEmail = 'The email used is already registered';
@@ -89,7 +91,7 @@ export class MbRegisterComponent implements OnInit{
     user.profileImageUrl = this.userRegisterForm.get('profileImage').value;
     user.description = this.userRegisterForm.get('description').value;
     user.profileVideoUrl = this.userRegisterForm.get('video').value;
-     console.log(this.type);
+    console.log(this.type);
     switch (this.type) {
       case 'provider':
         console.log('register provider');

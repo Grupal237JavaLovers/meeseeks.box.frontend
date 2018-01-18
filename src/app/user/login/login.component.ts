@@ -10,6 +10,7 @@ import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angular
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
+
 export class MbLoginComponent implements OnInit {
   userLoginForm: FormGroup;
 
