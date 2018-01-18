@@ -29,10 +29,13 @@
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <input matInput placeholder="Type" type="text" class="form-control"
-           id="type" name="type"
-           [(ngModel)]="model.job.type" #type="ngModel"
-           required>
+    <mat-select placeholder="Type" [(ngModel)]="model.job.type" name="type {{i}}"
+                class="form-field" #type="ngModel"
+                required>
+      <mat-option *ngFor="let type of types" [value]="type.value">
+        {{type.viewValue}}
+      </mat-option>
+    </mat-select>
     <mat-error *ngIf="type.invalid">{{errors.type}}</mat-error>
   </mat-form-field>
 

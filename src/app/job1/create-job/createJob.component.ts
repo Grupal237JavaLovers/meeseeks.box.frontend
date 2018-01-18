@@ -31,6 +31,12 @@ export class MbCreateJobComponent implements OnInit {
     {value: 'sunday', viewValue: 'Sunday'},
   ];
 
+  types = [
+    {value: 'fullTime', viewValue: 'Full time'},
+    {value: 'partTime', viewValue: 'Part time'},
+    {value: 'volunteer', viewValue: 'Volunteer'},
+  ];
+
   message = '';
 
   constructor(private jobService: JobService) {
@@ -61,9 +67,10 @@ export class MbCreateJobComponent implements OnInit {
         availability.startHour = availability.startHour + ':00';
         availability.endHour = availability.endHour + ':00';
       }
-     });
-    if (this.model.job.expiration.split(':').length < 3)
-    this.model.job.expiration += ':00';
+    });
+    if (this.model.job.expiration.split(':').length < 3) {
+      this.model.job.expiration += ':00';
+    }
     if (this.jobId) {
       this.jobService.updateJob(this.model);
     } else {
