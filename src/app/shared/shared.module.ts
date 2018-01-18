@@ -13,7 +13,8 @@ import {
   MatSelectModule,
   MatSliderModule,
   MatTableModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatTabsModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
@@ -33,6 +34,7 @@ const sharedModules = [
   HttpClientModule,
   MatGridListModule,
   MatCardModule,
+  MatTabsModule,
   CommonModule,
   MatIconModule,
   MatSliderModule,

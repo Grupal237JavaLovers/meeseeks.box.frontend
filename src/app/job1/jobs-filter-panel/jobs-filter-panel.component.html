@@ -1,0 +1,26 @@
+<div>
+  <mb-category-filter-field
+    (CategoryValue)="categoryChangedHandler($event)"
+    [categoryValue]="category">
+  </mb-category-filter-field>
+
+  <mb-type-filter-field
+    (TypeValue)="typeChangedHandler($event)"
+    [typeValue]="type">
+  </mb-type-filter-field>
+
+  <mb-price-filter-field
+    (MinPriceValue)="minPriceChangedHandler($event)"
+    (MaxPriceValue)="maxPriceChangedHandler($event)"
+    [minValue]="minPrice"
+    [maxValue]="maxPrice">
+  </mb-price-filter-field>
+
+  <mb-location-filter-field
+    (LocationValue)="locationChangedHandler($event)"
+    [locationValue]="location">
+  </mb-location-filter-field>
+
+  <button mat-button (click)="applyFilters()">Apply filters</button>
+  <button mat-button (click)="clearFilters()">Clear filters</button>
+</div>

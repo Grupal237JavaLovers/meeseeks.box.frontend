@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MbHomepageComponent } from './home/homepage.component';
@@ -13,6 +14,7 @@ import { JobModule } from './job1/job.module';
 import { WildcardRoutingModule } from './not-found/not-found.module';
 import { MbLandingPageVideoComponent } from './landing-page/landing-page-video/landing-page-video.component';
 import { MbApplyJobDialogComponent } from './job1/apply-job/apply-job-dialog/apply-job-dialog.component';
+import { EmbedVideo } from 'ngx-embed-video';
 import {
   AuthServiceConfig,
   FacebookLoginProvider,
@@ -52,7 +54,7 @@ export function provideConfig() {
     AppComponent,
     MbHomepageComponent,
     LandingPageComponent,
-    MbLandingPageVideoComponent,
+    MbLandingPageVideoComponent
   ],
   imports: [
     AppRoutingModule,
@@ -62,6 +64,8 @@ export function provideConfig() {
     UserModule,
     JobModule,
     SocialLoginModule,
+    EmbedVideo.forRoot(),
+    HttpModule,
     WildcardRoutingModule // Last position always, do not change
   ],
   providers: [
