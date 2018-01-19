@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { JobService } from '../job.service';
 import { isUndefined } from 'util';
+import { JobService } from '../job.service';
 
 @Component({
   selector: 'mb-jobs-filter-panel',
@@ -30,14 +30,9 @@ export class JobsFilterPanelComponent implements OnInit {
       this.result.pop();
     }
     let getJobsByType;
-    let getJobsByCategory;
+    // let getJobsByCategory;
     let getJobsByLocation;
     let getJobsByPrice;
-
-    if (this.category) {
-      getJobsByCategory = this.jobService.getJobsByCategory(this.category)
-        .then(res => this.result.push(res));
-    }
 
     if (this.location) {
       getJobsByLocation = this.jobService.getJobsByLocation(this.location)
@@ -54,7 +49,7 @@ export class JobsFilterPanelComponent implements OnInit {
         .then(res => this.result.push(res));
     }
 
-    Promise.all([getJobsByCategory, getJobsByLocation, getJobsByPrice, getJobsByType]).then(() => {
+    Promise.all([getJobsByLocation, getJobsByPrice, getJobsByType]).then(() => {
       if (this.result.length !== 1) {
         const filterResult = [];
         for (const arrayElement of this.result[0]) {
