@@ -27,6 +27,7 @@ import { PriceFilterFieldComponent } from './jobs-filter-panel/price-filter-fiel
 import { TypeFilterFieldComponent } from './jobs-filter-panel/type-filter-field/type-filter-field.component';
 import { ExpirationDateFilterFieldComponent } from './jobs-filter-panel/expiration-date-filter-field/expiration-date-filter-field.component';
 import { MbJobsComponent } from './jobs/jobs.component';
+import { FilterJobsComponent } from './filter-jobs/filter-jobs.component';
 
 @NgModule({
   imports: [
@@ -54,7 +55,8 @@ import { MbJobsComponent } from './jobs/jobs.component';
     PriceFilterFieldComponent,
     TypeFilterFieldComponent,
     ExpirationDateFilterFieldComponent,
-    MbJobsComponent
+    MbJobsComponent,
+    FilterJobsComponent
   ],
   exports: [
     MbJobsGridComponent,

@@ -2,12 +2,12 @@
  * Created by csebestin on 11/10/2017.
  */
 
-import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../user.service';
-import {ConfirmValidParentMatcher, CustomValidators, errorMessages} from '../../shared/customMatcher';
-import {Router} from '@angular/router';
-import {AuthService, FacebookLoginProvider, GoogleLoginProvider} from 'angular4-social-login';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../user.service';
+import { ConfirmValidParentMatcher, CustomValidators, errorMessages } from '../../shared/customMatcher';
+import { Router } from '@angular/router';
+import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angular4-social-login';
 
 @Component({
   selector: 'mb-register',
@@ -43,7 +43,7 @@ export class MbRegisterComponent implements OnInit {
             this.userService.socialLogin(user)
               .then((res) => {
                 console.log('user connected', res);
-                this.router.navigate(['/auth/dashboard']);
+                this.router.navigate(['/auth/jobs']);
               })
               .catch((err) => {
                 console.log(err);

@@ -31,6 +31,12 @@ export class MbCreateJobComponent implements OnInit {
     {value: 'sunday', viewValue: 'Sunday'},
   ];
 
+  types = [
+    {value: 'fullTime', viewValue: 'Full time'},
+    {value: 'partTime', viewValue: 'Part time'},
+    {value: 'volunteer', viewValue: 'Volunteer'},
+  ];
+
   message = '';
 
   constructor(private jobService: JobService) {
@@ -47,7 +53,9 @@ export class MbCreateJobComponent implements OnInit {
           this.model.job.type = res.type;
           this.model.job.category = res.category;
           this.model.job.price = res.price;
-          this.model.job.expiration = new Date(res.expiration).toISOString().split('.')[0];
+          if (res.expiration) {
+            this.model.job.expiration = new Date(res.expiration).toISOString().split('.')[0];
+          }
           this.model.category = res.category.name;
           this.model.availabilities = res.availabilities;
         })
@@ -61,11 +69,13 @@ export class MbCreateJobComponent implements OnInit {
         availability.startHour = availability.startHour + ':00';
         availability.endHour = availability.endHour + ':00';
       }
-     });
-    if (this.model.job.expiration.split(':').length < 3)
-    this.model.job.expiration += ':00';
+    });
+    if (this.model.job.expiration.split(':').length < 3) {
+      this.model.job.expiration += ':00';
+    }
     if (this.jobId) {
-      this.jobService.updateJob(this.model);
+      this.jobService.updateJob(this.model)
+        .catch(err => console.log(err));
     } else {
       this.jobService.createJob(this.model)
         .then((res) => {

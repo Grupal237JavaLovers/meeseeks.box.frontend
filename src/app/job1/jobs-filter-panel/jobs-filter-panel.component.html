@@ -1,26 +1,44 @@
-<div>
-  <mb-category-filter-field
-    (CategoryValue)="categoryChangedHandler($event)"
-    [categoryValue]="category">
-  </mb-category-filter-field>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Filters
+      </mat-panel-title>
+    </mat-expansion-panel-header>
 
-  <mb-type-filter-field
-    (TypeValue)="typeChangedHandler($event)"
-    [typeValue]="type">
-  </mb-type-filter-field>
+    <div class="row">
+      <div class="col-sm-6">
+        <mb-category-filter-field
+          (CategoryValue)="categoryChangedHandler($event)"
+          [categoryValue]="category">
+        </mb-category-filter-field>
 
-  <mb-price-filter-field
-    (MinPriceValue)="minPriceChangedHandler($event)"
-    (MaxPriceValue)="maxPriceChangedHandler($event)"
-    [minValue]="minPrice"
-    [maxValue]="maxPrice">
-  </mb-price-filter-field>
+        <mb-type-filter-field
+          (TypeValue)="typeChangedHandler($event)"
+          [typeValue]="type">
+        </mb-type-filter-field>
 
-  <mb-location-filter-field
-    (LocationValue)="locationChangedHandler($event)"
-    [locationValue]="location">
-  </mb-location-filter-field>
+        <mb-location-filter-field
+          (LocationValue)="locationChangedHandler($event)"
+          [locationValue]="location">
+        </mb-location-filter-field>
+      </div>
+      <div class="col-sm-6">
+        <mb-price-filter-field
+          (MinPriceValue)="minPriceChangedHandler($event)"
+          (MaxPriceValue)="maxPriceChangedHandler($event)"
+          [minValue]="minPrice"
+          [maxValue]="maxPrice">
+        </mb-price-filter-field>
+      </div>
+    </div>
 
-  <button mat-button (click)="applyFilters()">Apply filters</button>
-  <button mat-button (click)="clearFilters()">Clear filters</button>
-</div>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <button mat-button (click)="applyFilters()">Apply filters</button>
+        <button mat-button (click)="clearFilters()">Clear filters</button>
+      </div>
+    </div>
+
+  </mat-expansion-panel>
+</mat-accordion>
