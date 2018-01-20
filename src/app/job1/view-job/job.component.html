@@ -1,16 +1,19 @@
 <mat-card *ngIf="job">
- <div *ngIf="isProvider() && checkingRequestStatus">
-  <span class="badge badge-primary badge-job-card" *ngIf="providerAccepted()">Accepted</span>
-  <span class="badge badge-info badge-job-card" *ngIf="!appliedToJob() && !providerAccepted()">Didn't applied yet</span>
-  <span class="badge badge-success badge-job-card" *ngIf="appliedToJob() && !providerAccepted()">Applied</span>
- </div>
-  <span class="badge badge-warning  badge-job-card" *ngIf="!checkingRequestStatus && isProvider()">Checking status...</span>
+  <div *ngIf="isProvider() && checkingRequestStatus">
+    <span class="badge badge-primary badge-job-card" *ngIf="providerAccepted()">Accepted</span>
+    <span class="badge badge-info badge-job-card"
+          *ngIf="!appliedToJob() && !providerAccepted()">Didn't applied yet</span>
+    <span class="badge badge-success badge-job-card" *ngIf="appliedToJob() && !providerAccepted()">Applied</span>
+  </div>
+  <span class="badge badge-warning  badge-job-card"
+        *ngIf="!checkingRequestStatus && isProvider()">Checking status...</span>
   <mat-card-header>
     <img mat-card-avatar src="../../assets/job-icon.png">
     <mat-card-title>{{job.name}}</mat-card-title>
     <mat-card-subtitle>{{job.description}}</mat-card-subtitle>
   </mat-card-header>
   <div class="alert alert-danger" role="alert" *ngIf="errors">{{errors}}</div>
+  <mat-card-subtitle>Job created by: {{job.consumer.name}}</mat-card-subtitle>
 
   <mat-grid-list cols="2">
 
@@ -93,7 +96,9 @@
       </mat-card-actions>
       <mat-card-actions align="center" *ngIf="isProvider()">
         <mb-apply-job [job]="job" (requestSent)="refreshRequest($event)"></mb-apply-job>
-        <button mat-raised-button color="basic" (click)="providerMakeReview()" *ngIf="providerAccepted() && isProvider()">Make review</button>
+        <button mat-raised-button color="basic" (click)="providerMakeReview()"
+                *ngIf="providerAccepted() && isProvider()">Make review
+        </button>
       </mat-card-actions>
     </mat-card>
   </mat-card-footer>
