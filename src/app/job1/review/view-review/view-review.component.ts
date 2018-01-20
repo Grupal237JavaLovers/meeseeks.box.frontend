@@ -1,13 +1,13 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { UserService } from '../../../user/user.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../../user/user.service';
 import { ReviewService } from '../review.service';
 
 @Component({
   selector: 'mb-view-review',
   templateUrl: './view-review.component.html',
   styleUrls: ['./view-review.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class MbViewReviewComponent implements OnInit {
   @Input() review: any;
@@ -15,10 +15,11 @@ export class MbViewReviewComponent implements OnInit {
 
   constructor(private userService: UserService,
               private reviewService: ReviewService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
-    this.review.date = new Date(this.review.date).toLocaleString();
+    // this.review.date = new Date(this.review.date).toLocaleString();
   }
 
   isProvider() {
