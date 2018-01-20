@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
 import { ApplicationSettings } from '../shared/applicationSettings';
+import {Provider} from '../model/provider';
+import {Consumer} from '../model/consumer';
 
 @Injectable()
 export class UserService {
@@ -70,6 +72,63 @@ export class UserService {
     }).toPromise()
       .then(data => {
         return data;
+      });
+  }
+
+  getProvider(id: number): Promise<any> {
+    return this.http.get<Provider>(`${ApplicationSettings.BASE_URL}/provider/get/${id}`, {
+      headers: this.getHeaders(),
+    }).toPromise()
+      .then(data => {
+        return data;
+    });
+  }
+
+  getConsumer(id: number): Promise<any> {
+    return this.http.get<Consumer>(`${ApplicationSettings.BASE_URL}/consumer/get/${id}`, {
+      headers: this.getHeaders(),
+    }).toPromise()
+      .then(data => {
+        return data;
+      });
+  }
+
+  getProviderSkills(id: number): Promise<any> {
+    return this.http.get<string[]>(`${ApplicationSettings.BASE_URL}/provider/get/${id}/skills`, {
+      headers: this.getHeaders(),
+    }).toPromise()
+      .then(data => {
+        return data;
+      });
+  }
+
+  getProviderRating(id: number): Promise<any> {
+    return this.http.get<any>(`${ApplicationSettings.BASE_URL}/review/latest/provider/${id}/1000/true`, {
+      headers: this.getHeaders(),
+    }).toPromise()
+      .then(data => {
+        let sum = 0;
+        let nr = 0;
+        data.forEach(review => {
+          sum += review.rating;
+          nr++;
+        });
+        return sum / nr;
+      });
+  }
+
+  getConsumerRating(id: number): Promise<any> {
+    return this.http.get<any>(`${ApplicationSettings.BASE_URL}/review/latest/consumer/${id}/1000/true`, {
+      headers: this.getHeaders(),
+    }).toPromise()
+      .then(data => {
+        let sum = 0;
+        let nr = 0;
+        data.forEach(review => {
+          sum += review.rating;
+          nr++;
+        });
+        return sum / nr;
       });
   }
 
