@@ -1,1 +1,70 @@
-<p>Profile page</p>
+<div class="msbx-profile__container">
+
+  <div class="msbx-profile__user-head">
+    <img mat-card-image class="msbx-profile__user-head--image" src={{imageUrl}}>
+
+    <mat-card-subtitle>{{user.username}}</mat-card-subtitle>
+
+    <mat-card-actions class="msbx-profile__user-head--actions">
+      <button mat-button class="msbx-profile__user-head--actions--edit" (click)="ngOnEditClick()">Edit Profile</button>
+    </mat-card-actions>
+
+  </div>
+
+  <div class="msbx-profile__user-details">
+
+    <mat-card class="msbx-profile__user-details--card">
+
+      <mat-card-content class="msbx-profile__user-details--card--titlegroup">
+        <mat-card-title>{{user.name}}</mat-card-title>
+        <!--<mat-card-subtitle class="msbx-profile__user-details&#45;&#45;card&#45;&#45;titlegroup&#45;&#45;subtitle">@{{user.username}}</mat-card-subtitle>-->
+        <mat-card-subtitle class="msbx-profile__user-details--card--titlegroup--subtitle">{{user.email}}</mat-card-subtitle>
+      </mat-card-content>
+
+      <mat-card-content>
+
+        <div *ngIf="isProvider">
+          <li class="msbx-profile__user-details--card--skills" *ngFor="let skill of provider.skills; last as isLast">
+            <span *ngIf="isLast; else elseBlock" style="color: blue; ">
+              {{skill.name}}
+            </span>
+            <ng-template #elseBlock>
+              <span style="color: blue;">{{skill.name}}, </span>
+            </ng-template>
+          </li>
+        </div>
+
+        <mat-card-subtitle>RANKING</mat-card-subtitle>
+        <span class="msbx-profile__user-details--card--rating">
+          <p>{{rating}}    </p>
+          <mb-rating [rating]="rating"></mb-rating>
+        </span>
+
+      </mat-card-content>
+
+    </mat-card>
+
+    <mat-tab-group class="msbx-profile__user-details--tabgroup">
+
+      <mat-tab label="About">
+        <mat-card class="msbx-profile__user-details--tabgroup--about">
+          <mat-card-subtitle>Description</mat-card-subtitle>
+          <mat-card-content>{{description}}.</mat-card-content>
+        </mat-card>
+      </mat-tab>
+
+      <div *ngIf="isProvider">
+        <mat-tab label="Video presentation">
+          <mat-card>
+            <mat-card-subtitle>Video presentation</mat-card-subtitle>
+            <mat-card-content>
+              <div class="msbx-profile__user-details--tabgroup--video" [innerHtml]="iframe_html"></div>
+            </mat-card-content>
+          </mat-card>
+        </mat-tab>
+      </div>
+
+    </mat-tab-group>
+
+  </div>
+</div>
