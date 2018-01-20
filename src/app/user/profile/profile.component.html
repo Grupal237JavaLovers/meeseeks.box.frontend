@@ -3,7 +3,7 @@
   <div class="msbx-profile__user-head">
     <img mat-card-image class="msbx-profile__user-head--image" src={{imageUrl}}>
 
-    <mat-card-subtitle>@{{user.username}}</mat-card-subtitle>
+    <mat-card-subtitle>{{user.username}}</mat-card-subtitle>
 
     <mat-card-actions class="msbx-profile__user-head--actions">
       <button mat-button class="msbx-profile__user-head--actions--edit" (click)="ngOnEditClick()">Edit Profile</button>
@@ -26,10 +26,10 @@
         <div *ngIf="isProvider">
           <li class="msbx-profile__user-details--card--skills" *ngFor="let skill of provider.skills; last as isLast">
             <span *ngIf="isLast; else elseBlock" style="color: blue; ">
-              {{skill}}
+              {{skill.name}}
             </span>
             <ng-template #elseBlock>
-              <span style="color: blue;">{{skill}}, </span>
+              <span style="color: blue;">{{skill.name}}, </span>
             </ng-template>
           </li>
         </div>
